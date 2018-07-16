@@ -1,0 +1,95 @@
+page{
+  height: 100%;
+  /*background-image: url('https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/11a95b36ef52c491db7400465234a44b8ca165a0292dc3f241b0771e8fb93414b49c5b7e7e3ef1741a281ec80865532e?pictype=scale&from=30113&version=3.3.3.3&uin=691997599&fname=background.jpg&size=750'); 
+  background-size: cover;
+  background-repeat: no-repeat;*/
+  overflow-y: hidden;
+}
+#container{
+  height: 100%;
+  background-color: rgba(0,0,0,0.35);
+}
+#account-type{
+  width: 100%;
+  height: 120rpx;
+  text-align: center;
+  padding-top: 178rpx;
+  margin-bottom: 62rpx;
+}
+#account-type image{
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 56rpx;
+  height: 56rpx;
+
+}
+#individual{
+  width: 50%;
+  color: #fff;
+  border-right: 1px solid #fff;
+  float: left;
+  
+}
+.individual{
+  background-image: url('https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/4f2fff2a3172c639fb1dbda3339cf4b010026a8f74589913f00ff129a17c55055ecf8db32f2c7d195a4be6425b3def6b?pictype=scale&from=30113&version=3.3.3.3&uin=691997599&fname=1215218.png&size=750');
+  box-sizing: content-box;
+
+}
+#enterprise{
+  width: 49%;
+  color: #fff;
+  float: left;
+}
+.enterprise{
+  background-image: url('https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/c444899fefe08fd6140307d0c35638993e6e8f2fe4aaef7b6aba2acab3ce46937c74159ea3eab7d809017ed9fd5bd12a?pictype=scale&from=30113&version=3.3.3.3&uin=691997599&fname=chat_128px_1215257_easyicon.net.png&size=750');
+
+}
+
+#info{
+  
+}
+input{
+  box-sizing: border-box;
+  width: 600rpx;
+  height: 80rpx;
+  border: 1px solid #fff;
+  position: relative;
+  margin: 32rpx auto;
+  padding-left: 80rpx;
+}
+.info-item{
+  position: relative;
+}
+.icon{
+  position: absolute;
+  top: 16rpx;
+  left: 100rpx;
+  height: 48rpx;
+  width: 48rpx;
+  padding-right: 2rpx;
+  border-right: 1px solid #fff;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  background-attachment: fixed;
+  background-image: url('http://s4.sinaimg.cn/orignal/0043UzRZzy7m4wnF2r9c3&690');
+}
+.name{
+  background-position: -432px -998px;
+}
+.career{
+  background-position: -26px -1256px;
+}
+.company{
+  background-position: -358px -1406px;
+}
+.introduction{
+
+}
+button{
+  width: 600rpx;
+  height: 80rpx;
+  line-height: 75rpx;
+  color: white;
+  background-color: rgba(255, 255, 255, 0);
+  border: 1px solid #fff;
+}

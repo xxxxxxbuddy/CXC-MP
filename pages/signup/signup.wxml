@@ -1,0 +1,32 @@
+
+<view id='container'>
+  <view id='account-type'>
+    <view id='individual'>
+      <image class='individual'></image>
+      <view>个人账号</view>
+    </view>
+    <view id='enterprise'>
+      <image class='enterprise'></image>
+      <view>企业账号</view>
+    </view>
+  </view>
+  <view id='info'>
+  <view class='info-item'>
+    <view class='icon name' ></view>
+    <input placeholder='姓名'/>
+  </view>
+  <view class='info-item'>
+    <view class='icon career'></view>
+    <input placeholder='职业'/>
+  </view>
+  <view class='info-item'>
+    <view class='icon company'></view>
+    <input placeholder='单位'/>
+  </view>
+  <view class='info-item'>
+    <view class='icon introduction'></view>
+    <input placeholder='简介'/>
+  </view>
+    <button>注册</button>  
+  </view>
+</view>
