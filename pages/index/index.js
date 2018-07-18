@@ -4,10 +4,20 @@ const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello World',
+    background_url: './../images/background.jpg',
+    avatar_img: './../images/avatar_img.png',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    individualInfo: {
+      name: '',
+      job: '',
+      corporation: ''
+    },
+    enterpriseInfo: {
+      companyName: '',
+      companyType: ''
+    }
   },
   //事件处理函数
   bindViewTap: function() {

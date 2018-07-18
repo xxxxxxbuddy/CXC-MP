@@ -29,6 +29,10 @@ App({
               }
             }
           })
+          //直接进入个人主页
+          wx.redirectTo({
+            url: './../main/main',
+          })
         }
       }
     })

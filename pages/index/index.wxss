@@ -1,21 +1,86 @@
 /**index.wxss**/
-.userinfo {
+page{
+  height: 100%;
+}
+#container{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.opacity{
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0,0,0,0.35);
+}
+
+.flex_center{
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
+}
+/**个人用户注册界面**/
+#individual{
+  /*position: absolute;
+    left: 0;*/
+  width:100%;
+  overflow: hidden;
 }
 
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
+
+/**账户类型选择界面**/
+#choosetype{
+  width: 100%;
+}
+
+/**企业用户注册界面**/
+#enterprise{
+  width: 100%;
+}
+
+/**共有元素**/
+.avatar{
+  position: relative;
+  margin: 0 auto;
+  margin-top: 148rpx;
+  margin-bottom: 120rpx;
+  width: 200rpx;
+  height: 200rpx;
   border-radius: 50%;
+  background-color: rgba(255,255,255,0.68);
 }
-
-.userinfo-nickname {
-  color: #aaa;
+.avatar image{
+  position: absolute;
+  margin-left: -60rpx;
+  margin-top: -60rpx;
+  left: 50%;
+  top: 50%;
+  width: 120rpx;
+  height: 120rpx;
+  overflow: hidden;
 }
+form{
 
-.usermotto {
-  margin-top: 200px;
+}
+input{
+  width: 600rpx;
+  height: 80rpx;
+  margin-bottom: 64rpx;
+  border: 1px solid #fff;
+  box-sizing: border-box;
+  padding-left: 82rpx;
+}
+button{
+  display: inline-block;
+  width: 196rpx;
+  height: 80rpx;
+  color: #fff;
+  border: 1px solid #fff;
+  background: transparent;
+  line-height: 80rpx;
+}
+.signup{
+  margin-left: 74rpx;
+  margin-right: 208rpx;
 }

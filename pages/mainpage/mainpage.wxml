@@ -1,6 +1,0 @@
-
-<view id='container'>
-  <view id="search">
-   <input placeholder='搜索'></input>
-  </view>
-</view>

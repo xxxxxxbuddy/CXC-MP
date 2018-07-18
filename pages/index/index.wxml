@@ -1,14 +1,25 @@
 <!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
+<view id="container" style="background-image:url('{{background_url}}');" >
+  <view class='opacity'>
+    <view id='individual'>
+      <view >
+        <view class='avatar'>
+          <image src='{{avatar_img}}'></image>
+        </view>
+        <form class='flex_center'>
+          <input placeholder=' 姓名' value='{{individualInfo.name}}'></input>
+          <input placeholder=' 职业' value='{{individualInfo.job}}'></input>
+          <input placeholder=' 单位' value='{{individualInfo.corporation}}'></input>
+        </form>
+        <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='signup'> 注册 </button>
+        <button> 认证 </button>
+      </view>
+    </view>
+    <view id='choosetype'></view>
+    <view id='enterprise'></view>
+  </view>
+</view>
+    <!-- <block wx:else>
       <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
-  <button bindtap='jump'>mainpage</button>
-</view>
+    </block> -->
