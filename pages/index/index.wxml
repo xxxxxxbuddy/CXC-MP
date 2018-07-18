@@ -1,22 +1,59 @@
 <!--index.wxml-->
-<view id="container" style="background-image:url('{{background_url}}');" >
+<view id="container"  class='.base64bg'>
   <view class='opacity'>
-    <view id='individual'>
-      <view >
-        <view class='avatar'>
-          <image src='{{avatar_img}}'></image>
+    <view id='individual' style='{{individualShow}}'>
+      <view class='avatar'>
+        <image src='{{avatar_img}}' ></image>
+      </view>
+      <form class='flex_center'>
+        <view class='inputArea'>
+          <input placeholder=' 姓名' value='{{individualInfo.name}}' placeholder-class='placeholder'></input>
+          <image src='{{avatar_img}}' ></image>
         </view>
-        <form class='flex_center'>
-          <input placeholder=' 姓名' value='{{individualInfo.name}}'></input>
-          <input placeholder=' 职业' value='{{individualInfo.job}}'></input>
-          <input placeholder=' 单位' value='{{individualInfo.corporation}}'></input>
-        </form>
-        <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='signup'> 注册 </button>
-        <button> 认证 </button>
+        <view class='inputArea'>
+          <input placeholder=' 职业' value='{{individualInfo.job}}' placeholder-class='placeholder'></input>
+          <image src='{{avatar_img}}' ></image>
+        </view>
+        <view class='inputArea'>          
+          <input placeholder=' 单位' value='{{individualInfo.corporation}}' placeholder-class='placeholder'></input>
+          <image src='{{avatar_img}}' ></image>
+        </view>
+      </form>
+      <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='signup'> 注册 </button>
+      <button bindtap='changeLeft'> 认证 </button>
+    </view>
+    <view id='choosetype' style='{{translateLeft}}{{translateRight}}'>
+      <view id='logo'>
+        <image src='{{logo_url}}' />
+      </view>
+      <view id='types'>
+        <view>
+          <image id='chooseIndividual' src='{{individual_url}}' bindtap='translateRight' />
+          <image id='chooseEnterprise' src='{{enterprise_url}}' bindtap='translateLeft' />
+        </view>
+        <view>
+          <view class='text' bindtap='translateRight'>个人</view>
+          <view class='text'bindtap='translateLeft' >企业</view>  
+        </view>
       </view>
     </view>
-    <view id='choosetype'></view>
-    <view id='enterprise'></view>
+    <view id='enterprise' style='{{enterpriseShow}}'>
+      <view class='avatar'>
+          <image src='{{avatar_img}}' ></image>
+        </view>
+        <form class='flex_center'>
+          <view class='inputArea'>
+            <input placeholder=' 公司名称' value='{{enterpriseInfo.companyName}}' placeholder-class='placeholder' class='input2'></input>
+            <image src='{{avatar_img}}' ></image>
+          </view>
+          <view class='inputArea'>
+            <input placeholder=' 公司类别' value='{{enterpriseInfo.companyType}}' placeholder-class='placeholder' class='input2'></input>
+            <image src='{{avatar_img}}' ></image>
+          </view>
+        </form>
+        <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='signup'> 注册 </button>
+        <button bindtap='changeLeft'> 认证 </button>
+      </view>
   </view>
 </view>
     <!-- <block wx:else>

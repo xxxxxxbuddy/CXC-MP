@@ -5,7 +5,10 @@ const app = getApp()
 Page({
   data: {
     background_url: './../images/background.jpg',
+    logo_url: './..images/logo.jpg',
     avatar_img: './../images/avatar_img.png',
+    individual_url: './../images/individual.png',
+    enterprise_url: './../images/enterprise.png',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
@@ -17,14 +20,13 @@ Page({
     enterpriseInfo: {
       companyName: '',
       companyType: ''
-    }
+    },
+    translateRight: '',
+    translateLeft: '',
+    individualShow: '',
+    enterpriseShow: ''
   },
   //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
   onLoad: function () {
     if (app.globalData.userInfo) {
       this.setData({
@@ -60,10 +62,21 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
-  },
-  jump: function(){
-    wx.redirectTo({
-      url: './../mainpage/mainpage',
+    wx.navigateTo({
+      url: './../main/main',
     })
+  },
+
+  translateRight: function(){
+    this.setData({
+      translateRight: 'transform: translateX(100%);transition:all 0.2s;',
+      individualShow: 'transform: translateX(100%);transition:all 0.2s;'
+    })
+  },
+    translateLeft: function() {
+      this.setData({
+        translateLeft: 'transform: translateX(-100%);transition:all 0.2s;',
+        enterpriseShow: 'transform: translateX(-100%);transition:all 0.2s;',
+      })
   }
 })
