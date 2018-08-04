@@ -1,0 +1,61 @@
+<!--index.wxml-->
+<view id="container"  class='.base64bg'>
+  <view class='opacity'>
+    <view id='individual' style='{{individualShow}}'>
+      <image id='individualBack' src='{{individual_back}}' bindtap='individualBack'></image>
+      <view class='avatar'>
+        <image src='{{avatar_img}}' ></image>
+      </view>
+      <form class='flex_center' bindsubmit='submitInfo'>
+        <view class='inputArea'>
+          <input placeholder=' 姓名' bindinput='nameInput'  placeholder-class='placeholder' maxlength='10' name='individualName' ></input>
+          <image src='{{avatar_img}}' ></image>
+        </view>
+        <view class='inputArea'>
+          <picker range='{{jobList}}'  bindchange='individualPickerChange' value='{{index1}}' name='individualJob' >{{jobList[index1]}}</picker>
+          <image src='{{avatar_img}}' ></image>
+        </view>
+        <view class='inputArea'>          
+          <input placeholder=' 单位' bindinput='corporationInput' placeholder-class='placeholder' name='individualCompany' ></input>
+          <image src='{{avatar_img}}' ></image>
+        </view>
+      <button bindtap='checkIndividualInfo'  form-type='submit'> 注册 </button>
+      </form>
+    </view>
+    <view id='choosetype' style='{{translateLeft}}{{translateRight}}'>
+      <view id='logo'>
+        <image src='{{logo_url}}' />
+      </view>
+      <view id='types'>
+        <view>
+          <button id='chooseIndividual' open-type='getUserInfo' style='background-image:url({{avatar_img}})' bindtap='translateRight'></button>
+          <!-- <image  src='{{avatar_img}}' bindtap='translateRight' /> -->
+          <!-- <image id='chooseEnterprise' src='{{enterprise_url}}' bindtap='translateLeft' /> -->
+          <button id='chooseEnterprise' open-type='getUserInfo' style='background-image:url({{enterprise_url}})' bindtap='translateLeft'></button>
+        </view>
+        <view>
+          <view class='text hr' >个人</view>
+          <view class='text ht'>企业</view>  
+        </view>
+      </view>
+    </view>
+    <view id='enterprise' style='{{enterpriseShow}}'>
+      <image id='enterpriseBack' src='{{enterprise_back}}' bindtap='enterpriseBack'></image>
+      <view class='avatar'>
+          <image src='{{enterprise_url}}' />
+        </view>
+        <form class='flex_center' bindsubmit='submitInfo' id='2'>
+          <view class='inputArea'>
+            <input placeholder=' 公司名称' name='enterpriseInfo.companyName' placeholder-class='placeholder' class='input2' maxlength='10' bindinput='companyNameInput' />
+            <image src='{{enterprise_url}}' />
+          </view>
+          <view class='inputArea'>
+            <picker range='{{companyList}}' name='enterpriseInfo.companyType' bindchange='enterprisePickerChange' value='{{index2}}' >{{companyList[index2]}}</picker>
+            <image src='{{enterprise_url}}' />
+          </view>
+          <button bindtap='checkEnterpriseInfo' open-type='getUserInfo'  form-type='submit'> 注册 </button>
+        </form>
+
+      </view>
+  </view>
+</view>
