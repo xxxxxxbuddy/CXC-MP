@@ -6,7 +6,7 @@
       <view class='avatar'>
         <image src='{{avatar_img}}' ></image>
       </view>
-      <form class='flex_center' bindsubmit='submitInfo'>
+      <form class='flex_center' bindsubmit='submitIndividualInfo'>
         <view class='inputArea'>
           <input placeholder=' 姓名' bindinput='nameInput'  placeholder-class='placeholder' maxlength='10' name='individualName' ></input>
           <image src='{{avatar_img}}' ></image>
@@ -44,7 +44,7 @@
       <view class='avatar'>
           <image src='{{enterprise_url}}' />
         </view>
-        <form class='flex_center' bindsubmit='submitInfo' id='2'>
+        <form class='flex_center' bindsubmit='submitEnterpriseInfo' id='2'>
           <view class='inputArea'>
             <input placeholder=' 公司名称' name='enterpriseInfo.companyName' placeholder-class='placeholder' class='input2' maxlength='10' bindinput='companyNameInput' />
             <image src='{{enterprise_url}}' />

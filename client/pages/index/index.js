@@ -156,7 +156,7 @@ Page({
       this.data.state = true
     }
   },
-  submitInfo: function(e){
+  submitIndividualInfo: function(e){
     var that = this
     if(this.data.state)
       console.log(e.detail.value)
@@ -164,9 +164,28 @@ Page({
       url: config.service.regcurl,
       method: 'get',
       data: {
-        individual_name: e.detail.value.individualName,
-        individual_job: e.detail.value.individualJob,
-        individual_company: e.detail.value.individualCompany
+        individualName: e.detail.value.individualName,
+        individualJob: e.detail.value.individualJob,
+        individualCompany: e.detail.value.individualCompany
+      },
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function(res){
+        console.log(res.data)
+      } 
+    })
+  },
+  submitEnterpriseInfo: function(e){
+    var that = this
+    if(this.data.state)
+      console.log(e.detail.value)
+    wx.request({
+      url: config.service.regcurl,
+      method: 'get',
+      data: {
+        enterpriseName: e.detail.value.enterpriseName,
+        enterpriseType: e.detail.value.enterpriseType
       },
       header: {
         'content-type': 'application/json'
