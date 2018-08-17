@@ -1,1 +1,46 @@
 /* pages/main/main.wxss */
+page{
+    background-color: #E9E9E9;
+    font-family: Microsoft Yahei,Arial, Helvetica, sans-serif;
+}
+/* header */
+.header{
+    background-color:rgba(0, 187, 211, 1);
+}
+.searchBox{
+  display: flex;
+  justify-content: center;
+}
+.search{
+    width: 686rpx;
+    height: 96rpx;
+    margin-top: 32rpx;
+    margin-bottom: 46rpx;
+    border-radius: 5rpx;
+	font-size: 32rpx;
+	line-height: 150%;
+    box-shadow: 0rpx 5rpx 5rpx 0rpx rgba(0, 0, 0, 0.5);
+    background-color: #fff;
+}
+.tags{
+    padding-bottom: 2rpx;
+}
+.tags ul{
+    list-style: none;
+    display: flex;
+}
+.tags ul li{
+    display: inline-flex;
+    justify-content: space-around;
+    width: 250rpx;
+    padding-bottom: 30rpx;
+    line-height: 32rpx;
+    color: rgba(255, 255, 255, 0.7);
+
+}
+
+
+.inline{
+    display: inline-block;
+    margin-left: 5rpx;
+}

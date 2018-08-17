@@ -1,0 +1,15 @@
+<!--components/project.wxml-->
+<view class='projectBox'>
+    <slot class="title" name="title"></slot>
+    <view class="userInfo">
+        <image src='{{avatar_url}}' class="avatar"  />
+        <slot class="userName" name="userName"></slot>
+        <slot class="time" name="time"></slot>
+    </view>
+    <view class="subTitle">
+        <slot name="subTitle"></slot>
+    </view>
+    <view class="socialInfo">
+
+    </view>
+</view>

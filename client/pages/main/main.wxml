@@ -1,2 +1,20 @@
-<view>主页</view>
-<input placeholder='姓名'></input>
+<view class="header">
+    <view class="searchBox">
+        <input type="text" class="search" />
+    </view>
+
+    <view class="tags">
+        <ul>
+            <li class="tag" style="color:{{isActive1}};border-bottom:{{border1}}" bindtap='chooseTag1'>主页</li>
+            <li class="tag" style="color:{{isActive2}};border-bottom:{{border2}}" bindtap='chooseTag2'>关注动态</li>
+            <li class="tag" style="color:{{isActive3}};border-bottom:{{border3}}" bindtap='chooseTag3'>圈子</li>
+        </ul>
+    </view>
+</view>
+
+<view class="main">
+    <project>
+        <view slot="title">实体企业如何走向互联网</view>
+        <view slot="userName" class="inline">红星公司</view>
+    </project>
+</view>

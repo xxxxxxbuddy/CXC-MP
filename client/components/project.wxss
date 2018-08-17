@@ -1,0 +1,29 @@
+/* components/project.wxss */
+.projectBox{
+	width: 740rpx;
+    height: 374rpx;
+    margin-top: 10rpx;
+    margin-left: 10rpx;
+    padding-left: 10rpx;
+    padding-top: 30rpx;
+    border-radius: 5rpx;
+	background-color: rgba(255, 255, 255, 1);
+    box-shadow: 0rpx 5rpx 5rpx 0rpx rgba(0, 0, 0, 0.3);
+}
+.title{
+    display: block;
+    height: 100rpx;
+    font-size: 36rpx;
+}
+.userInfo{
+    margin-top: 10rpx;
+    font-size: 25rpx;
+    line-height: 33rpx;
+}
+.avatar{
+    width: 50rpx;
+    height: 50rpx;
+}
+.userName{
+    
+}

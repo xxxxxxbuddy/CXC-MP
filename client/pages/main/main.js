@@ -5,7 +5,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    "isActive1": "",
+    "isActive2": "",
+    "isActive3": "",
+    "border1": "",
+    "border2": "",
+    "border3": ""
   },
 
   /**
@@ -62,5 +67,35 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  chooseTag1: function(){
+    this.setData({
+      isActive1: "#fff",
+      isActive2: "",
+      isActive3: "",
+      border1: "1px solid rgba(255, 255, 140, 1)",
+      border2: "",
+      border3: ""
+    })
+  },
+  chooseTag2: function(){
+    this.setData({
+      isActive2: "#fff",
+      isActive1: "",
+      isActive3: "",
+      border2: "1px solid rgba(255, 255, 140, 1)",
+      border1: "",
+      border3: ""
+    })
+  },
+  chooseTag3: function(){
+    this.setData({
+      isActive3: "#fff",
+      isActive2: "",
+      isActive1: "",
+      border3: "1px solid rgba(255, 255, 140, 1)",
+      border2: "",
+      border1: ""
+    })
   }
 })
