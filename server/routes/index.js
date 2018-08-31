@@ -35,4 +35,27 @@ router.post('/message', controllers.message.post)
 //处理传过来的信息
 router.get('/regs',controllers.regs)
 
+//发布问题
+router.get('/pub_question',controllers.pub_question)
+
+//发布项目
+router.get('/pub_project',controllers.pub_project)
+
+//获取首页内容
+router.get('/home_page',controllers.home_page)
+
+//圈子内容推荐
+router.get('/home_community',controllers.home_community)
+
+//个人用户注册
+router.get('/regs_individual', controllers.regs_individual)
+
+//公司用户注册
+router.get('/regs_company', controllers.regs_company)
+
+//新建圈子
+router.get('/regs_community', controllers.regs_community)
+
+
+
 module.exports = router

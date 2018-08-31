@@ -11,15 +11,11 @@ const DB = require('knex')({
     multipleStatements: true
   }
 })
-
 module.exports = async (ctx, next) => {
   var name = ctx.req;
   var code = 1;
   var result1 = await DB.select('username', 'password').from('user');
   //var result2=await DB('user').insert({ username: 'simaqi', password: 'simaqi521',id:2})
-
-
-
   ctx.body = {
     code: code,
     name: name,

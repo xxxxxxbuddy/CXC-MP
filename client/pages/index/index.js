@@ -21,8 +21,11 @@ Page({
     individualName: '',
     individualJob: '0',
     individualCompany: '',
+    individualPhone: '',
     enterpriseName: '',
     enterpriseType: '0',
+    enterprisePhone: '',
+    enterpriseAddress: '',
     translateRight: '',
     translateLeft: '',
     individualShow: '',
@@ -110,6 +113,9 @@ Page({
   nameInput: function(e){
     this.data.individualName = e.detail.value
   },
+  phoneInput: function(e){
+    this.data.individualPhone = e.detail.value
+  },
   corporationInput: function(e){
     this.data.individualCompany = e.detail.value
   },
@@ -118,6 +124,12 @@ Page({
   },
   companyTypePick: function(e){
     this.data.enterpriseType = e.detail.value
+  },
+  companyPhoneInput: function(e){
+    this.data.enterprisePhone = e.detail.value
+  },
+  companyAddressInput: function(e){
+    this.data.enterpriseAddress = e.detail.value
   },
   checkIndividualInfo: function(){
     var that = this
@@ -140,7 +152,7 @@ Page({
     }
   },
   checkEnterpriseInfo: function () {
-    var enterpriseInfo = this.data.enterpriseInfo
+    //var enterpriseInfo = this.data.enterpriseInfo
     if (!enterpriseName) {
       wx.showToast({
         title: '请输入公司名称',
@@ -161,12 +173,13 @@ Page({
     if(this.data.state)
       console.log(e.detail.value)
     wx.request({
-      url: config.service.regcurl,
+      url: config.service.regs_individual,
       method: 'get',
       data: {
-        individualName: e.detail.value.individualName,
-        individualJob: e.detail.value.individualJob,
-        individualCompany: e.detail.value.individualCompany
+        individual_name: e.detail.value.individualName,
+        individual_job: e.detail.value.individualJob,
+        individual_corporation: e.detail.value.individualCompany,
+        individual_id: e.detail.value.individualPhone
       },
       header: {
         'content-type': 'application/json'
@@ -181,11 +194,13 @@ Page({
     if(this.data.state)
       console.log(e.detail.value)
     wx.request({
-      url: config.service.regcurl,
+      url: config.service.regs_company,
       method: 'get',
       data: {
-        enterpriseName: e.detail.value.enterpriseName,
-        enterpriseType: e.detail.value.enterpriseType
+        company_name: e.detail.value.enterpriseName,
+        company_type: e.detail.value.enterpriseType,
+        company_id: e.detail.value.enterprisePhone,
+        company_address: e.detail.value.enterpriseAddress
       },
       header: {
         'content-type': 'application/json'

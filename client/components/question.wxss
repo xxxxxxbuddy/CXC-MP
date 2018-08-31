@@ -1,5 +1,5 @@
 /* components/project.wxss */
-.projectBox{
+.questionBox{
 	width: 720rpx;
     margin-top: 10rpx;
     margin-left: 10rpx;
@@ -10,7 +10,6 @@
     box-shadow: 0rpx 5rpx 5rpx 0rpx rgba(0, 0, 0, 0.3);
     height: 100%;
 }
-
 .title{
     height: 100rpx;
     font-size: 36rpx;
@@ -29,35 +28,15 @@
 .time{
     color: rgba(166, 166, 166, 1);
 }
-
-.projectInfo{
-    margin-top: 100rpx;
+.subTitle{
+    margin-top: 60rpx;
     margin-left: 20rpx;
     margin-right: 30rpx;
     font-size: 26rpx;
-    color: rgba(0, 187, 221, 1);
+    color: rgba(166, 166, 166, 1);
     margin-bottom: 20rpx;
 }
-
-.projectInfo ul li{
-    text-align: left;
-    display: flex;
-    justify-content: space-between;
-}
-.lb{
-    float: left;
-    width: 45%;
-    margin-right: 20rpx;
-    padding-right: 20rpx;
-    border-right: 2rpx solid rgba(170, 170, 170, 1);
-}
-.rb{
-    float: left;
-    margin-left: 20rpx;
-}
-
 .socialInfo{
-    margin-top: 220rpx;
     margin-left: 20rpx; 
     margin-bottom: 20rpx;
     font-size: 21rpx;
@@ -74,4 +53,3 @@
 .ml{
     margin-left: 180rpx;
 }
-

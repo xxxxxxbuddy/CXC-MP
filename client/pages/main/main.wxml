@@ -1,20 +1,62 @@
-<view class="header">
-    <view class="searchBox">
-        <input type="text" class="search" />
-    </view>
+<view>
+    <view class="mask" bindtap='closePubBox' style="opacity:{{maskOpacity}};z-index:{{mask_z_index}}" ></view>
+    <view class="header">
+        <view class="searchBox">
+            <image class="myInfo" src="{{myInfo_url}}"></image>
+            <image class="searchIcon" src="{{searchIcon_url}}"></image>
+            <input type="text" class="search"  placeholder="在这里搜索动态/项目/圈子" />
+            <image class="publish" src="{{publish_url}}" bindtap='openPubBox' ></image>
+        </view>
 
-    <view class="tags">
-        <ul>
-            <li class="tag" style="color:{{isActive1}};border-bottom:{{border1}}" bindtap='chooseTag1'>主页</li>
-            <li class="tag" style="color:{{isActive2}};border-bottom:{{border2}}" bindtap='chooseTag2'>关注动态</li>
-            <li class="tag" style="color:{{isActive3}};border-bottom:{{border3}}" bindtap='chooseTag3'>圈子</li>
-        </ul>
-    </view>
-</view>
 
-<view class="main">
-    <project>
-        <view slot="title">实体企业如何走向互联网</view>
-        <view slot="userName" class="inline">红星公司</view>
-    </project>
+        <view class="tags">
+            <ul>
+                <li class="tag" style="color:{{isActive1}};border-bottom:{{border1}}" bindtap='chooseTag1'>主页</li>
+                <li class="tag" style="color:{{isActive2}};border-bottom:{{border2}}" bindtap='chooseTag2'>关注动态</li>
+            </ul>
+            
+        </view>
+        <view id="community" >
+                <ul>
+                    <li>推荐</li>
+                    <li>金融圈</li>
+                    <li>文学圈</li>
+                </ul>
+            </view>
+    </view>
+    <view id="publishBox" style="top:{{pubBoxPosition}}">
+        <image class="close" bindtap='closePubBox' src="data:image/svg+xml;base64,77u/PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2IiB2aWV3Qm94PSIwIDAgNDggNDgiIGZpbGw9InJnYmEoMTUzLCAxNTMsIDE1MywgMSkiPgogICAgPHBhdGggZD0iTTM4IDEyLjgzTDM1LjE3IDEwIDI0IDIxLjE3IDEyLjgzIDEwIDEwIDEyLjgzIDIxLjE3IDI0IDEwIDM1LjE3IDEyLjgzIDM4IDI0IDI2LjgzIDM1LjE3IDM4IDM4IDM1LjE3IDI2LjgzIDI0eiI+PC9wYXRoPgogICAgPHBhdGggZD0iTTAgMGg0OHY0OEgweiIgZmlsbD0ibm9uZSI+PC9wYXRoPgo8L3N2Zz4="></image>
+        <image class="publishUpdates" src="{{pubUpdates_url}}"></image>
+        <image class="publishProject" src="{{pubProject_url}}"></image>
+    </view>
+    <view class="main" style="opacity:{{opacity}}">
+        <view wx:for="{{allArray}}">
+            <view   wx:if="{{item.question_id}}"  wx:key="{{question_id}}}">
+            <question>
+                <view slot="title" class="title">{{item.question_title}}</view>
+                <text slot="userName" class="userName">{{item.user_id}}</text>
+                <text slot="time" class="time">{{item.question_time}}</text>
+                <text slot="subTitle">
+                    {{item.question_info}}
+                </text>
+                <text slot="answerNumber">{{item.answernum}}</text>
+                <text slot="questionType">问题</text>
+                <text slot="privacy">所有人可见</text>
+            </question>
+            </view>
+            <view  wx:else wx:key="{{project_id}}">
+            <project>
+                <view slot="title" class="title">{{item.project_title}}</view>
+                <text slot="userName" class="userName">{{item.user_id}}</text>
+                <text slot="time" class="time">{{item.project_period}}</text>
+                <text slot="projectType">{{item.project_type}}</text>
+                <text slot="projectState">有效</text>
+                <text slot="projectCity">沈阳</text>
+                <text slot="projectPeriod">{{item.project_period}}</text>
+                <text slot="projectDemand">{{item.project_require}}</text>
+                <text slot="projectBudget">{{item.project_budget}}</text>
+            </project>
+            </view>
+        </view>
+    </view>
 </view>

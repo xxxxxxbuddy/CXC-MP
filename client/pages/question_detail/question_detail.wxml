@@ -1,0 +1,17 @@
+<view class="questionInfo">
+    <question>
+                <view slot="title" class="title">{{question_title}}</view>
+                <text slot="userName" class="userName">{{user_id}}</text>
+                <text slot="time" class="time">{{question_time}}</text>
+                <text slot="subTitle">
+                    {{question_info}}
+                </text>
+                <text slot="answerNumber">{{answernum}}</text>
+                <text slot="questionType">问题</text>
+                <text slot="privacy">所有人可见</text>
+            </question>
+</view>
+
+<view class="comment">
+
+</view>

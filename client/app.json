@@ -1,10 +1,10 @@
 {
   "pages":[
+    "pages/question_detail/question_detail",
     "pages/main/main",
     "pages/index/index",
     "pages/signup/signup",
     "pages/logs/logs"
-
   ],
   "window":{
     "backgroundTextStyle":"light",

@@ -101,7 +101,7 @@ page{
   overflow: hidden;
 }
 .input2{
-  margin-bottom: 136rpx;
+
 }
 #enterpriseBack{
   width: 48rpx;
