@@ -53,7 +53,10 @@ var config = {
 
       //建圈
       //前端需传过来数据：user_id: 18211949726,community_name:'文艺圈',community_type:'文学',community_introduce:'无'
-      regs_community: `${host}/weapp/regs_community`
+      regs_community: `${host}/weapp/regs_community`,
+
+      //获取详情
+      detail: `${host}/weapp/detail`
 
         
     }

@@ -1,7 +1,8 @@
 {
   "pages":[
-    "pages/question_detail/question_detail",
     "pages/main/main",
+    "pages/question_detail/question_detail",
+
     "pages/index/index",
     "pages/signup/signup",
     "pages/logs/logs"

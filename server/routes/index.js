@@ -56,6 +56,11 @@ router.get('/regs_company', controllers.regs_company)
 //新建圈子
 router.get('/regs_community', controllers.regs_community)
 
+//获取详情
+router.get('/detail',controllers.detail)
+
+//获取圈子
+router.get('/user_community', controllers.user_community)
 
 
 module.exports = router

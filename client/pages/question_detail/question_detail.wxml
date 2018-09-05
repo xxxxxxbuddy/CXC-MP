@@ -1,15 +1,30 @@
+<view class='header' bindtap='back'>
+  <image src='{{back_url}}'></image>
+  <text>动态</text>
+</view>
+
 <view class="questionInfo">
-    <question>
-                <view slot="title" class="title">{{question_title}}</view>
-                <text slot="userName" class="userName">{{user_id}}</text>
-                <text slot="time" class="time">{{question_time}}</text>
-                <text slot="subTitle">
-                    {{question_info}}
-                </text>
-                <text slot="answerNumber">{{answernum}}</text>
-                <text slot="questionType">问题</text>
-                <text slot="privacy">所有人可见</text>
-            </question>
+
+    <view class='questionBox'>
+        <view class="title" name="title">{{questionTitle}}</view>
+        <view class="userInfo">
+            <image src='{{avatar_url}}' class="avatar"  />
+            <view class="userName" name="userName">{{userName}}</view>
+            <view class="time" name="time">{{pubTime}}</view>
+        </view>
+        <view class="subTitle">
+            <view name="subTitle">{{questionInfo}}</view>
+        </view>
+        <view class="socialInfo">
+            <ul>
+                <li>
+                    <image src="{{answer_url}}"></image>
+                    回答:<view name="answerNumber">{{answerNum}}</view>
+                </li>
+            </ul>
+        </view>
+    </view>
+
 </view>
 
 <view class="comment">

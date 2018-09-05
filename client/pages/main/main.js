@@ -24,6 +24,35 @@ function quickSort(arr){
   //递归
   return quickSort(left).concat([pivot],quickSort(right));
 }
+
+function timeCalc(time) {
+  var now = new Date()
+  var timeDiff = parseInt((now - time) / 1000)     //单位为秒
+  if (timeDiff > 604800) {
+    if (time.getFullYear() != now.getFullYear()) {
+      return time.getFullYear() + time.getMonth() + time.getDate()
+    } else {
+      return time.getMonth()+1 + '-' + time.getDate()
+    }
+  } else if (timeDiff >= 518400) {
+    return '六天前'
+  } else if (timeDiff >= 432000) {
+    return '五天前'
+  } else if (timeDiff >= 345600) {
+    return '四天前'
+  } else if (timeDiff >= 259200) {
+    return '三天前'
+  } else if (timeDiff >= 172800) {
+    return '二天前'
+  } else if (timeDiff >= 86400) {
+    return '一天前'
+  } else if (timeDiff >= 3600) {
+    return parseInt(timeDiff / 60 / 60) + '小时前'
+  } else return parseInt(timeDiff / 60) + '分钟前'
+
+}
+
+
 Page({
   
   /**
@@ -37,7 +66,7 @@ Page({
     "pubProject_url": "data:image/svg+xml;base64,77u/PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2IiB2aWV3Qm94PSIwIDAgNDggNDgiIGZpbGw9InJnYmEoMTY2LCAxNjYsIDE2NiwgMSkiPgogICAgPHBhdGggZD0iTTAgMGg0OHY0OEgweiIgZmlsbD0ibm9uZSI+PC9wYXRoPgogICAgPHBhdGggZD0iTTI4IDRIMTJDOS43OSA0IDguMDIgNS43OSA4LjAyIDhMOCA0MGMwIDIuMjEgMS43NyA0IDMuOTggNEgzNmMyLjIxIDAgNC0xLjc5IDQtNFYxNkwyOCA0em00IDI4aC02djZoLTR2LTZoLTZ2LTRoNnYtNmg0djZoNnY0em0tNi0xNFY3bDExIDExSDI2eiI+PC9wYXRoPgo8L3N2Zz4=",
     "pubBoxPosition": "-100%",
     "maskOpacity": "0",
-    "mask_z_index": "1",
+    "mask_z_index": "0",
     "isActive1": "#fff",
     "isActive2": "",
     "border1": "1px solid rgba(255, 255, 140, 1)",
@@ -78,24 +107,41 @@ Page({
         'content-type': 'application/json'
       },
       success: function(res){
+        console.log(res.data)
         /*加载问题*/
-        var result = res.data.result1.concat(res.data.result2)
-        console.log(result)
-        /**按热度排序**/
-        result=quickSort(result)
-        /* var projectArray = []
-        var questionArray = []
-        for(var i=0;i<result.length;i++){
-          if(result[i].question_id)
-            questionArray.push(result[i])
-          else
-            projectArray.push(result[i])
-        }*/        
-        that.setData({
-          //projectArray: projectArray,
-          //questionArray: questionArray,
-          allArray: result,
-        })
+        if(res.data){
+          for (var item of res.data.result1) {
+            item.project_time = new Date(item.project_time.replace(/T/, " ").replace(/Z/, "").replace(/-/g, "/"))
+            item.project_time = timeCalc(item.project_time)
+          }
+          for(var item of res.data.result2){
+            item.question_time = new Date(item.question_time.replace(/T/, " ").replace(/Z/, "").replace(/-/g, "/"))
+            item.question_time = timeCalc(item.question_time)             
+          }
+          var result = res.data.result1.concat(res.data.result2)
+          /**按热度排序**/
+          result = quickSort(result)
+          /* var projectArray = []
+          var questionArray = []
+          for(var i=0;i<result.length;i++){
+            if(result[i].question_id)
+              questionArray.push(result[i])
+            else
+              projectArray.push(result[i])
+          }*/
+          that.setData({
+            //projectArray: projectArray,
+            // questionArray: questionArray,
+            allArray: result
+          })
+        }else{
+          console.log('获取动态失败')
+        }
+
+
+      },
+      fail: function(){
+
       }
       }) 
       that.setData({
@@ -126,7 +172,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    console.log('success')
+
     wx.stopPullDownRefresh()
     var that = this 
     wx.request({
@@ -137,7 +183,6 @@ Page({
       },
       success: function(res){
         var result = res.data.result1.concat(res.data.result2)
-        console.log(result)
         /**按热度排序**/
         result=quickSort(result)
         /*加载问题*/
@@ -191,8 +236,17 @@ Page({
     this.setData({
       pubBoxPosition: "-100%",
       maskOpacity: "0",
-      mask_z_index: "1"
+      mask_z_index: "0"
     })
+  },
+  jumpToDetail: function(e){
+    let id = e.target.id //获得question_id或project_id
+    let dataType = e.target.dataset.type
+    //console.log('./../question_detail/question_detail?id=' + id + '&type=' + dataType)
+      wx.navigateTo({
+        url: './../question_detail/question_detail?id='+ id + '&type=' + dataType
+      })
+    
   }
   
 })

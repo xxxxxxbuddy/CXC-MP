@@ -13,7 +13,7 @@ const DB = require('knex')({
 })
 module.exports = async (ctx, next) => {
   var date=new Date();
-  var result1 = await DB.select('project_id', 'user_type', 'user_id', 'project_title', 'project_type', 'project_period', 'project_budget', 'project_time', 'project_require', 'answernum', 'power', 'hot').from('project').orderBy('hot', 'desc').havingRaw('project_time > ?', date.getTime() - 2*24 * 60 * 60 * 1000).where('power',0);
+  var result1 = await DB.select('project_id', 'user_type', 'user_id', 'project_title', 'project_type', 'project_finish', 'project_budget', 'project_time', 'project_require', 'answernum', 'power', 'hot').from('project').orderBy('hot', 'desc').havingRaw('project_time > ?', date.getTime() - 2*24 * 60 * 60 * 1000).where('power',0);
   var result2 = await DB.select('question_id', 'user_type', 'user_id', 'question_title', 'question_info', 'question_time', 'answernum', 'power', 'hot').from('question').orderBy('hot', 'desc').havingRaw('question_time > ?', date.getTime() - 2*24 * 60 * 60 * 1000).where('power',0);
   
   var length1 = result1.length;

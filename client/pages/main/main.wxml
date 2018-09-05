@@ -30,9 +30,9 @@
         <image class="publishProject" src="{{pubProject_url}}"></image>
     </view>
     <view class="main" style="opacity:{{opacity}}">
-        <view wx:for="{{allArray}}">
+        <view wx:for="{{allArray}}" bindtap='jumpToDetail' wx:key="{{question_id}}+{{project_id}}">
             <view   wx:if="{{item.question_id}}"  wx:key="{{question_id}}}">
-            <question>
+            <question  id="{{item.question_id}}" data-type="1" >
                 <view slot="title" class="title">{{item.question_title}}</view>
                 <text slot="userName" class="userName">{{item.user_id}}</text>
                 <text slot="time" class="time">{{item.question_time}}</text>
@@ -45,14 +45,14 @@
             </question>
             </view>
             <view  wx:else wx:key="{{project_id}}">
-            <project>
+            <project id='{{item.project_id}}' data="[{{item.project_id}},0]">
                 <view slot="title" class="title">{{item.project_title}}</view>
                 <text slot="userName" class="userName">{{item.user_id}}</text>
-                <text slot="time" class="time">{{item.project_period}}</text>
+                <text slot="time" class="time">{{item.project_time}}</text>
                 <text slot="projectType">{{item.project_type}}</text>
                 <text slot="projectState">有效</text>
                 <text slot="projectCity">沈阳</text>
-                <text slot="projectPeriod">{{item.project_period}}</text>
+                <text slot="projectPeriod">{{item.project_finish}}</text>
                 <text slot="projectDemand">{{item.project_require}}</text>
                 <text slot="projectBudget">{{item.project_budget}}</text>
             </project>
