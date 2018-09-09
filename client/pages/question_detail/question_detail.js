@@ -2,13 +2,13 @@ var config = require('./../../config.js')
 var id
 var dataType
 function timeCalc(time) {
-  var now = getDate()
-  timeDiff = parseInt((now - time) / 1000)     //单位为秒
+  var now = new Date()
+  var timeDiff = parseInt((now - time) / 1000)     //单位为秒
   if (timeDiff > 604800) {
-    if (time.getFullYear() != now.getFullYear) {
-      return time.getFullYear + time.getMonth() + time.getDate()
+    if (time.getFullYear() != now.getFullYear()) {
+      return time.getFullYear() + time.getMonth() + time.getDate()
     } else {
-      return time.getMonth() + '-' + time.getDate()
+      return time.getMonth() + 1 + '-' + time.getDate()
     }
   } else if (timeDiff >= 518400) {
     return '六天前'
@@ -75,10 +75,19 @@ Page({
       },
       success: function(res){
         let result = res.data.result[0]
+        if(!result){ 
+          wx.navigateBack({
+          delta: 1
+        })
+        wx.showToast({
+          title: '加载失败',
+          icon: 'none'
+        })
+        }
         that.setData({
           questionTitle: result.question_title,
           userName: result.user_id,
-          pubTime: timeCalc(result.question_time),
+          pubTime: timeCalc(new Date(result.question_time.replace(/T/, " ").replace(/Z/, "").replace(/-/g, "/"))),
           questionInfo: result.question_info,
           answerNum: result.answernum
         })

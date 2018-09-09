@@ -1,5 +1,12 @@
+page{
+    background-color: #E9E9E9;
+    font-family: Microsoft Yahei,Arial, Helvetica, sans-serif;
+}
+
 .header{
-  width:160rpx;
+
+  background-color: #fff;
+  width:100%;
   padding-bottom:20rpx;
 }
 .header image{
@@ -13,12 +20,19 @@
 }
 .header text{
   color: rgba(0, 187, 221, 1);
+  line-height: 36rpx;
 }
-
+.button{
+  width: 160rpx;
+  display: inline-block;
+}
 .questionInfo{
-    
+  margin-bottom: 30rpx;
 }
-
+.title{
+  margin-left: 140rpx;
+  display: inline-block;
+}
 
 .questionBox{
 	  width: 100%;
@@ -27,10 +41,10 @@
     padding-top: 30rpx;
     padding-left: 20rpx;
 	background-color: rgba(255, 255, 255, 1);
-    box-shadow: 0rpx 0rpx 5rpx 0rpx rgba(0, 0, 0, 0.5);
+    box-shadow: 0rpx 2rpx 5rpx 0rpx rgba(0, 0, 0, 0.5);
     height: 100%;
 }
-.title{
+.questionTitle{
     font-size: 36rpx;
 }
 .userInfo{

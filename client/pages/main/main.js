@@ -107,7 +107,7 @@ Page({
         'content-type': 'application/json'
       },
       success: function(res){
-        console.log(res.data)
+        //console.log(res.data)
         /*加载问题*/
         if(res.data){
           for (var item of res.data.result1) {
@@ -135,7 +135,10 @@ Page({
             allArray: result
           })
         }else{
-          console.log('获取动态失败')
+          wx.showToast({
+            title: '获取动态失败',
+            icon: 'none'
+          })
         }
 
 
@@ -242,7 +245,6 @@ Page({
   jumpToDetail: function(e){
     let id = e.target.id //获得question_id或project_id
     let dataType = e.target.dataset.type
-    //console.log('./../question_detail/question_detail?id=' + id + '&type=' + dataType)
       wx.navigateTo({
         url: './../question_detail/question_detail?id='+ id + '&type=' + dataType
       })
