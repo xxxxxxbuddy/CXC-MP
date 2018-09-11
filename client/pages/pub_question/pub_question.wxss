@@ -60,3 +60,16 @@ page {
   margin-top: 15px;
   font-size: 20px;
 }
+
+.publish{
+  position:fixed;
+  bottom: 10px;
+  width: 335px;
+  text-align: center;
+  height: 46px;
+  left: 13px;
+  background-color: rgb(0,186,173);
+  line-height: 46px;
+  font-size: 20px;
+  border-radius: 5px;
+}

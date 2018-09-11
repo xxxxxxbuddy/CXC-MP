@@ -16,13 +16,16 @@ const DB = require('knex')({
 module.exports = async (ctx, next) => {
   var data = ctx.query;
   var date = new Date();
-  var user_type = 0;
+  var power = JSON.parse(data.power);
   var result='发布成功';
-  var x = await DB.select('company_id').from('user').where(company_id, data.user_id);
-  if (x > 0) {
-    user_type = 1;
+  var question_id = await DB('question').returning('question_id').insert({user_type:data.user_type, user_id:data.user_id, question_title:data.question_title, question_info:data.question_info, question_time:date, answernum:0, power:power.object_power, hot:100});
+  if (power.detail_power.length > 0) {
+    var i = 0;
+    for (; i < power.detail_power.length; i++) {
+      var result3 = await DB('PQ_community').insert({ community_id: power.detail_power[i].community_id, object_type: 1, object_id: question_id, power: power.detail_power[i].power, time: date });
+    }
   }
-  var x = await DB('question').insert({user_type:user_type, user_id:data.user_id, question_title:data.question_title, question_info:data.question_info, question_time:date, answernum:0, power:1, hot:100});
+
 
   
   //例如

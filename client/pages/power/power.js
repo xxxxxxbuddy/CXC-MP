@@ -64,8 +64,8 @@ Page({
       method: 'get',
       url: config.service.user_community,
       data: {
-        user_type:user.user_type,
         user_id:user.user_id,
+        user_type:user.user_type
       },
       success: function (res) {
         var x=res.data.result;

@@ -14,17 +14,12 @@ const DB = require('knex')({
 module.exports = async (ctx, next) => {
   var data = ctx.query;
   var date = new Date();
-  var user_type = 0;
   var result='建圈成功';
   var x = await DB.select('company_id').from('company').where('company_id', data.user_id);    //获取建圈的人的类型
-  if(x.length==0)
-  {
-    user_type=1;
-  }
   var y = await DB.select('community_name').from('community').where('community_name', data.community_name);
   if(y==0){
     //如果圈名不重复，则将圈子信息插入
-    var result_regs_community = await DB('community').insert({ user_type: user_type, user_id: data.user_id, community_name: data.community_name, community_type: data.community_type, community_introduce: data.community_introduce, community_time: date, questionnum: 0, projectnum: 0, usernum: 1 })
+    var result_regs_community = await DB('community').insert({ user_type: data.user_type, user_id: data.user_id, community_name: data.community_name, community_type: data.community_type, community_introduce: data.community_introduce, community_time: date, questionnum: 0, projectnum: 0, usernum: 1 })
     //获取自增圈子的id
     var community_id = await DB.select('community_id').where('community_name', data.community_name).from('community');
     //获取建立圈子的时间

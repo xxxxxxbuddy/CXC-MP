@@ -61,7 +61,7 @@ Page({
     var that=this;
     let userJson = JSON.stringify(this.data.user)
     wx.navigateTo({
-      url: '../power/power?userJson='+userJson+'&objectType=0',
+      url: '../power/power?userJson='+userJson,
     })
   },
   //发布项目
