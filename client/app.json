@@ -1,0 +1,18 @@
+{
+  "pages": [
+    "pages/pub_project/pub_project",
+    "pages/regc/regc",
+    "pages/pub_question/pub_question",
+    "pages/power/power",
+    "pages/index/index",
+    "pages/addCgi/addCgi",
+    "pages/invite/invite"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "Wafer Quick Start",
+    "navigationBarTextStyle": "black"
+  }
+}
