@@ -1,0 +1,13 @@
+<view class="type">
+   <text class='delete' bindtap='#'>X</text>
+   <text class='type1'>提问</text>
+   <text class='type2' bindtap='set_power'>下一步</text>
+</view>
+<view>
+    <input placeholder='标题' placeholder-class='placeholder' class='title' bindinput='question_title_input'></input>
+</view>
+<view class='line'></view>
+<view>
+    <textarea placeholder='内容' class='content' placeholder-class='placeholder'bindinput='question_info_input' ></textarea>
+</view>
+<view class='publish' bindtap='pub'>发布</view>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "pages":[
     "pages/main/main",
@@ -14,3 +15,23 @@
     "navigationBarTextStyle":"white"
   }
 }
+=======
+{
+  "pages": [
+    "pages/pub_question/pub_question",
+    "pages/pub_project/pub_project",
+    "pages/regc/regc",
+    "pages/power/power",
+    "pages/index/index",
+    "pages/addCgi/addCgi",
+    "pages/invite/invite"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "Wafer Quick Start",
+    "navigationBarTextStyle": "black"
+  }
+}
+>>>>>>> bada01fb4abaf49a6f23e5cef69491e4c48d8e0f

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //app.js
 App({
   onLaunch: function () {
@@ -40,4 +41,14 @@ App({
   globalData: {
     userInfo: null
   }
+=======
+//app.js
+var qcloud = require('./vendor/wafer2-client-sdk/index')
+var config = require('./config')
+
+App({
+    onLaunch: function () {
+        qcloud.setLoginUrl(config.service.loginUrl)
+    }
+>>>>>>> bada01fb4abaf49a6f23e5cef69491e4c48d8e0f
 })

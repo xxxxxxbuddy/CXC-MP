@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!--index.wxml-->
 <view id="container"  class='.base64bg'>
   <view class='opacity'>
@@ -71,3 +72,47 @@
       </view>
   </view>
 </view>
+=======
+<!--index.wxml-->
+<view class="container">
+    <!-- 用户登录测试 -->
+    <view class="userinfo">
+        <image
+            class="userinfo-avatar"
+            src="{{logged ? userInfo.avatarUrl : './user-unlogin.png'}}"
+            background-size="cover"
+        ></image>
+        <view>
+            <button class="userinfo-nickname" wx:if="{{!logged}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">点击测试登录接口</button>
+            <text class="userinfo-nickname" wx:else>{{userInfo.nickName}}</text>
+        </view>
+    </view>
+
+
+    <!-- 上传图片测试 -->
+    <view class="uploader">
+        <view class="uploader-text" bindtap="doUpload">
+            <text>上传图片</text>
+        </view>
+        <view class="uploader-container" wx:if="{{imgUrl}}">
+            <image
+                class="uploader-image"
+                src="{{imgUrl}}"
+                mode="aspectFit"
+                bindtap="previewImg"
+            ></image>
+        </view>
+    </view>
+
+
+    <!-- 上传图片测试 -->
+    <view class="uploader">
+        <navigator url="../addCgi/addCgi" open-type="navigate" class="uploader-text">
+            <text>快速增加 CGI</text>
+        </navigator>
+    </view>
+
+
+    <image src='{{img_url}}'></image>
+</view>
+>>>>>>> bada01fb4abaf49a6f23e5cef69491e4c48d8e0f

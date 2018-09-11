@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**app.wxss**/
 .container {
   height: 100%;
@@ -8,3 +9,12 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
+=======
+/**app.wxss**/
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+} 
+>>>>>>> bada01fb4abaf49a6f23e5cef69491e4c48d8e0f

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Logs
 logs
 *.log
@@ -43,3 +44,19 @@ typings/
 sh/
 # ignore test sdk.config.json
 sdk.config.json
+=======
+# Windows
+[Dd]esktop.ini
+Thumbs.db
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+
+# Node.js
+node_modules/
+>>>>>>> bada01fb4abaf49a6f23e5cef69491e4c48d8e0f
