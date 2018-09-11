@@ -70,3 +70,4 @@ router.get('/user_community', controllers.user_community)
 
 
 module.exports = router
+

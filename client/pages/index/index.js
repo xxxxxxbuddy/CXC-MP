@@ -1,8 +1,7 @@
 //index.js
 //获取应用实例
 const app = getApp()
-var qcloud = require('../../vendor/wafer2-client-sdk/lib/regc.js')
-var config = require('../../config')
+var config = require('./../../config.js')
 Page({
   data: {
     background_url: './../images/background.jpg',
@@ -22,8 +21,11 @@ Page({
     individualName: '',
     individualJob: '0',
     individualCompany: '',
+    individualPhone: '',
     enterpriseName: '',
     enterpriseType: '0',
+    enterprisePhone: '',
+    enterpriseAddress: '',
     translateRight: '',
     translateLeft: '',
     individualShow: '',
@@ -111,6 +113,9 @@ Page({
   nameInput: function(e){
     this.data.individualName = e.detail.value
   },
+  phoneInput: function(e){
+    this.data.individualPhone = e.detail.value
+  },
   corporationInput: function(e){
     this.data.individualCompany = e.detail.value
   },
@@ -120,7 +125,14 @@ Page({
   companyTypePick: function(e){
     this.data.enterpriseType = e.detail.value
   },
+  companyPhoneInput: function(e){
+    this.data.enterprisePhone = e.detail.value
+  },
+  companyAddressInput: function(e){
+    this.data.enterpriseAddress = e.detail.value
+  },
   checkIndividualInfo: function(){
+    var that = this
     var individualInfo = this.data.individualInfo
     if(!this.data.individualName){
       wx.showToast({
@@ -140,7 +152,7 @@ Page({
     }
   },
   checkEnterpriseInfo: function () {
-    var enterpriseInfo = this.data.enterpriseInfo
+    //var enterpriseInfo = this.data.enterpriseInfo
     if (!enterpriseName) {
       wx.showToast({
         title: '请输入公司名称',
@@ -156,24 +168,45 @@ Page({
       this.data.state = true
     }
   },
-  submitInfo: function(e){
+  submitIndividualInfo: function(e){
     var that = this
     if(this.data.state)
       console.log(e.detail.value)
     wx.request({
-      url: config.service.regcurl,
-      method:'get',
+      url: config.service.regs_individual,
+      method: 'get',
       data: {
-        individualName: e.detail.value.individualName,
-        individualJob: 'student',
-        individualCompany: e.detail.value.individualCompany
+        individual_name: e.detail.value.individualName,
+        individual_job: e.detail.value.individualJob,
+        individual_corporation: e.detail.value.individualCompany,
+        individual_id: e.detail.value.individualPhone
       },
       header: {
         'content-type': 'application/json'
       },
       success: function(res){
-        consol.log(res.data)
-        console.log('success')
+        console.log(res.data)
+      } 
+    })
+  },
+  submitEnterpriseInfo: function(e){
+    var that = this
+    if(this.data.state)
+      console.log(e.detail.value)
+    wx.request({
+      url: config.service.regs_company,
+      method: 'get',
+      data: {
+        company_name: e.detail.value.enterpriseName,
+        company_type: e.detail.value.enterpriseType,
+        company_id: e.detail.value.enterprisePhone,
+        company_address: e.detail.value.enterpriseAddress
+      },
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function(res){
+        console.log(res.data)
       } 
     })
   }

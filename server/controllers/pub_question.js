@@ -1,4 +1,4 @@
-//
+
 const { mysql: config } = require('../config')
 const DB = require('knex')({
   client: 'mysql',

@@ -1,4 +1,3 @@
-//
 const { mysql: config } = require('../config')
 const DB = require('knex')({
   client: 'mysql',
@@ -32,4 +31,5 @@ module.exports = async (ctx, next) => {
     code:1,
     result:result
   }
+
 }
