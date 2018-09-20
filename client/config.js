@@ -62,6 +62,13 @@ var config = {
       detail: `${host}/weapp/detail`,
 
       user_community: `${host}/weapp/user_community`,
+
+      //评论
+      comment: `${host}/weapp/comment`,
+      //点赞
+      prise: `${host}/weapp/praise`,
+      //回答
+      answer: `${host}/weapp/answer`
         
     }
 };
