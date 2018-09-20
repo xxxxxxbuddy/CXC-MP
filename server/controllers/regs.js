@@ -25,5 +25,4 @@ module.exports = async (ctx, next) => {
     url1: result1
   }
 
-
 }

@@ -151,4 +151,3 @@ project text{
     transition: 0.3s opacity;
     overflow: hidden;
 }
-

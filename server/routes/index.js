@@ -66,6 +66,15 @@ router.get('/detail', controllers.detail)
 //获取圈子
 router.get('/user_community', controllers.user_community)
 
+//评论
+router.get('/comment',controllers.comment)
+
+//点赞
+router.get('/praise',controllers.praise)
+
+//回答问题
+router.answer('/praise',controllers.answer)
+
 
 
 

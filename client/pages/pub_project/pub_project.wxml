@@ -1,9 +1,4 @@
-<view class="type">
-   <text class='delete' bindtap='#'>X</text>
-   <text class='type1'>项目</text>
-   <text class='type2' bindtap='set_power'>设置权限</text>
-</view>
-<view style="display:flex; flex-direction:row; margin-top:15px;margin-left:10px;height:30px">
+<view style="display:flex; flex-direction:row; margin-top:20px;margin-left:10px;height:30px">
     <text class='title'>项目类型:</text>
    <picker bindchange="bindtypeChange" value="{{index}}" range="{{select_type}}">
     <view class="picker">{{select_type[index]}}
@@ -30,7 +25,9 @@
     <textarea class='input' style='margin-left:10px;margin-top:5px;width:330px;' bindinput='require_put'></textarea>
 </view>
 <view class='publish' bindtap='pub'>发布</view>
-
+<view class="type">
+   <text class='type1' bindtap='set_power'>设置权限</text>
+</view>
 
 
 
