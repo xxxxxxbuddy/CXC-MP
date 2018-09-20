@@ -212,6 +212,19 @@ Page({
   onShareAppMessage: function () {
   
   },
+
+  //跳转发布问题页面
+  pub_question: function () {
+    wx.navigateTo({
+      url: '../pub_question/pub_question',
+    })
+  },
+  //跳转发布项目页面
+  pub_project: function() {
+    wx.navigateTo({
+      url: '../pub_project/pub_project',
+    })
+  },
   chooseTag1: function(){
     this.setData({
       isActive1: "#fff",

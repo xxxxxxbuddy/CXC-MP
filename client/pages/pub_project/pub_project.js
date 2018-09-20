@@ -1,5 +1,4 @@
 // pages/pub_project/pub_project.js
-var qcloud = require('../../vendor/wafer2-client-sdk/lib/regc.js')
 var config = require('../../config')
 Page({
   /**
@@ -82,9 +81,29 @@ Page({
       },
       success: function (res) {
         console.log(res.data);
+        wx.showToast({
+          title: '项目发布成功',
+          icon: 'success',
+          duration: 2000
+        })
+        setTimeout(function () {
+          wx.reLaunch({
+            url: '../main/main',
+          })
+        }, 2000) 
       },
       fail: function (res) {
         console.log('上传失败');
+        wx.showToast({
+          title: '项目发布失败',
+          icon: 'warn',
+          duration: 2000
+        })
+        setTimeout(function () {
+          wx.reLaunch({
+            url: '../main/main',
+          })
+        }, 2000) 
       }
     }) 
   }

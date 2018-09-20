@@ -1,5 +1,4 @@
 // pages/power/power.js
-var qcloud = require('../../vendor/wafer2-client-sdk/lib/regc.js')
 var config = require('../../config')
 Page({
   data: {
