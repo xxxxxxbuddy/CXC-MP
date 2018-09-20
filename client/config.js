@@ -63,11 +63,11 @@ var config = {
 
       user_community: `${host}/weapp/user_community`,
 
-      //评论
+      //评论-只允许对回答评论，不允许对评论评论，传输数据举例{user_type:0/1 ,user_id: 18211949726, answer_info:'你好，我也好',}
       comment: `${host}/weapp/comment`,
-      //点赞
+      //点赞，传输数据举例{user_type: 0/1, user_id:18211949726, object_type:0代表点赞回答；1代表点赞评论, object_id:点赞对象id}
       prise: `${host}/weapp/praise`,
-      //回答
+      //回答问题，传输数据举例{user_type: 0/1, user_id:18211949726, comment_info: '你好，我也好',answer_id:回答对应的id}
       answer: `${host}/weapp/answer`
         
     }

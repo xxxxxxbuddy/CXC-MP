@@ -66,13 +66,13 @@ router.get('/detail', controllers.detail)
 //获取圈子
 router.get('/user_community', controllers.user_community)
 
-//评论-只允许对回答评论，不允许对评论评论，传输数据举例{user_type:0/1 ,user_id: 18211949726, answer_info:'你好，我也好',}
+//评论
 router.get('/comment',controllers.comment)
 
-//点赞，传输数据举例{user_type: 0/1, user_id:18211949726, object_type:0代表点赞回答；1代表点赞评论, object_id:点赞对象id}
+//点赞
 router.get('/praise',controllers.praise)
 
-//回答问题，传输数据举例{user_type: 0/1, user_id:18211949726, comment_info: '你好，我也好',answer_id:回答对应的id}
+//回答问题
 router.answer('/praise',controllers.answer)
 
 
