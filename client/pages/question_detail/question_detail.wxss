@@ -95,3 +95,6 @@ page{
 .ml{
     margin-left: 180rpx;
 }
+.mgl{
+  margin-left: 50rpx;
+}

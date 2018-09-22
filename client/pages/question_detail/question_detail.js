@@ -44,7 +44,8 @@ Page({
     pubTime: '',
     questionInfo: '',
     answerNum: '',
-    questionTitle: ''
+    questionTitle: '',
+    answerArray: ''
   },
 
   /**
@@ -74,7 +75,9 @@ Page({
              object_type: dataType 
       },
       success: function(res){
+        console.log(res);
         let result = res.data.result[0]
+        let answer = res.data.answer
         if(!result){ 
           wx.navigateBack({
           delta: 1
@@ -89,7 +92,7 @@ Page({
           userName: result.user_id,
           pubTime: timeCalc(new Date(result.question_time.replace(/T/, " ").replace(/Z/, "").replace(/-/g, "/"))),
           questionInfo: result.question_info,
-          answerNum: result.answernum
+          answerArray: answer
         })
       }
     })

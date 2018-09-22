@@ -6,7 +6,7 @@
     <ul>
       <li>
         <image src='{{avatar_icon}}' />
-        <slot name='userName' />
+        <slot name='userName'  />
       </li>
       <li>
         <image src='{{comment_icon}}' />

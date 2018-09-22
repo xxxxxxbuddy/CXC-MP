@@ -32,11 +32,11 @@
 
 </view>
 
-<view class="comment">
+<view class="comment" wx:for="{{answerArray}}" wx:key="{{answer_id}}">
   <comment>
-    <text slot='comment'>哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</text>
-    <text slot='userName'>哈哈哈</text>
-    <text slot='answerNum'>123</text>
-    <text slot='likeNum'>123</text>
+    <text slot='comment'>{{item.answer_info}}</text>
+    <text slot='userName' class='mgl' >{{item.user_id}}</text>
+    <text slot='commentNum'>{{item.commentnum}}</text>
+    <text slot='likeNum'>{{item.praisenum}}</text>
   </comment>
 </view>

@@ -73,7 +73,7 @@ router.get('/comment',controllers.comment)
 router.get('/praise',controllers.praise)
 
 //回答问题
-router.answer('/praise',controllers.answer)
+router.get('/praise',controllers.answer)
 
 
 
