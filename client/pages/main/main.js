@@ -185,19 +185,31 @@ Page({
         'content-type': 'application/json'
       },
       success: function(res){
-        var result = res.data.result1.concat(res.data.result2)
-        /**按热度排序**/
-        result=quickSort(result)
+        if (res.data) {
+          for (var item of res.data.result1) {
+            item.project_time = new Date(item.project_time.replace(/T/, " ").replace(/Z/, "").replace(/-/g, "/"))
+            item.project_time = timeCalc(item.project_time)
+          }
+          for (var item of res.data.result2) {
+            item.question_time = new Date(item.question_time.replace(/T/, " ").replace(/Z/, "").replace(/-/g, "/"))
+            item.question_time = timeCalc(item.question_time)
+          }
+          var result = res.data.result1.concat(res.data.result2)
+          /**按热度排序**/
+          result = quickSort(result)
         /*加载问题*/
         that.setData({
           allArray: result
         })
-      } 
-
-    })
-    
-
-  },
+        } else {
+          wx.showToast({
+            title: '获取动态失败',
+            icon: 'none'
+          })
+      }   
+    }
+  })
+},
 
   /**
    * 页面上拉触底事件的处理函数
