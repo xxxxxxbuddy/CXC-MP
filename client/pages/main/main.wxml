@@ -2,7 +2,7 @@
     <view class="mask" bindtap='closePubBox' style="opacity:{{maskOpacity}};z-index:{{mask_z_index}}" ></view>
     <view class="header">
         <view class="searchBox">
-            <image class="myInfo" src="{{myInfo_url}}"></image>
+            <image class="myInfo" src="{{myInfo_url}}" bindtap='jumpToSettings' ></image>
             <image class="searchIcon" src="{{searchIcon_url}}"></image>
             <input type="text" class="search"  placeholder="在这里搜索动态/项目/圈子" />
             <image class="publish" src="{{publish_url}}" bindtap='openPubBox' ></image>

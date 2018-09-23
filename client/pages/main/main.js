@@ -274,6 +274,11 @@ Page({
         url: './../question_detail/question_detail?id='+ id + '&type=' + dataType
       })
     
+  },
+  jumpToSettings: function(e){
+    wx.navigateTo({
+      url: './../settings/settings',
+    })
   }
   
 })
