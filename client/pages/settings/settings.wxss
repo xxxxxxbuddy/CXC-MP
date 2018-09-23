@@ -9,9 +9,11 @@ page{
   box-shadow: 0rpx 2rpx 2rpx 0rpx rgba(0, 0, 0, 0.5);
 }
 .avatar{
+
   width: 104rpx;
   height: 104rpx;
   margin:32rpx 34rpx;
+  float: left;
 }
 .userName{
   float: left;
@@ -39,13 +41,14 @@ page{
 }
 .options image{
   width: 15%;
-  height:50rpx;
-  margin-top:10rpx;
-
+  height:45rpx;
+  margin-top:30rpx;
+  float:left;
 }
 .option{
   border-bottom: 2rpx solid rgba(80, 80, 80, 0.3);
-  width: 85%;
+  padding-left: 3%;
+  width: 82%;
   display:inline-block;
   line-height: 110rpx;
   font-size: 34rpx;

@@ -25,7 +25,7 @@
       <text class='option'> 我的圈子</text>      
     </li>
     <li>
-       <image src='{{}}' class='icon' />   
+       <image src='{{messageUrl}}' class='icon' />   
        <text class='option'>  消息</text>      
     </li>
   </ul>
