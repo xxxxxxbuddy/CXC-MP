@@ -31,6 +31,17 @@ module.exports = async (ctx, next) => {
     //如果圈名重复，则重新输入
     result='圈子名称重复';
   }
+  //更新用户建圈数
+  if (data.user_type == 0) {
+    var num = await DB.select('setcommunity_num').from('individual').where('individual_id', data.user_id);
+    var update = await DB('individual').update({ setcommunity_num: num + 1 }).where('individual_id', data.user_id);
+  }
+  else {
+    var num = await DB.select('setcommunity_num').from('company').where('company_id', data.user_id);
+    var update = await DB('company').update({ setcommunity_num: num + 1 }).where('company_id', data.user_id);
+  }
+
+
  //例如
  //var result2 = await DB('community').insert({ user_type: 0, user_id: 18211949725,community_name:'无聊诗社',community_type:'文学类',community_introduce:'无',community_time:date,questionnum:0,projectnum:0,usernum:1 });
 

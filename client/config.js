@@ -68,7 +68,37 @@ var config = {
       //点赞，传输数据举例{user_type: 0/1, user_id:18211949726, object_type:0代表点赞回答；1代表点赞评论, object_id:点赞对象id}
       prise: `${host}/weapp/praise`,
       //回答问题，传输数据举例{user_type: 0/1, user_id:18211949726, comment_info: '你好，我也好',answer_id:回答对应的id}
-      answer: `${host}/weapp/answer`
+      answer: `${host}/weapp/answer`,
+      
+      //更改个人信息,传输数据举例{user_type：0,user_id：18211949726,individual_job：'本科生',individual_corporation:'华科',individual_introduce:'这个人很懒，啥都没有'}或者{user_type：1,user_id：18211949725,company_type:'=网络公司',company_adress：'不知名处',company_introduce:'这个公司很懒，啥都没有'}
+     change_message: `${host}/weapp/change_message`,
+
+      //我的个人信息，传输数据举例{user_type: 0/1, user_id:18211949726}
+      my_message: `${host}/weapp/my_message`,
+
+      //我加入的圈子，传输数据举例{user_type: 0/1, user_id:18211949726}
+      mycommunity_join: `${host}/weapp/mycommunity_join`,
+
+      //我建立的圈子，传输数据举例{user_type: 0/1, user_id:18211949726}
+      mycommunity_set: `${host}/weapp/mycommunity_set`,
+
+      //关注我的，传输数据举例{user_type: 0/1, user_id:18211949726}
+      myfans: `${host}/weapp/myfans`,
+
+      //我关注的用户，传输数据举例{user_type: 0/1, user_id:18211949726}
+      myidol: `${host}/weapp/myidol`,
+
+      //我关注的问题，传输数据举例{user_type: 0/1, user_id:18211949726}
+      myfocus_question: `${host}/weapp/myfocus_question`,
+      //我关注的项目，传输数据举例{user_type: 0/1, user_id:18211949726}
+      myfocus_project: `${host}/weapp/myfocus_project`,
+
+      //已发布的问题，传输数据举例{user_type: 0/1, user_id:18211949726}
+      pubed_question: `${host}/weapp/pubed_question`,
+      //已发布的项目，传输数据举例{user_type: 0/1, user_id:18211949726}
+      pubed_project: `${host}/weapp/pubed_project`,
+      //已发布的回答，传输数据举例{user_type: 0/1, user_id:18211949726}
+      pubed_answer: `${host}/weapp/pubed_answer`,
         
     }
 };

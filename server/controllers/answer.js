@@ -29,6 +29,16 @@ module.exports = async (ctx, next) => {
     var num = await DB.select('answernum').from('question').where('question_id', data.object_id);
     var update = await DB('question').update({ answernum: num + 1 }).where('question_id', data.object_id);
   }
+  //用户回答问题数量更新
+  if (data.user_type == 0) {
+    var num = await DB.select('answer_num').from('individual').where('individual_id', data.user_id);
+    var update = await DB('individual').update({ answer_num: num + 1 }).where('individual_id', data.user_id);
+  }
+  else {
+    var num = await DB.select('answer_num').from('company').where('company_id', data.user_id);
+    var update = await DB('company').update({ answer_num: num + 1 }).where('company_id', data.user_id);
+  }
+
   ctx.body = {
     code: 1,
     result: result
