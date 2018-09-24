@@ -15,7 +15,7 @@ const DB = require('knex')({
 module.exports = async (ctx, next) => {
   var data = ctx.query;
   var date = new Date();
-  var x = await DB('company').insert({ company_id: data.company_id, company_name: data.company_name, company_type: data.company_type, company_address: data.company_address, company_introduce: data.company_introduce, company_state: '未认证',company_time: date });
+  var x = await DB('company').insert({ company_id: data.company_id, company_name: data.company_name, company_type: data.company_type, company_address: data.company_address, company_introduce: data.company_introduce, company_state: '未认证', company_time: date, answer_num: 0, question_num: 0, project_num: 0, setcommunity_num: 0, joincommunity_num,fans_num:0,idol_num:0});
   var result='注册成功';
 
   //例如 

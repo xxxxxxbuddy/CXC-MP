@@ -25,6 +25,18 @@ module.exports = async (ctx, next) => {
       var result3 = await DB('PQ_community').insert({ community_id: power.detail_power[i].community_id, object_type: 1, object_id: question_id, power: power.detail_power[i].power, time: date });
     }
   }
+  //用户发布问题数更新
+  if (data.user_type == 0) {
+    var num = await DB.select('question_num').from('individual').where('individual_id', data.user_id);
+    var update = await DB('individual').update({ question_num: num + 1 }).where('individual_id', data.user_id);
+  }
+  else {
+    var num = await DB.select('question_num').from('company').where('company_id', data.user_id);
+    var update = await DB('company').update({ question_num: num + 1 }).where('company_id', data.user_id);
+  }
+
+
+
   //例如
   //var x = await DB('question').insert({ user_type: 0, user_id: 18211949726, question_title: '公司如何解决员工问题', question_info: '我们公司是一个小公司.....', question_time: date, answernum: 0, power: 1, hot: 100 });
   

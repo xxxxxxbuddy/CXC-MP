@@ -73,7 +73,37 @@ router.get('/comment',controllers.comment)
 router.get('/praise',controllers.praise)
 
 //回答问题
-router.get('/praise',controllers.answer)
+router.get('/answer',controllers.answer)
+
+//更改个人信息
+router.get('/change_message',controllers.change_message);
+
+//我的个人信息
+router.get('/my_message',controllers.my_message);
+
+//我加入的圈子
+router.get('/mycommunity_join',controllers.mycommunity_join);
+
+//我建立的圈子
+router.get('/mycommunity_set',controllers.mycommunity_set);
+
+//关注我的
+router.get('/myfans',controllers.myfans);
+
+//我关注的用户
+router.get('/myidol',controllers.myidol);
+
+//我关注的问题
+router.get('/myfocus_question', controllers.myfocus_question);
+//我关注的项目
+router.get('/myfocus_project', controllers.myfocus_project);
+
+//已发布的问题
+router.get('/pubed_question',controllers.pubed_question);
+//已发布的项目
+router.get('/pubed_project', controllers.pubed_project);
+//已发布的回答
+router.get('/pubed_answer', controllers.pubed_answer);
 
 
 
