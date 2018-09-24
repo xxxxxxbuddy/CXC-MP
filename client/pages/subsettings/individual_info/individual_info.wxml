@@ -18,19 +18,19 @@
   <form bindsubmit='submitInfo'>
     <view>
       <text>性别</text>
-      <picker range='{{sexRange}}' name='sex' bindchange='sexChange'>{{sexRange[index1]}}</picker>
+      <view class='sex'>{{sex}}</view>
     </view>
     <view>
      <text>职业</text>
-      <picker range='{{jobRange}}' name='job' bindchange='jobChange'>{{jobRange[index2]}}</picker>   
+      <picker range='{{jobRange}}' name='job' bindchange='jobChange'>{{jobRange[job]}}</picker>   
     </view>
     <view class='rl'>
      <text>所属单位</text>
-      <input confirm-type='next' bindblur='companyChange'></input>   
+      <input confirm-type='next' name='corporation' placeholder='{{corporation}}' placeholder-class='corporationHolder' bindinput='corporationInput'></input>   
     </view>
     <view>
       <text>简介</text>
-      <textarea maxlength='240' placeholder='不超过120字'></textarea>
+      <textarea maxlength='240' placeholder='{{introduce}}' name='introduce'></textarea>
     </view>
     <button type='primary' form-type='submit' bindtap='checkInfo'>保存</button>
   </form>

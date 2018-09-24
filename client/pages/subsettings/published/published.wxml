@@ -15,13 +15,13 @@
   <view id='question'>
     <view wx:for='{{questionArray}}' wx:key='{{item.question_id}}' class='publishedQuestion' style='transform:translateX({{transform1}})'>
     <text class='questionTitle'>{{item.question_title}}</text>
-    <text class='questionSocialInfo'>{{item.answernum}}个回答· {{item.followedNum}}人关注</text>
+    <text class='questionSocialInfo'>{{item.answernum}}个回答· {{item.focus_num}}人关注</text>
   </view>
   </view>
   <view id='project'>
     <view wx:for='{{projectArray}}' wx:key='{{item.project_id}}' class='publishedProject' style='transform:translateX({{transform2}})'>
     <text class='projectTitle'>{{item.project_title}}</text>
-    <text class='projectSocialInfo'>{{item.answernum}}个回答· {{item.followedNum}}人关注</text>
+    <text class='projectSocialInfo'>{{item.answernum}}个回答· {{item.focus_num}}人关注</text>
   </view>
   </view>
   <view id='answer'>

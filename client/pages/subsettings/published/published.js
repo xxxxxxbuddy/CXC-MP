@@ -1,3 +1,4 @@
+var config = require('./../../../config.js')
 Page({
 
   /**
@@ -14,15 +15,42 @@ Page({
     transform1: '0',
     transform2: '100%',
     transform3: '200%',
-    questionArray: [{ question_id: 6, user_type: 0, user_id: "托尔斯泰", question_title: "test2", question_info: "test2",  answernum: 320, followedNum: 230 }, { question_id: 7, user_type: 0, user_id: "123", question_title: "司法所地方", question_info: "热会让他好人挺好",  answernum: 3030, followedNum: 230 }],
-    projectArray: [{ project_id: 1, user_type: 0, user_id: "托尔斯泰", project_title: "test2", project_info: "test2", project_title: "test2", answernum: 310, followedNum: 230 },{ project_id: 2, user_type: 0, user_id: "托尔斯泰", project_title: "奥术大师大所多", project_info: "test2",  answernum: 31033, followedNum: 230 }]
+    questionArray: '',
+    projectArray: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    var that = this
+    wx.request({
+      url: config.service.pubed_question,
+      method: 'get',
+      data: {
+        user_type: 0,
+        user_id: 18211949725
+      },
+      success: function(res){
+        that.setData({
+          questionArray: res.data.result
+        })
+      }
+    })
+    wx.request({
+      url: config.service.pubed_project,
+      method: 'get',
+      data: {
+        user_type: 0,
+        user_id: 18211949725
+      },
+      success: function (res) {
+        console.log(res)
+        that.setData({
+          projectArray: res.data.result
+        })
+      }
+    })
   },
 
   /**
