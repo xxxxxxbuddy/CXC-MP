@@ -50,7 +50,12 @@
   margin-top:60rpx;
 }
 picker{
+  text-align: center;
   display: inline-block;
+  font-size:36rpx;
+  width: 430rpx;
+  border: 2rpx solid #000;
+  border-radius: 16rpx;
 }
 input{
   display: inline-block;
@@ -60,6 +65,7 @@ input{
   position:absolute;
   top:10rpx;
   height: 60rpx;
+  width: 430rpx;
   line-height: 50rpx;
 }
 form text{
@@ -86,4 +92,9 @@ textarea{
   border: rgba(0, 0, 0, 1) solid 2rpx;
   border-radius: 16rpx;
   padding: 10rpx;
+}
+
+button{
+  width: 50%;
+  margin-bottom: 20rpx;
 }
