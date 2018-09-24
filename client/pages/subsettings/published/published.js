@@ -10,7 +10,12 @@ Page({
     isActive3: '',
     border1: '2rpx solid rgba(255, 149, 0, 1)',
     border2: '',
-    border3: ''
+    border3: '',
+    transform1: '0',
+    transform2: '100%',
+    transform3: '200%',
+    questionArray: [{ question_id: 6, user_type: 0, user_id: "托尔斯泰", question_title: "test2", question_info: "test2",  answernum: 320, followedNum: 230 }, { question_id: 7, user_type: 0, user_id: "123", question_title: "司法所地方", question_info: "热会让他好人挺好",  answernum: 3030, followedNum: 230 }],
+    projectArray: [{ project_id: 1, user_type: 0, user_id: "托尔斯泰", project_title: "test2", project_info: "test2", project_title: "test2", answernum: 310, followedNum: 230 },{ project_id: 2, user_type: 0, user_id: "托尔斯泰", project_title: "奥术大师大所多", project_info: "test2",  answernum: 31033, followedNum: 230 }]
   },
 
   /**
@@ -75,7 +80,10 @@ Page({
       isActive3: 'rgba(54, 142, 153, 1)',
       border1: '2rpx solid rgba(255, 149, 0, 1)',
       border2: '',
-      border3: ''
+      border3: '',
+      transform1: '0',
+      transform2: '100%',
+      transform3: '200%',
     })
   },
   chooseTab2: function () {
@@ -85,7 +93,10 @@ Page({
       isActive3: 'rgba(54, 142, 153, 1)',
       border2: '2rpx solid rgba(255, 149, 0, 1)',
       border1: '',
-      border3: ''
+      border3: '',
+      transform1: '-100%',
+      transform2: '0',
+      transform3: '100%'
     })
   },
   chooseTab3: function () {
@@ -95,7 +106,10 @@ Page({
       isActive1: 'rgba(54, 142, 153, 1)',
       border3: '2rpx solid rgba(255, 149, 0, 1)',
       border2: '',
-      border1: ''
+      border1: '',
+      transform1: '-200%',
+      transform2: '-100%',
+      transform3: '0',
     })
   },
   back: function(){

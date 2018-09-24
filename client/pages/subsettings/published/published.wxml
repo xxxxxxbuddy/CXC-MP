@@ -11,3 +11,21 @@
     <li style='color:{{isActive3}}; border-bottom:{{border3}}' bindtap='chooseTab3'>回答</li>
   </ul>
 </view>
+<view id='container'>
+  <view id='question'>
+    <view wx:for='{{questionArray}}' wx:key='{{item.question_id}}' class='publishedQuestion' style='transform:translateX({{transform1}})'>
+    <text class='questionTitle'>{{item.question_title}}</text>
+    <text class='questionSocialInfo'>{{item.answernum}}个回答· {{item.followedNum}}人关注</text>
+  </view>
+  </view>
+  <view id='project'>
+    <view wx:for='{{projectArray}}' wx:key='{{item.project_id}}' class='publishedProject' style='transform:translateX({{transform2}})'>
+    <text class='projectTitle'>{{item.project_title}}</text>
+    <text class='projectSocialInfo'>{{item.answernum}}个回答· {{item.followedNum}}人关注</text>
+  </view>
+  </view>
+  <view id='answer'>
+    <view wx:for='{{answeredArray}}' wx:key='{{item.question_id}}+{{item.project_id}}' class='myAnswer' style='transform:translateX({{transform3}})'>
+  </view>
+  </view>
+</view>

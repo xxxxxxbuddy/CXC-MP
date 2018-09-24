@@ -15,6 +15,7 @@
 .header text{
   color: rgba(0, 187, 221, 1);
   line-height: 36rpx;
+  font-size: 30rpx;
 }
 .button{
   width: 160rpx;

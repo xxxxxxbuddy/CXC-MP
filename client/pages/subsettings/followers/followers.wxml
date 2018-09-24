@@ -1,0 +1,6 @@
+<view class='header' >
+  <view class='button' bindtap='back' >
+    <image src='{{back_url}}'></image>
+    <text>已发布</text>
+  </view>
+</view>

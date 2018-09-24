@@ -12,7 +12,7 @@
       <image src='{{publishedUrl}}' class='icon' />
       <text class='option'>已发布</text>
     </li>
-    <li bindtap='jumpTofollowers' >
+    <li bindtap='jumpToFollowers' >
        <image src='{{followerUrl}}' class='icon' />   
        <text class='option'>  关注我的</text>
     </li>
