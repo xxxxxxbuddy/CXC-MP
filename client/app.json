@@ -1,7 +1,8 @@
 {
   "pages": [
-
     "pages/settings/settings",
+    "pages/main/main",
+
     "pages/subsettings/individual_info/individual_info",
     "pages/subsettings/published/published",
     "pages/subsettings/followers/followers",

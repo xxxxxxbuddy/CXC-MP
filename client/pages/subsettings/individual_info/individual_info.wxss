@@ -15,6 +15,7 @@
 .header text{
   color: rgba(0, 187, 221, 1);
   line-height: 36rpx;
+  font-size: 30rpx;
 }
 .button{
   width: 160rpx;
@@ -57,6 +58,9 @@ picker{
   border: 2rpx solid #000;
   border-radius: 16rpx;
 }
+.sex {
+  display: inline-block;
+}
 input{
   display: inline-block;
   border: rgba(0, 0, 0, 1) solid 2rpx;
@@ -84,6 +88,11 @@ form text{
 }
 .rl{
   position: relative;
+}
+.corporationHolder{
+  color: #000;
+  text-align: center;
+  font-size: 36rpx;
 }
 textarea{
   width: 636rpx;

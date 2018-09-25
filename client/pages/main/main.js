@@ -129,6 +129,7 @@ Page({
             else
               projectArray.push(result[i])
           }*/
+          console.log(result)
           that.setData({
             //projectArray: projectArray,
             // questionArray: questionArray,

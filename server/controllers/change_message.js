@@ -22,6 +22,6 @@ module.exports = async (ctx, next) => {
   }
   ctx.body = {
     code: 1,
-    result: result,        //返回我的所有信息
+    result: result        //返回我的所有信息
   }
 }

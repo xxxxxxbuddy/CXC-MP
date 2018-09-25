@@ -49,6 +49,7 @@ App({
         qcloud.setLoginUrl(config.service.loginUrl)
     },
     globalData:{
-      user_id: 0
+      user_id: 0,
+      jobList: ['本科生','硕士','博士']
     }
 })
