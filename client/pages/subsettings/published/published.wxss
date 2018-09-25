@@ -1,8 +1,9 @@
 page{
   background-color:#E9E9E9;
+  
 }
 .header{
-
+  background-color: #fff;
   width:100%;
   padding-bottom:20rpx;
 }

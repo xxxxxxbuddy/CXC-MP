@@ -18,11 +18,15 @@ module.exports = async (ctx, next) => {
   if (myfans.length > 0) {
     for (var i = 0; i < myfans.length; i++) {
       if (myfans[i].fans_type == 0) {
-        var fans = await DB.select('*').from('individual').where('individual_id', myfans[i].fans_id);
+        var result = await DB.select('*').from('individual').where('individual_id', myfans[i].fans_id);
         result[i].fans_type = 0;
         result[i].fans_id = myfans[i].fans_id;
-        result[i].fans_name = fans.individual_name;
-        result[i].fans_image = fans.image;
+        result[i].fans_name = result[i].individual_name;
+        result[i].fans_image = result[i].image;
+        result[i].answer_num = result[i].answer_num;
+        result[i].project_num = result[i].project_num;
+        result[i].community_num = result[i].setcommunity_num + result[i].joincommunity_num;
+        result[i].fans_num = result[i].fans_num;
       }
       else {
         var fans = await DB.select('*').from('company').where('company_id', myfans[i].fans_id);

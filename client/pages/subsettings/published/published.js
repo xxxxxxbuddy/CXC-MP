@@ -15,6 +15,9 @@ Page({
     transform1: '0',
     transform2: '100%',
     transform3: '200%',
+    z1: '2',
+    z2: '1',
+    z3: '1',
     questionArray: '',
     projectArray: ''
   },
@@ -112,6 +115,9 @@ Page({
       transform1: '0',
       transform2: '100%',
       transform3: '200%',
+      z1: '2',
+      z2: '1',
+      z3: '1'
     })
   },
   chooseTab2: function () {
@@ -124,7 +130,10 @@ Page({
       border3: '',
       transform1: '-100%',
       transform2: '0',
-      transform3: '100%'
+      transform3: '100%',
+      z1: '1',
+      z2: '2',
+      z3: '1'
     })
   },
   chooseTab3: function () {
@@ -138,11 +147,20 @@ Page({
       transform1: '-200%',
       transform2: '-100%',
       transform3: '0',
+      z1: '1',
+      z2: '1',
+      z3: '2'
     })
   },
   back: function(){
     wx.navigateBack({
       delta: 1
+    })
+  },
+  jumpToDetail: function(e){
+    console.log(e)
+    wx.navigateTo({
+      url: './../../question_detail/question_detail?id=' + e.currentTarget.id + '&type=' + e.currentTarget.dataset.type,
     })
   }
 })
