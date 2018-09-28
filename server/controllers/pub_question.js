@@ -1,4 +1,3 @@
-
 const { mysql: config } = require('../config')
 const DB = require('knex')({
   client: 'mysql',
@@ -18,7 +17,7 @@ module.exports = async (ctx, next) => {
   var date = new Date();
   var power = JSON.parse(data.power);
   var result='发布成功';
-  var question_id = await DB('question').returning('question_id').insert({user_type:data.user_type, user_id:data.user_id, question_title:data.question_title, question_info:data.question_info, question_time:date, answernum:0, power:power.object_power, hot:100});
+  var question_id = await DB('question').returning('question_id').insert({user_type:data.user_type, user_id:data.user_id, question_title:data.question_title, question_info:data.question_info, question_time:date, answernum:0, power:power.object_power, hot:100,focus_num:0});
   if (power.detail_power.length > 0) {
     var i = 0;
     for (; i < power.detail_power.length; i++) {
@@ -27,16 +26,11 @@ module.exports = async (ctx, next) => {
   }
   //用户发布问题数更新
   if (data.user_type == 0) {
-    var num = await DB.select('question_num').from('individual').where('individual_id', data.user_id);
-    var update = await DB('individual').update({ question_num: num + 1 }).where('individual_id', data.user_id);
+    var update = await DB('individual').where('individual_id', data.user_id).increment('question_num',1);
   }
   else {
-    var num = await DB.select('question_num').from('company').where('company_id', data.user_id);
-    var update = await DB('company').update({ question_num: num + 1 }).where('company_id', data.user_id);
+    var update = await DB('company').where('company_id', data.user_id).increment('question_num', 1);
   }
-
-
-
   //例如
   //var x = await DB('question').insert({ user_type: 0, user_id: 18211949726, question_title: '公司如何解决员工问题', question_info: '我们公司是一个小公司.....', question_time: date, answernum: 0, power: 1, hot: 100 });
   

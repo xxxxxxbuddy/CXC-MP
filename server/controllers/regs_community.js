@@ -33,12 +33,10 @@ module.exports = async (ctx, next) => {
   }
   //更新用户建圈数
   if (data.user_type == 0) {
-    var num = await DB.select('setcommunity_num').from('individual').where('individual_id', data.user_id);
-    var update = await DB('individual').update({ setcommunity_num: num + 1 }).where('individual_id', data.user_id);
+    var update = await DB('individual').where('individual_id', data.user_id).increment('setcommunity_num', 1);
   }
   else {
-    var num = await DB.select('setcommunity_num').from('company').where('company_id', data.user_id);
-    var update = await DB('company').update({ setcommunity_num: num + 1 }).where('company_id', data.user_id);
+    var update = await DB('company').where('company_id', data.user_id).increment('setcommunity_num', 1);
   }
 
 

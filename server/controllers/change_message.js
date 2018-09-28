@@ -13,9 +13,9 @@ const DB = require('knex')({
 })
 module.exports = async (ctx, next) => {
   var data = ctx.query;
-  var result = '更改成功';
+  var result1 = '更改成功';
   if (data.user_type == 0) {
-    var result1 = await DB('individual').where('individual_id', data.user_id).update({individual_job: data.individual_job,individual_corporation:data.individual_corporation,individual_introduce:data.individual_introduce })
+    var result = await DB('individual').where('individual_id', data.user_id).update({individual_job: data.individual_job,individual_corporation:data.individual_corporation,individual_introduce:data.individual_introduce });
   }
   else {
     var result2 = await DB('company').where('company_id', data.user_id).update({ company_type: data.company_type, company_adress: data.company_adress, company_introduce: data.company_introduce })
