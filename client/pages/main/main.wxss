@@ -70,21 +70,30 @@ page{
 #community{
     background-color: #fff;
     padding-left: 20rpx;
-    //height: 50rpx;
     padding-top: 10rpx;
     padding-bottom: 10rpx;
+    box-shadow:  0rpx 5rpx 5rpx 0rpx rgba(37, 19, 19, 0.3);
+    transition: max-height 0.2s;
+    overflow: hidden;
+}
+.pullDownIcon{
+  width:50rpx;
+  height: 50rpx;
+  margin-right:10rpx;
+  float: right;
+  transition: transform 0.2s;
 }
 #community ul{
-    display: flex;
+    flex-wrap: nowrap;
+    flex: 1;
 }
 #community ul li{
-    flex-wrap: wrap;
+    display: inline-flex;
     text-align: center;
     border:2rpx solid;
-    width: 15%;
-    margin-right: 10rpx;
+    margin: 6rpx 10rpx;
     border-radius: 20rpx;
-    padding: 0;
+    padding:0 10rpx;
     background-color: rgba(204, 204, 204, 1);
     color: rgba(80, 80, 80, 1);
     font-size: 28rpx;
