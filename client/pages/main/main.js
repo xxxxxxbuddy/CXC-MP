@@ -75,6 +75,7 @@ Page({
     "questionInfo": '',
     "questionArray": '',
     "projectArray": '',
+    "communityList": '',
     "allArray": '',
     "opacity": "0",
     //"hideCommunity": "block"
@@ -84,10 +85,28 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (e) {
-
+    var that = this
+    wx.request({
+      url: config.service.user_community,
+      success: function(res){
+        console.log(res.data.result[0])
+        that.setData({
+          communityList: res.data.result
+        })
+      },
+      fail: function(){
+        wx.showToast({
+          title: '圈子信息加载失败',
+          icon: 'none'
+        })
+        that.setData({
+          communityList: "[{community_id: '加载失败'}]"
+        })
+      }
+      
+    })
    
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -141,7 +160,7 @@ Page({
             icon: 'none'
           })
         }
-
+      console.log(app.globalData.userInfo)
 
       },
       fail: function(){

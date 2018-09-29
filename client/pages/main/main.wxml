@@ -16,12 +16,10 @@
             </ul>
             
         </view>
-        <view id="community" >
-                <ul>
-                    <li>推荐</li>
-                    <li>金融圈</li>
-                    <li>文学圈</li>
-                </ul>
+        <view id="community" > 
+           <ul>
+            <li wx:for='{{communityList}}' wx:key='item.community_id'>{{item.community_name}}</li>
+           </ul>
             </view>
     </view>
     <view id="publishBox" style="top:{{pubBoxPosition}}">
