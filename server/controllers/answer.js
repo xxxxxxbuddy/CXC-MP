@@ -22,21 +22,17 @@ module.exports = async (ctx, next) => {
   var result3 = await DB('PQ_answer').insert({ answer_id: answer_id, object_type: data.object_type, object_id: data.object_id, time: date });
   //项目/问题回答数更新
   if(data.object_type==0){
-    var num = await DB.select('answernum').from('project').where('project_id', data.object_id);
-    var update = await DB('project').update({ answernum: num + 1 }).where('project_id', data.object_id);
+    var update = await DB('project').where('project_id', data.object_id).increment('answernum', 1);
   }
   else {
-    var num = await DB.select('answernum').from('question').where('question_id', data.object_id);
-    var update = await DB('question').update({ answernum: num + 1 }).where('question_id', data.object_id);
+    var update = await DB('question').where('question_id', data.object_id).increment('answernum', 1);
   }
   //用户回答问题数量更新
   if (data.user_type == 0) {
-    var num = await DB.select('answer_num').from('individual').where('individual_id', data.user_id);
-    var update = await DB('individual').update({ answer_num: num + 1 }).where('individual_id', data.user_id);
+    var update = await DB('individual').where('individual_id', data.user_id).increment('answer_num', 1);
   }
   else {
-    var num = await DB.select('answer_num').from('company').where('company_id', data.user_id);
-    var update = await DB('company').update({ answer_num: num + 1 }).where('company_id', data.user_id);
+    var update = await DB('company').where('company_id', data.user_id).increment('answer_num', 1);
   }
 
   ctx.body = {

@@ -1,4 +1,4 @@
-var config = require('./../../../config.js')
+var config = require('../../../config');
 Page({
 
   /**
@@ -67,7 +67,22 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    wx.request({
+      method: 'get',
+      url: config.service.change_message,
+      data: {
+        user_type: 0,
+        user_id: 18211949725,
+        individual_job: '本科生',
+        individual_corporation: '武汉大学',
+        individual_introduce: '我不知道怎么介绍'
+      },
+      success: function (res) {
+        console.log(res.data)
+      },
+      fail: function (res) {
+      }
+    }) 
   },
 
   /**
