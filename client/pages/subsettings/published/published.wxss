@@ -18,8 +18,8 @@ page{
 }
 .header text{
   color: rgba(0, 187, 221, 1);
-  line-height: 36rpx;
-  font-size: 30rpx;
+  line-height: 30rpx;
+  font-size: 40rpx;
 }
 .button{
   width: 200rpx;

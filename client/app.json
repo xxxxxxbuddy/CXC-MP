@@ -1,9 +1,8 @@
 {
   "pages": [
-    "pages/main/main",
+    "pages/index/index",
     "pages/settings/settings",
-
-
+    "pages/main/main",
     "pages/subsettings/individual_info/individual_info",
     "pages/subsettings/published/published",
     "pages/subsettings/followers/followers",
@@ -15,7 +14,7 @@
     "pages/logs/logs",
     "pages/regc/regc",
     "pages/power/power",
-    "pages/index/index",
+
     "pages/addCgi/addCgi",
     "pages/invite/invite"
   ],

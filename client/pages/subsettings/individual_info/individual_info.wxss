@@ -9,7 +9,7 @@
   margin-top: 22rpx;
   margin-left: 16rpx;
   margin-right: 13rpx;
-  margin-bottom:-4rpx;
+  margin-bottom:-4rpx; 
 
 }
 .header text{

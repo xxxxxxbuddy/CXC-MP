@@ -36,6 +36,7 @@ page{
   position: absolute;
   right: 60rpx;
   top: 88rpx;
+  transform: rotateY(180deg);
 }
 
 /**账户类型选择界面**/

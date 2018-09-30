@@ -1,10 +1,25 @@
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    
+    back_url: app.globalData.back_url,
+    isActive1: 'rgba(255, 149, 0, 1)',
+    isActive2: '',
+    isActive3: '',
+    border1: '2rpx solid rgba(255, 149, 0, 1)',
+    border2: '',
+    border3: '',
+    transform1: '0',
+    transform2: '100%',
+    transform3: '200%',
+    z1: '2',
+    z2: '1',
+    z3: '1',
+    questionArray: '',
+    projectArray: ''
   },
 
   /**
@@ -61,5 +76,64 @@ Page({
    */
   onShareAppMessage: function () {
     
+  },
+  chooseTab1: function () {
+    this.setData({
+      isActive1: 'rgba(255, 149, 0, 1)',
+      isActive2: 'rgba(54, 142, 153, 1)',
+      isActive3: 'rgba(54, 142, 153, 1)',
+      border1: '2rpx solid rgba(255, 149, 0, 1)',
+      border2: '',
+      border3: '',
+      transform1: '0',
+      transform2: '100%',
+      transform3: '200%',
+      z1: '2',
+      z2: '1',
+      z3: '1'
+    })
+  },
+  chooseTab2: function () {
+    this.setData({
+      isActive2: 'rgba(255, 149, 0, 1)',
+      isActive1: 'rgba(54, 142, 153, 1)',
+      isActive3: 'rgba(54, 142, 153, 1)',
+      border2: '2rpx solid rgba(255, 149, 0, 1)',
+      border1: '',
+      border3: '',
+      transform1: '-100%',
+      transform2: '0',
+      transform3: '100%',
+      z1: '1',
+      z2: '2',
+      z3: '1'
+    })
+  },
+  chooseTab3: function () {
+    this.setData({
+      isActive3: 'rgba(255, 149, 0, 1)',
+      isActive2: 'rgba(54, 142, 153, 1)',
+      isActive1: 'rgba(54, 142, 153, 1)',
+      border3: '2rpx solid rgba(255, 149, 0, 1)',
+      border2: '',
+      border1: '',
+      transform1: '-200%',
+      transform2: '-100%',
+      transform3: '0',
+      z1: '1',
+      z2: '1',
+      z3: '2'
+    })
+  },
+  back: function () {
+    wx.navigateBack({
+      delta: 1
+    })
+  },
+  jumpToDetail: function (e) {
+    console.log(e)
+    wx.navigateTo({
+      url: './../../question_detail/question_detail?id=' + e.currentTarget.id + '&type=' + e.currentTarget.dataset.type,
+    })
   }
 })

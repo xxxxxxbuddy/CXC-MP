@@ -85,7 +85,7 @@ Page({
   },
   jumpToFollowing: function(){
     wx.navigateTo({
-      url: './../subsetting/following/following',
+      url: './../subsettings/following/following',
     })
   },
   jumpToCommunity: function(){
