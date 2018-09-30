@@ -30,9 +30,9 @@ Page({
   
     wx.request({
       method:'get',
-      url: config.service.home_page,
-      data:{   
-      },
+      url: config.service.myfans,
+      data:{
+        user_type: 0, user_id: 18211949726},
       success:function(res){
         console.log(res.data);
         

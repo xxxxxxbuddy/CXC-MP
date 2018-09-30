@@ -26,10 +26,10 @@ module.exports = async (ctx, next) => {
   }
   //用户发布项目数更新
   if (data.user_type == 0) {
-    var update = await DB('individual').update({ project_num: num[0] + 1 }).where('individual_id', data.user_id);
+    var update2 = await DB('individual').where('individual_id', data.user_id).increment('project_num', 1);
   }
   else {
-    var update = await DB('company').update({ project_num: num[0] + 1 }).where('company_id', data.user_id);
+    var update2 = await DB('company').where('company_id', data.user_id).increment('project_num', 1);
   }
   /*
   var result2 = await DB('project').insert({ user_type: 1, user_id:18211949726, project_title: '商城开发', project_type: '微信小程序开发', project_period: '两个月', project_budget: 1000, project_time: project_time, project_require: '能快速开发，有经验', answernum: 0, power: 1, hot: 100 });

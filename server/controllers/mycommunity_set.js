@@ -16,17 +16,15 @@ module.exports = async (ctx, next) => {
   var result = await DB.select('*').from('community').where({ user_id: data.user_id, user_type: data.user_type }).orderBy('community_time', 'desc');
   if (result.length > 0) {
     if (data.user_type == 0) {
-      var individual = await DB.select('*').from('individual').where('individual_id', data.user_id);
+      var individual = await DB.select('individual_name').from('individual').where('individual_id', data.user_id);
         for (var i = 0; i < result.length; i++) {
-        result[i].user_name = individual.individual_name;
-        result[i].user_image = individual.image;
+        result[i].user_name = individual[0].individual_name;
         }
       }
       else{
-      var company = await DB.select('*').from('company').where('company_id', data.user_id);
+      var company = await DB.select('*').from('company_name').where('company_id', data.user_id);
         for (var i = 0; i < result.length; i++) {
-        result[i].user_name = company.company_name;
-        result[i].user_image = company.image;
+        result[i].user_name = company[0].company_name;
         }
       }
   }
