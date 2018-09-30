@@ -13,18 +13,18 @@ const DB = require('knex')({
 })
 module.exports = async (ctx, next) => {
   var data = ctx.query;
-  var result=[];
+  var result = [];
   var answer = await DB.select('*').from('answer').where({ user_id: data.user_id, user_type: data.user_type }).orderBy('answer_time', 'desc');
-  if(answer.length>0){
-    for(var i=0;i<answer.length;i++){
-      if(answer[i].object_type==0){
-        var project = await DB.select('*').from('project').where('project_id',answer[i].object_id);
-        result[i]={};
-        result[i].object_type=0;
-        result[i].object_info=project;
-        result[i].info=answer[i];
+  if (answer.length > 0) {
+    for (var i = 0; i < answer.length; i++) {
+      if (answer[i].object_type == 0) {
+        var project = await DB.select('*').from('project').where('project_id', answer[i].object_id);
+        result[i] = {};
+        result[i].object_type = 0;
+        result[i].object_info = project;
+        result[i].info = answer[i];
       }
-      else{
+      else {
         var question = await DB.select('*').from('question').where('question_id', answer[i].object_id);
         result[i] = {};
         result[i].object_type = 1;
@@ -33,8 +33,13 @@ module.exports = async (ctx, next) => {
       }
     }
   }
+  var project = await DB.select('*').from('project').where({ user_id: data.user_id, user_type: data.user_type }).orderBy('project_time', 'desc');
+  var question = await DB.select('*').from('question').where({ user_id: data.user_id, user_type: data.user_type }).orderBy('question_time', 'desc');
+
   ctx.body = {
     code: 1,
-    result: result,        //返回发表的所有项目，最新的在前
+    question: question,        //返回发表的所有问题，最新的在前
+    project:project,
+    answer:answer
   }
 }

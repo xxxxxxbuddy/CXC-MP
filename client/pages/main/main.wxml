@@ -33,7 +33,7 @@
             <view   wx:if="{{item.question_id}}"  wx:key="{{question_id}}}">
             <question  id="{{item.question_id}}" data-type="1" >
                 <view slot="title" class="title">{{item.question_title}}</view>
-                <text slot="userName" class="userName">{{item.user_id}}</text>
+                <text slot="userName" class="userName">{{item.user_name}}</text>
                 <text slot="time" class="time">{{item.question_time}}</text>
                 <text slot="subTitle">
                     {{item.question_info}}

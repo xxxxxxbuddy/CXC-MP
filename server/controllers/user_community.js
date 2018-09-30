@@ -14,15 +14,30 @@ const DB = require('knex')({
 
 module.exports = async (ctx, next) => {
   var data = ctx.query;
-  var community_id = '';
+  var community_id = [];
   var result=[];
-  result = await DB.select('*').from('community')
-  community_id = await DB.select('community_id').from('community_user').where({ user_id: data.user_id, user_type: data.user_type });
-   for(var i=0;i<community_id.length;i++){
-     var x = await DB.select('*').from('community').where('community_id', community_id[i].community_id);
-     result[i]=x[0];
-     result[i].checklabel=0;
-   }
+  if(data.need=='name'){
+    community_id = await DB.select('community_id').from('community_user').where({ user_type: data.user_type, user_id: data.user_id });
+    for (var i = 0; i < community_id.length; i++) {
+      var x = await DB.select('community_id','community_name').from('community').where('community_id', community_id[i].community_id);
+      result[i] = x[0];
+    }
+  }
+  else{
+    community_id = await DB.select('community_id').from('community_user').where({ user_type: data.user_type, user_id: data.user_id });
+    for (var i = 0; i < community_id.length; i++) {
+      var x = await DB.select('*').from('community').where('community_id', community_id[i].community_id);
+      result[i] = x[0];
+      if (result[i].user_type == 0) {
+        var information = await DB.select('individual_name').from('individual').where('individual_id', result[i].user_id);
+        result[i].user_name = information[0].individual_name;
+      }
+      if (result[i].user_type == 1) {
+        var information = await DB.select('company_name').from('company').where('company_id', result[i].user_id);
+        result[i].user_name = information[0].company_name;
+      }
+    }
+  }
   ctx.body = {
     result: result
   }

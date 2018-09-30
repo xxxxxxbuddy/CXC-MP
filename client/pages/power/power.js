@@ -64,10 +64,14 @@ Page({
       url: config.service.user_community,
       data: {
         user_id:user.user_id,
-        user_type:user.user_type
+        user_type:user.user_type,
+        need:'name'
       },
       success: function (res) {
-        var x=res.data.result;
+        var x = res.data.result;
+        for (var item of x) {
+          item['checklabel'] = 0
+        };
         that.setData({ community: x });
         console.log(x);
       },

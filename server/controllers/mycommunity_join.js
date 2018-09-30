@@ -13,23 +13,20 @@ const DB = require('knex')({
 })
 module.exports = async (ctx, next) => {
   var data = ctx.query;
-  var result = await DB.select('*').from('community_user').where({ user_id: data.user_id, user_type: data.user_type }).orderBy('time', 'desc');
-  if (result.length > 0) {
-    for (var i = 0; i < result.length; i++) {
-      if (result[i].user_type == 0) {
-        var individual = await DB.select('*').from('individual').where('individual_id', result[i].user_id);
-        result[i].user_name = individual.individual_name;
-        result[i].user_image = individual.image;
-      }
-      else {
-        var company = await DB.select('*').from('company').where('company_id', result[i].user_id);
-        result[i].user_name = company.company_name;
-        result[i].user_image = company.image;
-      }
+  var community_id = await DB.select('community_id').from('community_user').where({ user_id: data.user_id, user_type: data.user_type }).orderBy('time', 'desc');
+  var community = await DB.select('*').from('community').whereNot('user_id', data.user_id).whereIn('community_id', community_id).orderBy('community_time', 'desc');
+  for (var i = 0; i < community.length; i++) {
+    if (community[i].user_type == 0) {
+      var information = await DB.select('individual_name').from('individual').where('individual_id', community[i].user_id);
+      community[i].user_name = information[0].individual_name;
+    }
+    if (community[i].user_type == 1) {
+      var information = await DB.select('company_name').from('company').where('company_id', community[i].user_id);
+      community[i].user_name = information[0].company_name;
     }
   }
   ctx.body = {
     code: 1,
-    result: result,        //返回我加入的圈子，最新的在前
+    result: community,        //返回我加入的圈子，最新的在前
   }
 }

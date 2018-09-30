@@ -41,11 +41,14 @@ router.get('/pub_question',controllers.pub_question)
 //发布项目
 router.get('/pub_project',controllers.pub_project)
 
+//关注
+router.get('/focus', controllers.focus)
+
 //获取首页内容
 router.get('/home_page',controllers.home_page)
 
 //圈子内容推荐
-router.get('/home_community',controllers.home_community)
+router.get('/community_PQ', controllers.community_PQ)
 
 //动态内容推荐
 //router.get('/home_dongtai', controllers.home_dongtai)
@@ -59,17 +62,22 @@ router.get('/regs_company', controllers.regs_company)
 
 //新建圈子
 router.get('/regs_community', controllers.regs_community)
+//加入圈子
+router.get('/join_community', controllers.join_community)
 
-//获取详情
+//获取问题/项目的全部内容和回答
 router.get('/detail', controllers.detail)
 
-//获取圈子
+//获取回答的全部内容及对应评论
+router.get('/answer_detail', controllers.answer_detail)
+
+//获取圈子的名字或者全部信息
 router.get('/user_community', controllers.user_community)
 
-//评论
+//进行评论
 router.get('/comment',controllers.comment)
 
-//点赞
+//进行点赞
 router.get('/praise',controllers.praise)
 
 //回答问题
@@ -98,12 +106,9 @@ router.get('/myfocus_question', controllers.myfocus_question);
 //我关注的项目
 router.get('/myfocus_project', controllers.myfocus_project);
 
-//已发布的问题
-router.get('/pubed_question',controllers.pubed_question);
+//已发布的问题、项目、回答
+router.get('/pubed', controllers.pubed);
 //已发布的项目
-router.get('/pubed_project', controllers.pubed_project);
-//已发布的回答
-router.get('/pubed_answer', controllers.pubed_answer);
 
 
 

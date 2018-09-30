@@ -16,10 +16,8 @@ module.exports = async (ctx, next) => {
   var data = ctx.query;
   var date = new Date();
   var result = '回答成功';
-  //存储回答
-  var answer_id = await DB('answer').returning('answer_id').insert({ user_type: data.user_type, user_id: data.user_id, answer_info: data.answer_info, answer_time: date, commentnum: 0, praisenum: 0 });
-  //存储回答与项目/问题（0/1）关系
-  var result3 = await DB('PQ_answer').insert({ answer_id: answer_id, object_type: data.object_type, object_id: data.object_id, time: date });
+  //存储回答，项目/问题（0/1）
+  var answer_id = await DB('answer').returning('answer_id').insert({ user_type: data.user_type, user_id: data.user_id, answer_info: data.answer_info, answer_time: date, commentnum: 0, praisenum: 0 ,object_type: data.object_type, object_id: data.object_id});
   //项目/问题回答数更新
   if(data.object_type==0){
     var update = await DB('project').where('project_id', data.object_id).increment('answernum', 1);
