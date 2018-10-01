@@ -25,8 +25,14 @@
     </view>
     <view id="publishBox" style="top:{{pubBoxPosition}}">
         <image class="close" bindtap='closePubBox' src="data:image/svg+xml;base64,77u/PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2IiB2aWV3Qm94PSIwIDAgNDggNDgiIGZpbGw9InJnYmEoMTUzLCAxNTMsIDE1MywgMSkiPgogICAgPHBhdGggZD0iTTM4IDEyLjgzTDM1LjE3IDEwIDI0IDIxLjE3IDEyLjgzIDEwIDEwIDEyLjgzIDIxLjE3IDI0IDEwIDM1LjE3IDEyLjgzIDM4IDI0IDI2LjgzIDM1LjE3IDM4IDM4IDM1LjE3IDI2LjgzIDI0eiI+PC9wYXRoPgogICAgPHBhdGggZD0iTTAgMGg0OHY0OEgweiIgZmlsbD0ibm9uZSI+PC9wYXRoPgo8L3N2Zz4="></image>
-        <image class="publishUpdates" src="{{pubUpdates_url}}" bindtap='pub_question'></image>
-        <image class="publishProject" src="{{pubProject_url}}" bindtap='pub_project'></image>
+        <view bindtap='pub_question'>
+          <image class="publishUpdates" src="{{pubUpdates_url}}" />
+          <view class='pubType'>发布问题</view>
+        </view>
+        <view bindtap='pub_project' >
+          <image class="publishProject" src="{{pubProject_url}}" />
+          <view class='pubType'>发布项目</view>
+        </view>
     </view>
     <view class="main" style="opacity:{{opacity}}">
         <view wx:for="{{allArray}}" bindtap='jumpToDetail' wx:key="{{question_id}}+{{project_id}}">

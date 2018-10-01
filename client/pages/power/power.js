@@ -1,7 +1,9 @@
 // pages/power/power.js
 var config = require('../../config')
+const app = getApp()
 Page({
   data: {
+    back_url: app.globalData.back_url,
     user:'',
     items: [
       { name: '公开', introduce: '所有圈子可见', checked: 'true', show: 0, community_class:'community_class1',selectlabel:1 },
@@ -80,8 +82,12 @@ Page({
       }
     }) 
   },
-
-  back: function (e) {
+  back: function(){
+    wx.navigateBack({
+      delta: 1
+    })
+  },
+  complete: function (e) {
     var that=this;
     var result=[];
     var object_power=1;

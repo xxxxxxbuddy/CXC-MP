@@ -1,9 +1,15 @@
 <!--pages/power/power.wxml-->
-<view class="type">
-   <text class='delete' bindtap='#'>>权限设置</text>
-   <text class='type2' bindtap='back'>完成</text>
+<view class='header' >
+  <view class='button' bindtap='back' >
+    <image src='{{back_url}}'></image>
+    <text>发布问题</text>
+  </view>
+  <text class='title' >
+    权限设置
+  </text>
+  <text class='complete' bindtap='complete'>完成</text>
 </view>
-<view style='margin-utop:15px;background-color:white;'>
+<view style='margin-top:15px;background-color:white;'>
  <radio-group  bindchange="radioChange">
   <label class='select_power' wx:for="{{items}}">
    <view>
@@ -12,7 +18,7 @@
     <text class='introduce'>{{item.introduce}}</text>
     <view class="{{item.community_class}}" wx:if="{{item.show!=''}}">
       <checkbox-group bindchange="checkboxChange" style="zoom:80%;">
-        <label  wx:for-items="{{community}}" style='margin-right:15px;'>
+        <label  wx:for-items="{{community}}" style='margin-right:30rpx;'>
             <checkbox value="{{index}}" checked="{{item.checked}}" style='margin-top:20px;' />{{item.community_name}}
         </label>
      </checkbox-group>

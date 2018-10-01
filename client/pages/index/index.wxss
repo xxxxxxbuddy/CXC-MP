@@ -140,7 +140,7 @@ page{
   width: 48rpx;
   height: 48rpx;
   top: 8rpx;
-  left: 26rpx;
+  left: 20rpx;
   padding-top: 8rpx;
   padding-bottom: 8rpx;
   padding-right: 12rpx;

@@ -10,6 +10,7 @@ Page({
       user_type: 0,
       user_id: 18211949725,
     },
+    upload_icon:'upload.png',
     question_title:'',
     question_info:'',
     power:{
@@ -76,6 +77,13 @@ Page({
           })
         }, 2000) 
        }
+    })
+  },
+  uploadPic: function(){
+    wx.uploadFile({
+      url: '',
+      filePath: '',
+      name: '',
     })
   }
 

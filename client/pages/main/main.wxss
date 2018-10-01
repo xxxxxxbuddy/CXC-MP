@@ -90,7 +90,7 @@ page{
 #community ul li{
     display: inline-flex;
     text-align: center;
-    border:2rpx solid;
+    border:2rpx solid #fff;
     margin: 6rpx 10rpx;
     border-radius: 20rpx;
     padding:0 10rpx;
@@ -114,7 +114,7 @@ page{
 #publishBox image{
     margin-top: 80rpx;
     margin-bottom: 20rpx;
-    width: 30%;
+    width: 200rpx;
     height: 170rpx;
 }
 #publishBox .close{
@@ -125,6 +125,11 @@ page{
     width: 80rpx;
     height: 80rpx;
 }
+.pubType{
+  margin-left:20rpx;
+
+}
+
 /* 动态 */
 .main{
     position: relative;

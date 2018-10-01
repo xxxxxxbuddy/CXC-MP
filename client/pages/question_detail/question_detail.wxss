@@ -98,3 +98,69 @@ page{
 .mgl{
   margin-left: 50rpx;
 }
+
+.commentBox{
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 2rpx 2rpx 2rpx 0 rgba(0, 0,0,0.3);
+  border-radius: 4rpx;
+}
+.comment{
+  margin-bottom: 10rpx;
+  padding-top: 20rpx;
+  padding-left: 20rpx;
+  padding-bottom: 10rpx;
+  border-bottom: 1px solid rgba(0, 0,0,0.3);
+  font-size: 32rpx;
+}
+.info{
+  padding-bottom: 10rpx;
+  margin-bottom: 20rpx;
+}
+.info image{
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: -50rpx;
+}
+.info ul{
+  display: flex;
+
+}
+.info ul li{
+  display: inline-flex;
+  width: 33%;
+  justify-content: space-around;
+  font-size: 30rpx;
+}
+
+
+
+
+.commentAws{
+  height: 300rpx;
+  width: 100%;
+  position: fixed;
+  background-color:#fff;
+  z-index: 3;    
+  transition: bottom 0.3s;
+}
+.commentAws textarea{
+  border: 3rpx solid #E9E9E9;
+  border-radius: 10rpx;
+  padding: 10rpx;
+  height: 250rpx;
+  width: 80%;
+  margin: 20rpx;
+  box-shadow: 0 2rpx 2rp 0 rgba(0, 0, 0, 0.5);
+  background-color: #E9E9E9;
+}
+.mask{
+    position: fixed;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #000;
+    opacity: 0.3;
+    transition: 0.3s opacity;
+    overflow: hidden;
+}

@@ -1,8 +1,9 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/regc/regc",
     "pages/main/main",
+    "pages/regc/regc",
+
+    "pages/index/index",
     "pages/settings/settings",
     "pages/subsettings/individual_info/individual_info",
     "pages/subsettings/published/published",

@@ -77,13 +77,13 @@ Page({
     "isActive2": "",
     "border1": "1px solid rgba(255, 255, 140, 1)",
     "border2": "",
+    "chosenCommunity": 'rgba(0, 187, 211, 1)',
     "questionTitle": '',
     "questionInfo": '',
     "questionArray": '',
     "projectArray": '',
     "communityList": '',
-    "allArray": '',
-    "opacity": "0",
+    "allArray": ''
     //"hideCommunity": "block"
   },
 
@@ -117,37 +117,24 @@ Page({
       }
       
     })
-   
-  },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    var that = this 
+    var that = this
     wx.request({
       url: config.service.home_page,
       method: 'get',
       header: {
         'content-type': 'application/json'
       },
-      success: function(res){
+      success: function (res) {
         //console.log(res.data)
         /*加载问题*/
-        if(res.data){
+        if (res.data) {
           for (var item of res.data.result1) {
             item.project_time = new Date(item.project_time.replace(/T/, " ").replace(/Z/, "").replace(/-/g, "/"))
             item.project_time = timeCalc(item.project_time)
           }
-          for(var item of res.data.result2){
+          for (var item of res.data.result2) {
             item.question_time = new Date(item.question_time.replace(/T/, " ").replace(/Z/, "").replace(/-/g, "/"))
-            item.question_time = timeCalc(item.question_time)             
+            item.question_time = timeCalc(item.question_time)
           }
           var result = res.data.result1.concat(res.data.result2)
           /**按热度排序**/
@@ -166,27 +153,38 @@ Page({
             // questionArray: questionArray,
             allArray: result
           })
-        }else{
+        } else {
           wx.showToast({
             title: '获取动态失败',
             icon: 'none'
           })
         }
-      console.log(app.globalData.userInfo)
+        console.log(app.globalData.userInfo)
 
       },
-      fail: function(){
+      fail: function () {
 
       }
-      }) 
-      that.setData({
-        opacity: "1"
-      })
+    })
       // window.addEventListener('scroll',function(){
       //   that.setData({
       //     hideCommunity: 'hidden'
       //   })
       // })
+   
+  },
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    
   },
 
   /**
