@@ -1,1 +1,32 @@
-<view></view>
+<view class='mask' bindtap='closeComment' style="opacity:{{maskOpacity}};z-index:{{mask_z_index}}" ></view>
+<view class='header' >
+  <view class='button' bindtap='back' >
+    <image src='{{back_url}}'></image>
+    <text>动态</text>
+  </view>
+  <text class='title' >
+      问题详情
+  </text>
+</view>
+
+<view class="questionInfo">
+  <view class='questionBox'>
+    <view class="questionTitle" name="title">{{questionTitle}}</view>
+      <view class="userInfo">
+        <image src='{{avatar_url}}' class="avatar"  />
+        <view class="userName" name="userName">{{userName}}</view>
+        <view class="time" name="time">{{pubTime}}</view>
+      </view>
+      <view class="subTitle">
+        <view name="subTitle">{{questionInfo}}</view>
+      </view>
+      <view class="socialInfo">
+        <ul>
+           <li>
+              <image src="{{answer_url}}"></image>
+                回答:<text name="answerNumber">{{answerNum}}</text>
+            </li>
+         </ul>
+       </view>
+    </view>
+  </view>

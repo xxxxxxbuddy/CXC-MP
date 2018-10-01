@@ -50,9 +50,11 @@ Page({
     questionInfo: '',
     answerNum: '',
     questionTitle: '',
-    answerArray: '',
+    answerList: '',
     commentAwsPos: '-100%',
-    user_id: ''
+    user_id: '',
+    answer_id: '',
+    object_id: ''
   },
 
   /**
@@ -88,7 +90,8 @@ Page({
           pubTime: timeCalc(new Date(result.question_time.replace(/T/, " ").replace(/Z/, "").replace(/-/g, "/"))),
           questionInfo: result.question_info,
           answerNum: result.answernum,
-          answerArray: answer
+          answerList: answer,
+          object_id: id
         })
       }
     })
@@ -152,7 +155,8 @@ Page({
       commentAwsPos: 0,
       maskOpacity: "0.3",
       mask_z_index: "2",
-      user_id: e.target.dataset.id
+      user_id: e.target.dataset.userid,
+      answer_id: e.target.dataset.answerid
     })
   },
   closeComment: function () {
@@ -165,6 +169,64 @@ Page({
   back: function(){
     wx.navigateBack({
       delta: 1
+    })
+  },
+  like: function(e){
+    var that = this
+    let time = new Date()
+    wx.request({
+      url: config.service.praise,
+      data: {
+        user_type: 0,
+        user_id: '15827576787',
+        object_type: 0,
+        object_id: this.data.object_id,
+        answer_id: e.target.dataset.id,
+        praise_time: time
+      },
+      success: function(res){
+        console.log(res.data)
+      }
+    })
+      wx.request({
+        url: config.service.detail,
+        method: 'get',
+        data: {
+          object_id: id,
+          object_type: dataType
+        },
+        success: function (res) {
+          let result = res.data.result[0]
+          let answer = res.data.answer
+          that.setData({
+            questionTitle: result.question_title,
+            userName: result.user_id,
+            pubTime: timeCalc(new Date(result.question_time.replace(/T/, " ").replace(/Z/, "").replace(/-/g, "/"))),
+            questionInfo: result.question_info,
+            answerNum: result.answernum,
+            answerList: answer
+          })
+        }
+      })
+  },
+  pubComment: function(e){
+    //评论-只允许对回答评论，不允许对评论评论，传输数据举例{user_type:0/1 ,user_id: 18211949726, comment_info:'你好，我也好',answer_id:1}
+    console.log(e)
+    wx.request({
+      url: config.service.comment,
+      data:{
+        user_type: 0,
+        user_id: '15827576787',
+        comment_info: e.detail.value.commentInfo,
+        answer_id: this.data.answer_id
+      },
+      success: function(res){
+        wx.showToast({
+          title: '评论成功',
+          icon: 'none'
+        })
+        console.log(res.data)
+      }
     })
   }
 })

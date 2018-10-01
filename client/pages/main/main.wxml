@@ -50,7 +50,7 @@
             </question>
             </view>
             <view  wx:else wx:key="{{project_id}}">
-            <project id='{{item.project_id}}' data="[{{item.project_id}},0]">
+            <project id='{{item.project_id}}' data-type="0">
                 <view slot="title" class="title">{{item.project_title}}</view>
                 <text slot="userName" class="userName">{{item.user_name}}</text>
                 <text slot="time" class="time">{{item.project_time}}</text>

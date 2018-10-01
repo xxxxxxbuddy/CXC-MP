@@ -131,6 +131,7 @@ Page({
           for (var item of res.data.result1) {
             item.project_time = new Date(item.project_time.replace(/T/, " ").replace(/Z/, "").replace(/-/g, "/"))
             item.project_time = timeCalc(item.project_time)
+            item.project_finish = item.project_finish.slice(0,10)
           }
           for (var item of res.data.result2) {
             item.question_time = new Date(item.question_time.replace(/T/, " ").replace(/Z/, "").replace(/-/g, "/"))
@@ -350,9 +351,15 @@ Page({
   jumpToDetail: function(e){
     let id = e.target.id //获得question_id或project_id
     let dataType = e.target.dataset.type
+    if(dataType == 1){
       wx.navigateTo({
-        url: './../question_detail/question_detail?id='+ id + '&type=' + dataType
+        url: './../question_detail/question_detail?id=' + id + '&type=' + dataType
       })
+    }else{
+      wx.navigateTo({
+        url: './../project_detail/project_detail?id=' + id + '&type=' + dataType
+      })
+    }
     
   },
   jumpToSettings: function(e){
