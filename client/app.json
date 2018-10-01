@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/main/main",
+    "pages/index/index",
     "pages/regc/regc",
+    "pages/main/main",
     "pages/settings/settings",
 
 
@@ -15,7 +16,6 @@
     "pages/question_detail/question_detail",
     "pages/logs/logs",
     "pages/power/power",
-    "pages/index/index",
     "pages/addCgi/addCgi",
     "pages/invite/invite"
   ],

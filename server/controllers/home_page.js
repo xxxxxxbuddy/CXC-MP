@@ -20,23 +20,27 @@ module.exports = async (ctx, next) => {
   var length2 = result1.length;
   for (var i = 0; i < length1; i++) {
     if (result1[i].user_type == 0) {
-      var information = await DB.select('individual_name').from('individual').where('individual_id', result1[i].user_id);
+      var information = await DB.select('individual_name', 'image').from('individual').where('individual_id', result1[i].user_id);
       result1[i].user_name = information[0].individual_name;
+      result1[i].user_image = information[0].image;
     }
     if (result1[i].user_type == 1) {
-      var information = await DB.select('company_name').from('company').where('company_id', result1[i].user_id);
+      var information = await DB.select('company_name', 'image').from('company').where('company_id', result1[i].user_id);
       result1[i].user_name = information[0].company_name;
+      result1[i].user_image = information[0].image;
     }
   }
 
   for (var i = 0; i < length2; i++) {
     if (result2[i].user_type == 0) {
-      var information = await DB.select('individual_name').from('individual').where('individual_id', result2[i].user_id);
+      var information = await DB.select('individual_name', 'image').from('individual').where('individual_id', result2[i].user_id);
       result2[i].user_name = information[0].individual_name;
+      result2[i].user_image = information[0].image;
     }
     if (result2[i].user_type == 1) {
-      var information = await DB.select('company_name').from('company').where('company_id', result2[i].user_id);
+      var information = await DB.select('company_name', 'image').from('company').where('company_id', result2[i].user_id);
       result2[i].user_name = information[0].company_name;
+      result2[i].user_image = information[0].image;
     }
   }
   
