@@ -28,12 +28,14 @@ module.exports = async (ctx, next) => {
     }
   for (var i = 0; i < result.length; i++) {
     if (result[i].user_type == 0) {
-      var information = await DB.select('individual_name').from('individual').where('individual_id', result[i].user_id);
+      var information = await DB.select('individual_name','image').from('individual').where('individual_id', result[i].user_id);
       result[i].user_name = information[0].individual_name;
+      result[i].user_image = information[0].image;
     }
     if (result[i].user_type == 1) {
-      var information = await DB.select('company_name').from('company').where('company_id', result[i].user_id);
+      var information = await DB.select('company_name', 'image').from('company').where('company_id', result[i].user_id);
       result[i].user_info = information[0].company_name;
+      result[i].user_image = information[0].image;
     }
   }
   ctx.body = {

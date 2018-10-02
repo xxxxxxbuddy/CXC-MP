@@ -103,12 +103,11 @@ Page({
       success: function (res) {
         console.log(res.code)
         wx.request({
-          url: 'https://api.weixin.qq.com/sns/jscode2session?appid=APPID&secret=SECRET&js_code=JSCODE&grant_type=authorization_code',
+          url: config.service.getopenid,
           method: 'get',
           data: { 
-            appid: 'wx2541631ee62bb5d9',
-            appSecret: '',
-            code: res.code },
+            code: res.code 
+            },
           success: function (res) {
             console.log(res.data)
           }

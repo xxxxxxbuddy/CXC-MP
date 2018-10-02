@@ -47,12 +47,12 @@ var config = {
       //home_dongtai: `${host}/weapp/home_dongtai`,
 
        //个人用户注册
-       //（前端需传过来的数据：例如：individual_id: 18211949729, individual_name: '周星驰', individual_job: '本科生', individual_corporation: '华中科技大学', individual_state: '明星人物（农民）', individual_introduce: '这个人很懒什么都没写'）,后台返回
+       //（前端需传过来的数据：例如：individual_id: 18211949729, individual_name: '周星驰', individual_job: '本科生', individual_corporation: '华中科技大学',image:'地址'}
       regs_individual: `${host}/weapp/regs_individual`,
 
       
       //公司用户注册
-      //（前端需传过来的数据：例如：individual_id: 18211949729, individual_name: '周星驰', individual_job: '本科生', individual_corporation: '华中科技大学', individual_state: '明星人物（农民）', individual_introduce: '这个人很懒什么都没写'
+      //（前端需传过来的数据：例如：individual_id: 18211949729, individual_name: '周星驰', individual_job: '本科生', individual_corporation: '华中科技大学',image:'地址'}
       regs_company: `${host}/weapp/regs_company`,
 
       //建圈,传过来数据{user_type: 0/1,user_id: 18211949726,community_name:'文艺圈',community_type:'文学',community_introduce:'无'}
@@ -107,7 +107,8 @@ var config = {
 
       //关注,传输数据举例{fans_type: 0/1, fans_id:18211949726,idol_type: 0/1, idol_id:18211949726}
       focus: `${host}/weapp/focus`,
-
+     //获取用户openid
+      getopenid: `${host}/weapp/getopenid`,
   
         
     }
