@@ -36,6 +36,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    id:{},
     "question": '',
     avatar_url: 'data:image/svg+xml;base64,77u/PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2IiB2aWV3Qm94PSIwIDAgNDggNDgiIGZpbGw9InJnYmEoMjU1LCAxNDEsIDI2LCAxKSI+CiAgICA8cGF0aCBkPSJNMjQgNEMxMi45NSA0IDQgMTIuOTUgNCAyNHM4Ljk1IDIwIDIwIDIwIDIwLTguOTUgMjAtMjBTMzUuMDUgNCAyNCA0em0wIDZjMy4zMSAwIDYgMi42OSA2IDYgMCAzLjMyLTIuNjkgNi02IDZzLTYtMi42OC02LTZjMC0zLjMxIDIuNjktNiA2LTZ6bTAgMjguNGMtNS4wMSAwLTkuNDEtMi41Ni0xMi02LjQ0LjA1LTMuOTcgOC4wMS02LjE2IDEyLTYuMTZzMTEuOTQgMi4xOSAxMiA2LjE2Yy0yLjU5IDMuODgtNi45OSA2LjQ0LTEyIDYuNDR6Ij48L3BhdGg+CiAgICA8cGF0aCBkPSJNMCAwaDQ4djQ4SDB6IiBmaWxsPSJub25lIj48L3BhdGg+Cjwvc3ZnPg==',
     answer_url: 'data:image/svg+xml;base64,77u/PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2IiB2aWV3Qm94PSIwIDAgNDggNDgiIGZpbGw9InJnYmEoMTg3LCAxODcsIDE4NywgMSkiPgogICAgPHBhdGggZD0iTTM4IDZIMTBjLTIuMjEgMC00IDEuNzktNCA0djI4YzAgMi4yMSAxLjc5IDQgNCA0aDI4YzIuMjEgMCA0LTEuNzkgNC00VjEwYzAtMi4yMS0xLjc5LTQtNC00ek0xOCAzNGgtNFYyMGg0djE0em04IDBoLTRWMTRoNHYyMHptOCAwaC00di04aDR2OHoiPjwvcGF0aD4KICAgIDxwYXRoIGQ9Ik0wIDBoNDh2NDhIMHoiIGZpbGw9Im5vbmUiPjwvcGF0aD4KPC9zdmc+',
@@ -124,7 +125,29 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    
+    var object_id = [];
+    var that=this;
+
+    if(that.data.id){
+      for (var item in that.data.id) {
+        if (that.data.id[item]) {
+          object_id.push(item)
+        }
+      }
+      console.log(object_id)
+      wx.request({
+        url: config.service.praise,
+        data: {
+          user_type: 0,
+          user_id: '15827576787',
+          object_type: 0,
+          object_id: object_id
+        },
+        success: function (res) {
+          console.log(res.data)
+        }
+      })
+    }
   },
 
   /**
@@ -147,16 +170,16 @@ Page({
   onShareAppMessage: function () {
     
   },
-  commentAws: function(){
-
+  commentAws: function(e){
+    wx.navigateTo({
+      url: "./../comment/comment?answer_id="+e.target.dataset.answerid
+    })
   },
-  commentAws: function (e) {
+  ansQuestion: function (e) {
     this.setData({
       commentAwsPos: 0,
       maskOpacity: "0.3",
-      mask_z_index: "2",
-      user_id: e.target.dataset.userid,
-      answer_id: e.target.dataset.answerid
+      mask_z_index: "2"
     })
   },
   closeComment: function () {
@@ -172,60 +195,56 @@ Page({
     })
   },
   like: function(e){
-    var that = this
-    let time = new Date()
-    wx.request({
-      url: config.service.praise,
-      data: {
-        user_type: 0,
-        user_id: '15827576787',
-        object_type: 0,
-        object_id: this.data.object_id,
-        answer_id: e.target.dataset.id,
-        praise_time: time
-      },
-      success: function(res){
-        console.log(res.data)
-      }
-    })
-      wx.request({
-        url: config.service.detail,
-        method: 'get',
-        data: {
-          object_id: id,
-          object_type: dataType
-        },
-        success: function (res) {
-          let result = res.data.result[0]
-          let answer = res.data.answer
-          that.setData({
-            questionTitle: result.question_title,
-            userName: result.user_id,
-            pubTime: timeCalc(new Date(result.question_time.replace(/T/, " ").replace(/Z/, "").replace(/-/g, "/"))),
-            questionInfo: result.question_info,
-            answerNum: result.answernum,
-            answerList: answer
-          })
-        }
-      })
-  },
-  pubComment: function(e){
-    //评论-只允许对回答评论，不允许对评论评论，传输数据举例{user_type:0/1 ,user_id: 18211949726, comment_info:'你好，我也好',answer_id:1}
     console.log(e)
+    var that = this
+
+    let id = e.target.dataset.id
+    if(that.data.id[id]){
+      let count = -1
+      for (var ans of that.data.answerList) {
+        count++
+        if (ans.answer_id == id) {
+          that.data.answerList[count].praisenum--;
+          that.data.id[id]= false;
+          that.setData({
+            answerList: that.data.answerList,
+          })
+          break
+        }
+      }
+
+    }
+    else {
+      let count = -1
+      for (var ans of that.data.answerList) {
+        count++
+        if (ans.answer_id == id) {
+          that.data.answerList[count].praisenum++;
+          that.data.id[id] = true;
+          that.setData({
+            answerList: that.data.answerList,
+          })
+          break
+        }
+      }
+    } 
+  },
+  submitAns: function(e){
+     //回答问题，传输数据举例{user_type: 0/1, user_id:18211949726, answer_info: '你好，我也好',object_type:0,object_id:1}
     wx.request({
-      url: config.service.comment,
-      data:{
-        user_type: 0,
-        user_id: '15827576787',
-        comment_info: e.detail.value.commentInfo,
-        answer_id: this.data.answer_id
+      url: config.service.answer,
+      data: {
+        user_type: 0,      //app.globalData.user_type,
+        user_id: "15827576787",   //app.globalData.user_id,
+        answer_info: e.detail.value.answerInfo,
+        object_type: 1,
+        object_id: this.data.object_id
       },
-      success: function(res){
+      success: function(){
         wx.showToast({
-          title: '评论成功',
+          title: '回答成功！',
           icon: 'none'
         })
-        console.log(res.data)
       }
     })
   }

@@ -91,6 +91,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (e) {
+    wx.getUserInfo({
+      success: function(res){
+        console.log(res)
+      }
+    })
     var that = this;
     wx.request({
       method: 'get',
@@ -140,14 +145,6 @@ Page({
           var result = res.data.result1.concat(res.data.result2)
           /**按热度排序**/
           result = quickSort(result)
-          /* var projectArray = []
-          var questionArray = []
-          for(var i=0;i<result.length;i++){
-            if(result[i].question_id)
-              questionArray.push(result[i])
-            else
-              projectArray.push(result[i])
-          }*/
           console.log(result)
           that.setData({
             //projectArray: projectArray,

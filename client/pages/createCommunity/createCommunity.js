@@ -1,4 +1,4 @@
-// pages/subsetting/following/following.js
+// pages/createCommunity/createCommunity.js
 Page({
 
   /**

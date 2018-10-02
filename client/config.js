@@ -65,7 +65,7 @@ var config = {
       detail: `${host}/weapp/detail`,
 
       //获取回答详细内容和对应的评论,传输数据举例{answer_id:1}
-      answer: `${host}/weapp/answer`,
+      answer_detail: `${host}/weapp/answer_detail`,
 
       //获取用户的所有圈子，传输数据举例——只获取名字{user_type: 0/1, user_id:18211949726,need:'name'}，获取全部信息{user_type: 0/1, user_id:18211949726,need:'all'}
       user_community: `${host}/weapp/user_community`,

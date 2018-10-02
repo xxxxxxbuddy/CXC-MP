@@ -4,7 +4,6 @@ page{
 }
 
 .header{
-
   background-color: #fff;
   width:100%;
   padding-bottom:20rpx;
@@ -15,23 +14,24 @@ page{
   margin-top: 22rpx;
   margin-left: 16rpx;
   margin-right: 13rpx;
-  margin-bottom:-4rpx;
+  margin-bottom:-4rpx; 
 
 }
 .header text{
   color: rgba(0, 187, 221, 1);
-  line-height: 36rpx;
+  line-height: 30rpx;
+  font-size: 40rpx;
 }
 .button{
   width: 160rpx;
   display: inline-block;
 }
-.questionInfo{
-  margin-bottom: 30rpx;
-}
 .title{
   margin-left: 140rpx;
   display: inline-block;
+}
+.ansButton{
+  margin-left: 125rpx;
 }
 
 .questionBox{

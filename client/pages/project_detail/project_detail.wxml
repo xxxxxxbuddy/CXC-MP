@@ -5,8 +5,9 @@
     <text>动态</text>
   </view>
   <text class='title' >
-      问题详情
+      项目详情
   </text>
+  <text class='ansButton' bindtap='ansQuestion'>我要回答</text>
 </view>
 
 <view class="questionInfo">
@@ -30,3 +31,33 @@
        </view>
     </view>
   </view>
+
+
+<view class='commentBox' wx:for="{{answerList}}" wx:key="{{answer_id}}">
+  <view class='comment'>
+    <text>{{item.answer_info}}</text>
+  </view>
+  <view class='info'>
+    <ul>
+      <li>
+        <image src='{{avatar_icon}}' />
+        <text class='mgl'>{{item.user_id}}</text>
+      </li>
+      <li bindtap='commentAws' data-userid='{{item.user_id}}' data-answerid='{{item.answer_id}}'>
+        <image src='{{comment_icon}}' />
+        <text>{{item.commentnum}}</text>
+      </li>
+      <li bindtap='like' data-id='{{item.answer_id}}' data-praisenum='{{item.praisenum}}'>
+        <image src='{{like_icon}}' />
+        <text>{{item.praisenum}}</text>
+      </li>
+    </ul>
+  </view>
+</view>   
+
+<view class='commentAws' style='bottom:{{commentAwsPos}}'>
+  <form bindsubmit='submitAns'>
+    <textarea auto-focus='true' placeholder='回答@{{user_id}}' name='answerInfo'></textarea>
+    <button form-type='submit'>发送</button>
+  </form>
+</view>

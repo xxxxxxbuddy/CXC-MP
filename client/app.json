@@ -1,6 +1,12 @@
 {
   "pages": [
+    "pages/main/main",
+    "pages/createCommunity/createCommunity",
+
     "pages/project_detail/project_detail",
+    "pages/comment/comment",
+
+
     "pages/index/index",
     "pages/regc/regc",
     "pages/settings/settings",
@@ -12,7 +18,6 @@
     "pages/pub_project/pub_project",
     "pages/pub_question/pub_question",
     "pages/question_detail/question_detail",
-
     "pages/logs/logs",
     "pages/power/power",
     "pages/addCgi/addCgi",

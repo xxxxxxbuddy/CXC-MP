@@ -79,3 +79,7 @@ page{
   height: 1px;
   background-color: rgb(194, 190, 190);
 }
+
+label{
+  display: inline-block;
+}

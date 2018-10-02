@@ -7,6 +7,7 @@
   <text class='title' >
       问题详情
   </text>
+  <text class='ansButton' bindtap='ansQuestion'>我要回答</text>
 </view>
 
 <view class="questionInfo">
@@ -55,8 +56,8 @@
 </view>   
 
 <view class='commentAws' style='bottom:{{commentAwsPos}}'>
-  <form bindsubmit='pubComment'>
-    <textarea auto-focus='true' placeholder='评论@{{user_id}}' name='commentInfo'></textarea>
+  <form bindsubmit='submitAns'>
+    <textarea auto-focus='true' placeholder='回答@{{user_id}}' name='answerInfo'></textarea>
     <button form-type='submit'>发送</button>
   </form>
 </view>
