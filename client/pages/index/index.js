@@ -40,6 +40,18 @@ Page({
   },
   //事件处理函数
   onLoad: function () {
+    wx.getStorage({
+      key: 'user',
+      success: function(res) {
+        app.globalData.userInfo.user_type = res.data.user_type;
+        app.globalData.userInfo.user_id = res.data.user_id;
+        app.globalData.user_name = res.data.user_name;
+        app.globalData.user_image = res.data.user_image;
+        wx.navigateTo({
+          url: './../main/main',
+        })
+      },
+    })
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -106,10 +118,29 @@ Page({
           url: config.service.getopenid,
           method: 'get',
           data: { 
-            code: res.code 
+            code: res.code,
+            user_type:1
             },
           success: function (res) {
             console.log(res.data)
+            if(res.data.result){
+              app.globalData.userInfo.user_type = res.data.result.user_type;
+              app.globalData.userInfo.user_id = res.data.result.user_id;
+              app.globalData.user_name=res.data.result.user_name;
+              app.globalData.user_image=res.data.result.user_image;
+              wx.setStorage({
+                key: 'user',
+                data: {
+                  user_type: res.data.result.user_type,
+                  user_id : res.data.result.user_id,
+                  user_name : res.data.result.user_name,
+                  user_image : res.data.result.user_image,
+                },
+              })
+              wx.navigateTo({
+                url: './../main/main'
+              })
+            }
           }
         })
       }
@@ -124,6 +155,26 @@ Page({
       wx.login({
         success: function (res) {
           console.log(res.code)
+          wx.request({
+            url: config.service.getopenid,
+            method: 'get',
+            data: {
+              code: res.code,
+              user_type: 0
+            },
+            success: function (res) {
+              console.log(res.data)
+              if (res.data.result) {
+                app.globalData.userInfo.user_type = res.data.result.user_type;
+                app.globalData.userInfo.user_id = res.data.result.user_id;
+                app.globalData.user_name = res.data.result.user_name;
+                app.globalData.user_image = res.data.result.user_image;
+                wx.navigateTo({
+                  url: './../main/main'
+                })
+              }
+            }
+          })
         }
       })
   },

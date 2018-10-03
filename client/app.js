@@ -75,8 +75,12 @@ App({
     })
     },
     globalData:{
-      userInfo: null,
-      user_id: 0,
+      userInfo: {
+        user_type: 0, 
+        user_id: '',
+        user_name: '',
+        image: ''
+      },
       jobList: ['本科生','硕士','博士'],
       phone_url: 'https://qcloudtest-1257116845.cos.ap-guangzhou.myqcloud.com/1538531303107-IptVFBQ0J.png',
       focus_url: 'https://qcloudtest-1257116845.cos.ap-guangzhou.myqcloud.com/1538531342563-EjYYvDPBJ.png',

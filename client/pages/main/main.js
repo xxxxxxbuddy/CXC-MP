@@ -59,8 +59,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    'user_type':0,
-    'user_id': '18211949725', 
+    'user_type':app.globalData.user_type,
+    'user_id': app.globalData.user_id, 
     "publish_url": app.globalData.pub_url,
      close: app.globalData.close_url,
     "myInfo_url": app.globalData.me3_url,
@@ -91,7 +91,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (e) {
+  onLoad: function (options) {
     wx.getUserInfo({
       success: function(res){
         console.log(res)
