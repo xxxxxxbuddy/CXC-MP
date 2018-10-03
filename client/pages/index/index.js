@@ -7,16 +7,16 @@ Page({
   data: {
     background_url: './../images/background.jpg',
     logo_url: './..images/logo.jpg',
-    avatar_img: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACTklEQVRYR7WXS4iOURjHf38iFlJ2xkYitymXScplbFgoNS4rimJlIdYWlJK1srEhkcuC0iw1SsZ9atIIk0t2yMLKLdJfJ9/7NfPO933nvOedebfn//yfX+8553meIzI+2/OBlcCyRvhr4JWkT1XtVCXA9mrgPLC+TdxT4LCk56m+yQC29wDXgJkR89/APkm3UiCSAGz3AI+BGSmmwB9go6ShmD4KYHs6MAosjpmV1t+FMyLpb6e4FID9wOWKyQv5QUmX6gLcBML+53y3Je2qC/AC6M7JDryRtLQuwHtgUSbAR0kL6gLcA7ZkAjyUtKkuwFngWCbAOUlH6wKsA55lAvRIGq4FEIJt3wG2VYTol9QXi4nWgQbAPOAJsCRm2FgfATZI+h7TJwE0IOYCoajsjJheAI5I+hVLHtaTAGwHXUh8AlgTMQ6d8CpwUdLXGEQUwHaoZKeBFTGz0vqXcHsk3cg6hLZD270O7K6YuCwPfeRQu6bU8g/Yng2Ek9+xiFQAGwD6JP0ox0wAaOx3P7CjQoIU6QNgu6RvY8WtAE4BJ1McMzRXJB1oC2B7LRCmmGkZ5qkhYVJ6VIjH/QHb94HNqU6ZuhFJqyYA2A4j19tM06phWyXdHVeIbJ8Bjld1ytQ3z0JzC2yHWt9u3s/M0zbss6TwuPlfim3PAsIdjVbGSSTpCi+pAmAh8GESzVOsuiW9LADqDB0pyVppeiUNFgChw3WcXHKzdIhbLmm0AAhPrlCAmvdzChKOtRyU1Fu+hnOAvUDXFCb/CYR5YaDojv8AmzivIS6oo+8AAAAASUVORK5CYII=',
-    enterprise_url: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABxUlEQVRYR+2XMUgcQRSGvx+0MmAIpBHSpxFMe1YJpBBNI8dhJwjpYm0jxJRKylTpDDZykCJYCoaEYCloY2EZsBIUsQiGPJlkJqx7O7c7e3fa3Ja3M/N9O/M/3o2450d1+Wb2GHgDrEmyuuvUEvDwb8BT4DOwIOm6jkSygJk9An54eGDuAa8kXaVKJAl4+FdgsgB0ALyQdJ4iUVmgBB6Yx17itKpEJYGK8MD8CTyXdFJFolQgER6YZ17iqEyiq0BNeGBeAjOSXGCjT1TAzMaB75HAlX1YeP8LaEraiU0oFPBwV1rPqpK6jPsDLEnaLBrTIdBneJa5LOlDXuKWwADhgbshaSUr8V/gDuCB647CHYk7Gv4K3CE8SLhQzrv+ITN7ALjG0o/ApWT2X//IzzCzFrCdslLC2JakdmEGwo9DgeEOVNgBV7/vfOVk8/QQ2ALGuoSyLyHclfSyCGJmrr5nBy3QluRKteMxM1dizaHAcAd63YGGv3jE1uklhA1J+2W9wDWoL8BcxOCTpMVIFXwEXkfmHQJT+Xtk7D/hKLAKTAMjmQXdJfStJNe+i8rwCbAOTGRe/gbcV7+XdJGfVHovSGi1tYbeAObs1SkWzS4+AAAAAElFTkSuQmCC',
-    individual_back: 'return(2).svg',
-    enterprise_back: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACDElEQVRYR+2WO2hVQRCGv1/FRq1CUESCJBJBBIm2Vj4LQZuIIFYKNoqtqCBa+OostFGDjYIiiYWVISlEFB9gJxZWFhoCgpWCj/DLwirX4+553EvubbLNKXZm/+/MzsyO6PFSj/VZAGgcAdtXgX3ALknvO73CRgC2zwNno+huSZNdA7B9BLjVItg9ANt7gYfAoq4D2N4KTANLC+Ge/wjY3gg8B1Yk7np+AWwPAK+AlZlE+wHMAp+AF8Aj4ImkX00SM1kFtvui+GCTw4CPwDngtqS5Or7/AdheBjwFRuockLF5CxyQFL6lKwVwLzhXOdbY/w6ckHSjzDYFMAOsqiFQ1+SUpMs54xRAaLMThZqvK5azOy7pemozl4TFrtcpwDdgnaQQ3X9W9i2wfRq40Klyi/9dSYdqAwRD29eAYxmIB8BPYDhWzOIK2FCW/ZK+tNqVvoa2w/59YH9ZJ7S9HNgOhKvbU5I/RyXdrA0Qo7AEeAxsK0AkW7HtTcA4MJSAHpc02gggQqSaU/YtiBG5EweXVr03krY0BogQoT0/A9bHAyofo0QOfZbU3xZAhFgNvAbCd6ekqbLEsx2u7yWwOdp9kLS2bYAIsQG4BByU9LWqTG2HKnkXE3Na0o6OAKoEU/u2x4DDwBlJF3sBEBIvzAxrJIUZ4u9qNBW38/d/fGyflHSleEbXAHLwCwA9j8BvXwKiISFtuX0AAAAASUVORK5CYII=',
-    job_icon: 'job.png',
-    corporation_icon: 'corporation.png',
-    phone_icon: 'phone.png',
-    user_icon: 'user.png',
-    type_icon: 'type.png',
-    location_icon: 'location.png',
+    avatar_img: app.globalData.me1_url,
+    enterprise_url: app.globalData.company_url,
+    individual_back: app.globalData.individual_back_url,
+    enterprise_back: app.globalData.company_back_url,
+    job_icon: app.globalData.job_url,
+    corporation_icon: app.globalData.corporation_url,
+    phone_icon: app.globalData.phone_url,
+    user_icon: app.globalData.me2_url,
+    type_icon: app.globalData.company_type_url,
+    location_icon: app.globalData.address_url,
     userInfo: {},
     jobList: ['职业','学生','自由职业者','其他'],
     companyList: ['公司类别','1','2'],
@@ -124,14 +124,6 @@ Page({
       wx.login({
         success: function (res) {
           console.log(res.code)
-          wx.request({
-            url: 'https://api.weixin.qq.com/sns/jscode2session?appid=APPID&secret=SECRET&js_code=JSCODE&grant_type=authorization_code',
-            method: 'get',
-            data: { code: res.code },
-            success: function (res) {
-              console.log(res.data)
-            }
-          })
         }
       })
   },

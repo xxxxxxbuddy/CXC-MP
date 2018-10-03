@@ -1,11 +1,10 @@
-var qcloud = require('../../vendor/wafer2-client-sdk/lib/regc.js')
+var qcloud = require('../../vendor/wafer2-client-sdk/index')
 var config = require('../../config')
+var util = require('../../utils/util.js')
 // pages/index/login.js
 Page({
   data: {
-    userName: 'limumu',
-    job:'teacher',
-    corporation:'hust',
+    imgUrl:'',
   },
   //获取用户输入的用户名
   userNameInput: function (e) {
@@ -25,9 +24,48 @@ Page({
   },
   //获取用户输入的密码
   loginBtnClick: function (e) {
-    console.log("用户名：" + this.data.userName + " 密码：" + this.data.userPwd);
+    var that = this
+
+    // 选择图片
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['compressed'],
+      sourceType: ['album', 'camera'],
+      success: function (res) {
+        util.showBusy('正在上传')
+        var filePath = res.tempFilePaths[0]
+
+        // 上传图片
+        wx.uploadFile({
+          url: config.service.uploadUrl,
+          filePath: filePath,
+          name: 'file',
+
+          success: function (res) {
+            util.showSuccess('上传图片成功')
+            console.log(res)
+            res = JSON.parse(res.data)
+            console.log(res)
+            that.setData({
+              imgUrl: res.data.imgUrl
+            })
+          },
+
+          fail: function (e) {
+            util.showModel('上传图片失败')
+          }
+        })
+
+      },
+      fail: function (e) {
+        console.error(e)
+      }
+    })
+  },
+
     //index.js
     //获取应用实例
+    /*
     var that=this
     wx.getUserInfo({
       success: function (res) {
@@ -39,7 +77,7 @@ Page({
     })
   }
   })
-  },
+  */
 
         /*
     wx.login({

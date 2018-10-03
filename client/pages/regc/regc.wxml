@@ -15,4 +15,4 @@
   <button  bindtap="loginBtnClick">登录</button>
   <text>{{x}}</text>
 </view>
-<image src='{{src}}' ></image>
+<image src='{{imgUrl}}'></image>

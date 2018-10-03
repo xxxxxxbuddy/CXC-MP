@@ -19,8 +19,8 @@ var config = {
         // 测试的信道服务地址
         tunnelUrl: `${host}/weapp/tunnel`,
 
-        // 上传图片接口
-        uploadUrl: `${host}/weapp/upload`,
+      // 上传图片接口
+      uploadUrl: `${host}/weapp/upload`,
 
 
         //注册上传信息接口------该页面用于调试，无意义
@@ -94,6 +94,11 @@ var config = {
       //关注我的，传输数据举例{user_type: 0/1, user_id:18211949726}
       myfans: `${host}/weapp/myfans`,
 
+
+      //我关注的
+      myfocus: `${host}/weapp/myfocus`,
+
+
       //我关注的用户，传输数据举例{user_type: 0/1, user_id:18211949726}
       myidol: `${host}/weapp/myidol`,
 
@@ -107,9 +112,12 @@ var config = {
 
       //关注,传输数据举例{fans_type: 0/1, fans_id:18211949726,idol_type: 0/1, idol_id:18211949726}
       focus: `${host}/weapp/focus`,
+
+      
      //获取用户openid
       getopenid: `${host}/weapp/getopenid`,
-  
+    //上传图片至服务器
+      uploadimage: `${host}/weapp/uploadimage`,
         
     }
 };

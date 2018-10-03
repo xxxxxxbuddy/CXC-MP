@@ -26,8 +26,19 @@ module.exports = async (ctx, next) => {
       comment[i].user_image = information[0].image;
     }
   }
+  if (answer.user_type == 0) {
+    var information = await DB.select('individual_name','image').from('individual').where('individual_id', answer[i].user_id);
+    answer.user_name = information[0].individual_name;
+    answer.user_image=information[0].image;
+  }
+  if (answer.user_type == 1) {
+    var information = await DB.select('company_name', 'image').from('company').where('company_id', answer[i].user_id);
+    answer.user_name = information[0].company_name;
+    answer.user_image = information[0].image;
+  }
   ctx.body = {
     code: 1,
-    result: comment       //返回发表的所有项目，最新的在前
+    result: comment,       //返回发表的所有项目，最新的在前
+    answer: answer
   }
 }
