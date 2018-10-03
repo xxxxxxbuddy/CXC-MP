@@ -46,6 +46,16 @@ var config = require('./config')
 
 App({
     onLaunch: function () {
+      var user = wx.getStorageSync("user")
+      if (user) {
+        this.globalData.userInfo.user_type = user.user_type;
+        this.globalData.userInfo.user_id = user.user_id;
+        this.globalData.user_name = user.user_name;
+        this.globalData.user_image = user.user_image;
+        wx.redirectTo({
+            url: '/pages/main/main',
+          })
+        }
         qcloud.setLoginUrl(config.service.loginUrl)
         //登录
     wx.login({
@@ -54,6 +64,7 @@ App({
       }
     })
     // 获取用户信息
+    
     wx.getSetting({
       success: res => {
         if (res.authSetting['scope.userInfo']) {
@@ -77,8 +88,12 @@ App({
     })
     },
     globalData:{
-      userInfo: null,
-      user_id: 0,
+      userInfo: {
+        user_type: 0, 
+        user_id: '',
+        user_name: '',
+        image: ''
+      },
       jobList: ['本科生','硕士','博士'],
       phone_url: 'https://qcloudtest-1257116845.cos.ap-guangzhou.myqcloud.com/1538531303107-IptVFBQ0J.png',
       focus_url: 'https://qcloudtest-1257116845.cos.ap-guangzhou.myqcloud.com/1538531342563-EjYYvDPBJ.png',

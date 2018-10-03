@@ -39,12 +39,12 @@ var config = {
         home_page: `${host}/weapp/home_page`,
 
        //用于圈子内动态展示
-       //（前端需传输数据，user_id:18211949726）
+       //（前端需传输数据，community_id: 1）
       community_PQ: `${host}/weapp/community_PQ`,
 
       //用于关注的动态展示
       //（前端需传输数据，user_id:18211949726）
-      //home_dongtai: `${host}/weapp/home_dongtai`,
+      home_dongtai: `${host}/weapp/home_dongtai`,
 
        //个人用户注册
        //（前端需传过来的数据：例如：individual_id: 18211949729, individual_name: '周星驰', individual_job: '本科生', individual_corporation: '华中科技大学',image:'地址'}

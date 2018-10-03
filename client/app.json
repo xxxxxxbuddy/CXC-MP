@@ -1,14 +1,14 @@
 {
   "pages": [
+    "pages/main/main",
+    "pages/member/member",
+    "pages/community/community",
     "pages/index/index",
     "pages/home/home",
     "pages/regc/regc",
-    "pages/main/main",
-
     "pages/project_detail/project_detail",
     "pages/createCommunity/createCommunity",
     "pages/comment/comment",
-
     "pages/settings/settings",
     "pages/subsettings/individual_info/individual_info",
     "pages/subsettings/published/published",

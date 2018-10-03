@@ -59,8 +59,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    'user_type':0,
-    'user_id': '18211949725', 
+    'user_type':app.globalData.user_type,
+    'user_id': app.globalData.user_id, 
     "publish_url": app.globalData.pub_url,
      close: app.globalData.close_url,
     "myInfo_url": app.globalData.me3_url,
@@ -91,7 +91,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (e) {
+  onLoad: function (options) {
     wx.getUserInfo({
       success: function(res){
         console.log(res)
@@ -103,7 +103,7 @@ Page({
       url: config.service.user_community,
       data: {
         user_type:this.data.user_type,
-        user_id: this.data.user_id,
+        user_id: "18211949725",
         need: 'name'
       },
       success: function(res){
@@ -123,7 +123,6 @@ Page({
       }
       
     })
-    var that = this
     wx.request({
       url: config.service.home_page,
       method: 'get',
@@ -266,6 +265,42 @@ Page({
     })
   },
   chooseTag1: function(){
+    wx.request({
+      url: config.service.home_page,
+      method: 'get',
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+        //console.log(res.data)
+        /*加载问题*/
+        if (res.data) {
+          for (var item of res.data.result1) {
+            item.project_time = new Date(item.project_time.replace(/T/, " ").replace(/Z/, "").replace(/-/g, "/"))
+            item.project_time = timeCalc(item.project_time)
+            item.project_finish = item.project_finish.slice(0, 10)
+          }
+          for (var item of res.data.result2) {
+            item.question_time = new Date(item.question_time.replace(/T/, " ").replace(/Z/, "").replace(/-/g, "/"))
+            item.question_time = timeCalc(item.question_time)
+          }
+          var result = res.data.result1.concat(res.data.result2)
+          /**按热度排序**/
+          result = quickSort(result)
+          console.log(result)
+          that.setData({
+            //projectArray: projectArray,
+            // questionArray: questionArray,
+            allArray: result
+          })
+        } else {
+          wx.showToast({
+            title: '获取动态失败',
+            icon: 'none'
+          })
+        }
+      }
+    })
     this.setData({
       isActive1: "#fff",
       isActive2: "",
@@ -274,6 +309,39 @@ Page({
     })
   },
   chooseTag2: function(){
+    var that = this
+    wx.request({
+      url: config.service.myfocus,
+      data: {
+        user_type: app.globalData.userInfo.user_type,
+        user_id: app.globalData.userInfo.user_id
+      },
+      success: function(res){
+        if (res.data) {
+          for (var item of res.data.project) {
+            item.project_time = new Date(item.project_time.replace(/T/, " ").replace(/Z/, "").replace(/-/g, "/"))
+            item.project_time = timeCalc(item.project_time)
+            item.project_finish = item.project_finish.slice(0, 10)
+          }
+          for (var item of res.data.question) {
+            item.question_time = new Date(item.question_time.replace(/T/, " ").replace(/Z/, "").replace(/-/g, "/"))
+            item.question_time = timeCalc(item.question_time)
+          }
+          var result = res.data.project.concat(res.data.question)
+          /**按热度排序**/
+          result = quickSort(result)
+          console.log(result)
+          that.setData({
+            allArray: result
+          })
+        } else {
+          wx.showToast({
+            title: '暂无关注动态',
+            icon: 'none'
+          })
+        }
+      }
+    })
     this.setData({
       isActive2: "#fff",
       isActive1: "",

@@ -106,10 +106,29 @@ Page({
           url: config.service.getopenid,
           method: 'get',
           data: { 
-            code: res.code 
+            code: res.code,
+            user_type:1
             },
           success: function (res) {
             console.log(res.data)
+            if(res.data.result){
+              app.globalData.userInfo.user_type = res.data.result.user_type;
+              app.globalData.userInfo.user_id = res.data.result.user_id;
+              app.globalData.user_name=res.data.result.user_name;
+              app.globalData.user_image=res.data.result.user_image;
+              wx.setStorage({
+                key: 'user',
+                data: {
+                  user_type: res.data.result.user_type,
+                  user_id : res.data.result.user_id,
+                  user_name : res.data.result.user_name,
+                  user_image : res.data.result.user_image,
+                },
+              })
+              wx.navigateTo({
+                url: './../main/main'
+              })
+            }
           }
         })
       }
@@ -124,6 +143,26 @@ Page({
       wx.login({
         success: function (res) {
           console.log(res.code)
+          wx.request({
+            url: config.service.getopenid,
+            method: 'get',
+            data: {
+              code: res.code,
+              user_type: 0
+            },
+            success: function (res) {
+              console.log(res.data)
+              if (res.data.result) {
+                app.globalData.userInfo.user_type = res.data.result.user_type;
+                app.globalData.userInfo.user_id = res.data.result.user_id;
+                app.globalData.user_name = res.data.result.user_name;
+                app.globalData.user_image = res.data.result.user_image;
+                wx.navigateTo({
+                  url: './../main/main'
+                })
+              }
+            }
+          })
         }
       })
   },
