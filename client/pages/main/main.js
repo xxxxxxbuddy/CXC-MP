@@ -27,7 +27,7 @@ function quickSort(arr){
 
 function timeCalc(time) {
   var now = new Date()
-  var timeDiff = parseInt((now - time) / 1000)     //单位为秒
+  var timeDiff = parseInt((now - time) / 1000) - 28800    //单位为秒
   if (timeDiff > 604800) {
     if (time.getFullYear() != now.getFullYear()) {
       return time.getFullYear() + time.getMonth() + time.getDate()
@@ -49,7 +49,7 @@ function timeCalc(time) {
   } else if (timeDiff >= 3600) {
     return parseInt(timeDiff / 60 / 60) + '小时前'
   } else return parseInt(timeDiff / 60) + '分钟前'
-
+  
 }
 
 

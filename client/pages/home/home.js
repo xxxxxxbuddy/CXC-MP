@@ -1,4 +1,4 @@
-// pages/home/home.js
+var config = require("./../../config.js")
 Page({
 
   /**
@@ -12,7 +12,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this
+    wx.request({
+      url: config.service.home,
+      data: {
+        user_type: ,
+        user_id:
+      },
+      success: function(res){
+        that.setData({
+          
+        })
+      }
+    })
   },
 
   /**
@@ -62,5 +74,26 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  jumpToPub: function(){
+    wx.navigateTo({
+      url: './../subsettings/published/published?user_id=' + this.data.userId,
+    })
+  },
+  jumpToFollowing: function () {
+    wx.navigateTo({
+      url: './../subsettings/following/following?user_id=' + this.data.userId,
+    })
+  },
+  jumpToFollower: function () {
+    wx.navigateTo({
+      url: './../subsettings/followers/followers?user_id=' + this.data.userId,
+    })
+  },
+  jumpToCommunity: function () {
+    wx.navigateTo({
+      url: './../subsettings/community/community?user_id=' + this.data.userId,
+    })
   }
+  
 })

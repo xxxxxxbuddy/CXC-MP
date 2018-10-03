@@ -47,8 +47,8 @@ page{
     margin-top: 45rpx;
     margin-left: 10rpx;
     display: flex;
-    width: 70rpx;
-    height: 70rpx;
+    width: 65rpx;
+    height: 65rpx;
 }
 .tags{
     padding-bottom: 2rpx;
