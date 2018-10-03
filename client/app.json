@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/index/index",
     "pages/regc/regc",
+    "pages/index/index",
     "pages/main/main",
     "pages/home/home",
     "pages/project_detail/project_detail",
