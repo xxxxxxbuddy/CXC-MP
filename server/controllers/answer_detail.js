@@ -37,6 +37,7 @@ module.exports = async (ctx, next) => {
     answer.user_name = information[0].company_name;
     answer.user_image = information[0].image;
   }
+  
   answer.comment=comment;
   ctx.body = {
     code: 1,

@@ -29,20 +29,7 @@ Page({
   onLoad: function (options) {
     var that = this
     wx.request({
-      url: config.service.pubed_question,
-      method: 'get',
-      data: {
-        user_type: 0,
-        user_id: 18211949725
-      },
-      success: function(res){
-        that.setData({
-          questionArray: res.data.result
-        })
-      }
-    })
-    wx.request({
-      url: config.service.pubed_project,
+      url: config.service.pubed,
       method: 'get',
       data: {
         user_type: 0,
@@ -51,7 +38,8 @@ Page({
       success: function (res) {
         console.log(res)
         that.setData({
-          projectArray: res.data.result
+          projectArray: res.data.project,
+          questionArray: res.data.question
         })
       }
     })

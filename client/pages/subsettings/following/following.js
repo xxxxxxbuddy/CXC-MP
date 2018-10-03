@@ -1,3 +1,4 @@
+var config = require('../../../config');
 const app = getApp()
 Page({
 
@@ -26,6 +27,22 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this
+    wx.request({
+      url: config.service.myfocus,
+      method: 'get',
+      data: {
+        user_type: 0,
+        user_id: 18211949725
+      },
+      success: function (res) {
+        console.log(res)
+        that.setData({
+          projectArray: res.data.project,
+          questionArray: res.data.question
+        })
+      }
+    })
     
   },
 

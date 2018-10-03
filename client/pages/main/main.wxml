@@ -24,9 +24,9 @@
             </view>
     </view>
     <view id="publishBox" style="top:{{pubBoxPosition}}">
-        <image class="close" bindtap='closePubBox' src="data:image/svg+xml;base64,77u/PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2IiB2aWV3Qm94PSIwIDAgNDggNDgiIGZpbGw9InJnYmEoMTUzLCAxNTMsIDE1MywgMSkiPgogICAgPHBhdGggZD0iTTM4IDEyLjgzTDM1LjE3IDEwIDI0IDIxLjE3IDEyLjgzIDEwIDEwIDEyLjgzIDIxLjE3IDI0IDEwIDM1LjE3IDEyLjgzIDM4IDI0IDI2LjgzIDM1LjE3IDM4IDM4IDM1LjE3IDI2LjgzIDI0eiI+PC9wYXRoPgogICAgPHBhdGggZD0iTTAgMGg0OHY0OEgweiIgZmlsbD0ibm9uZSI+PC9wYXRoPgo8L3N2Zz4="></image>
+        <image class="close" bindtap='closePubBox' src="{{close}}"></image>
         <view bindtap='pub_question'>
-          <image class="publishUpdates" src="{{pubUpdates_url}}" />
+          <image class="publishUpdates" src="{{pubquestion_url}}" />
           <view class='pubType'>发布问题</view>
         </view>
         <view bindtap='pub_project' >
