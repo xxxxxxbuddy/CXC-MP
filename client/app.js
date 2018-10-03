@@ -62,7 +62,9 @@ App({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
-
+              wx.navigateTo({
+                url: 'main/main',
+              })
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
               if (this.userInfoReadyCallback) {
@@ -80,7 +82,7 @@ App({
       jobList: ['本科生','硕士','博士'],
       phone_url: 'https://qcloudtest-1257116845.cos.ap-guangzhou.myqcloud.com/1538531303107-IptVFBQ0J.png',
       focus_url: 'https://qcloudtest-1257116845.cos.ap-guangzhou.myqcloud.com/1538531342563-EjYYvDPBJ.png',
-      befocused_url: 'https://qcloudtest-1257116845.cos.ap-guangzhou.myqcloud.com/1538532078771-xN9so0dR8.png',
+      befocused_url:'https://qcloudtest-1257116845.cos.ap-guangzhou.myqcloud.com/1538532078771-xN9so0dR8.png',
       label_url: 'https://qcloudtest-1257116845.cos.ap-guangzhou.myqcloud.com/1538532137486-XZvQ1MHaI.png',
       corporation_url: 'https://qcloudtest-1257116845.cos.ap-guangzhou.myqcloud.com/1538532195242-0cMEozz2U.png',
       address_url: 'https://qcloudtest-1257116845.cos.ap-guangzhou.myqcloud.com/1538532256080-IL8ZrXFZp.png',
@@ -88,7 +90,7 @@ App({
       me1_url: 'https://qcloudtest-1257116845.cos.ap-guangzhou.myqcloud.com/1538532304893-3Uetxreze.png',
       me2_url: 'https://qcloudtest-1257116845.cos.ap-guangzhou.myqcloud.com/1538532327775-4cbr2qXua.png',
       company_url: 'https://qcloudtest-1257116845.cos.ap-guangzhou.myqcloud.com/1538532362129-tP4kbHea1.png',
-      close_url: 'https://qcloudtest-1257116845.cos.ap-guangzhou.myqcloud.com/1538532389593-t0mG7LRXw.png',
+      close_url: 'https://qcloudtest-1257116845.cos.ap-guangzhou.myqcloud.com/1538554509708-nTE4VMct1.png',
       answernum_url: 'https://qcloudtest-1257116845.cos.ap-guangzhou.myqcloud.com/1538533356317-nP6Nq_VWH.png',
       power0_url: 'https://qcloudtest-1257116845.cos.ap-guangzhou.myqcloud.com/1538532461998-6mtwDU_gX.png',
       power1_url: 'https://qcloudtest-1257116845.cos.ap-guangzhou.myqcloud.com/1538532480516-45uaw-gHC.png',
@@ -103,11 +105,12 @@ App({
       individual_back_url: 'https://qcloudtest-1257116845.cos.ap-guangzhou.myqcloud.com/1538534463620-XPPdqSPpv.png',
       company_back_url: 'https://qcloudtest-1257116845.cos.ap-guangzhou.myqcloud.com/1538534489550-lxSbZX9qe.png',
       company_type_url: 'https://qcloudtest-1257116845.cos.ap-guangzhou.myqcloud.com/1538534514840-k1jSQ_2lo.png',
-      pub_q_url: 'https://qcloudtest-1257116845.cos.ap-guangzhou.myqcloud.com/1538535614850-20z1o5fqQ.png',
-      pub_p_url: 'https://qcloudtest-1257116845.cos.ap-guangzhou.myqcloud.com/1538535681265-wRDF8ZynK.png',
+      pub_q_url:'https://qcloudtest-1257116845.cos.ap-guangzhou.myqcloud.com/1538555126154-JHygdVdPn.png',
+      pub_p_url: 'https://qcloudtest-1257116845.cos.ap-guangzhou.myqcloud.com/1538555312471-n3sXb7LOw.png',
       pub_url:'https://qcloudtest-1257116845.cos.ap-guangzhou.myqcloud.com/1538536024162-2aD5Wxo2N.png',
-      pull_down_url:'https://qcloudtest-1257116845.cos.ap-guangzhou.myqcloud.com/1538536595087-xJ4Gz745Y.png',
+      pullDown_url:'https://qcloudtest-1257116845.cos.ap-guangzhou.myqcloud.com/1538536595087-xJ4Gz745Y.png',
       me3_url:'https://qcloudtest-1257116845.cos.ap-guangzhou.myqcloud.com/1538537155439-CdcryyTYj.png',
+      default_url:'https://qcloudtest-1257116845.cos.ap-guangzhou.myqcloud.com/1538551134881-Gau4HdGvF.png',
 
     }
 })

@@ -1,11 +1,22 @@
 var config = require("./../../config.js")
+var userType,userId
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    userImage: '',
+    userName :'',
+    userSex: '',
+    userJob: '',
+    userCompany: '',
+    userState: '',
+    userIntroduce: '',
+    pubedNum: 0,
+    fansNum: 0,
+    focusNum: 0,
+    comNum: 0
   },
 
   /**
@@ -13,15 +24,28 @@ Page({
    */
   onLoad: function (options) {
     var that = this
+    userType = options.userType
+    userId = options.userId
     wx.request({
       url: config.service.home,
       data: {
-        user_type: ,
-        user_id:
+        user_type: 0,
+        user_id: "15827576787"
       },
       success: function(res){
+        console.log(res.data)
         that.setData({
-          
+          userImage: res.data.result.image,
+          userName: res.data.result.individual_name,
+          userSex: res.data.result.individual_sex,
+          userJob: res.data.result.individual_job,
+          userCompany: res.data.result.individual_corporation,
+          userState: res.data.result.individual_state,
+          userIntroduce: res.data.result.individual_introduce,
+          pubedNum: res.data.result.pubednum,
+          fansNum: res.data.result.fans_num,
+          focusNum: res.data.result.focusnum,
+          comNum: res.data.result.communitynum
         })
       }
     })

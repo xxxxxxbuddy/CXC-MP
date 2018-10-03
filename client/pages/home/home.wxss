@@ -30,6 +30,7 @@ page{
 .socialInfo{
   background-color: #fff;
   height: 130rpx;
+  border-bottom:2rpx solid rgba(0, 0, 0, 0.3);
 }
 .socialInfo ul{
   display: flex;
@@ -46,7 +47,8 @@ page{
 .detailInfo{
   background-color: #fff;
   box-shadow: 0 2rpx 2rpx 0 rgba(0, 0, 0, 0.5);
-  padding-bottom: 50rpx;
+  padding:50rpx 0;
+  
 }
 .detailInfo label{
   width: 170rpx;

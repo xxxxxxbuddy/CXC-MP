@@ -119,6 +119,9 @@ router.get('/myfocus', controllers.myfocus);
 router.get('/pubed', controllers.pubed);
 //已发布的项目
 
+//查看他人信息
+router.get('/home', controllers.home);
+
 
 
 

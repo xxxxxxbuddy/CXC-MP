@@ -40,10 +40,11 @@ page{
   background-color: #fff;
 }
 .options image{
-  width: 15%;
+  width: 8%;
   height:45rpx;
   margin-top:30rpx;
   float:left;
+  margin-left:26rpx;
 }
 .option{
   border-bottom: 2rpx solid rgba(80, 80, 80, 0.3);

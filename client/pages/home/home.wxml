@@ -1,26 +1,26 @@
 <view class='myInfo' bindtap='individualInfo' >
-  <image class='avatar' src='{{avatarUrl}}'/>
+  <image class='avatar' src='{{userImage}}'/>
   <view class='ilb'>  
-    <text class='userName'>李清荷</text>
+    <text class='userName'>{{userName}}</text>
   </view>
 </view>
 
 <view class='socialInfo'>
   <ul>
     <li bindtap='jumpToPub'>
-      <view>0</view>
+      <view>{{pubedNum}}</view>
       <text>发布</text>
     </li>
     <li bindtap='jumpTofollowing'>
-      <view>12</view>
+      <view>{{focusNum}}</view>
       关注
     </li>
     <li bindtap='jumpToFollower'>
-      <view>23</view>
+      <view>{{fansNum}}</view>
       关注他的
     </li>
     <li bindtap='jumpToCommunity'>
-      <view>2</view>
+      <view>{{comNum}}</view>
       圈子
     </li>
   </ul>
@@ -28,14 +28,14 @@
 <view class='detailInfo'>
   <view class='list'>
     <label>职业:</label>
-    <text>博士生</text>
+    <text>{{userJob}}</text>
   </view>
     <view class='list'>
     <label>所属单位:</label>
-    <text>华中科技大学</text>
+    <text>{{userCompany}}</text>
   </view>
     <view class='list'>
     <label >个人简介:</label>
-    <textarea disabled='true' class='introduce'>阿萨斯所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所</textarea>
+    <textarea disabled='true' class='introduce'>{{userIntroduce}}</textarea>
   </view>
 </view>

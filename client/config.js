@@ -118,6 +118,9 @@ var config = {
       getopenid: `${host}/weapp/getopenid`,
     //上传图片至服务器
       uploadimage: `${host}/weapp/uploadimage`,
+
+      //查看他人信息
+      home: `${host}/weapp/home`,
         
     }
 };

@@ -13,6 +13,7 @@ const DB = require('knex')({
 })
 module.exports = async (ctx, next) => {
   var data = ctx.query;
+  var answer = await DB.select('*').from('answer').where('answer_id', data.answer_id);
   var comment = await DB.select('*').from('comment').where('answer_id',data.answer_id).orderBy('praisenum','desc');
   for (var i = 0; i < comment.length; i++) {
     if (comment[i].user_type == 0) {
