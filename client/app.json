@@ -1,12 +1,10 @@
 {
   "pages": [
+    "pages/home/home",
     "pages/main/main",
-    "pages/createCommunity/createCommunity",
-
     "pages/project_detail/project_detail",
+    "pages/createCommunity/createCommunity",
     "pages/comment/comment",
-
-
     "pages/index/index",
     "pages/regc/regc",
     "pages/settings/settings",

@@ -299,7 +299,7 @@ Page({
     var that = this
     if(that.data.pullDownCommunityState){
       that.setData({
-        communityHeight: '112',       //最多三排
+        communityHeight: '192',       //最多三排
         pullDownCommunityState: false,
         iconRotate: 180
       })
@@ -350,11 +350,11 @@ Page({
     let dataType = e.target.dataset.type
     if(dataType == 1){
       wx.navigateTo({
-        url: './../question_detail/question_detail?id=' + id + '&type=' + dataType
+        url: './../question_detail/question_detail?id=' + id
       })
     }else{
       wx.navigateTo({
-        url: './../project_detail/project_detail?id=' + id + '&type=' + dataType
+        url: './../project_detail/project_detail?id=' + id
       })
     }
     

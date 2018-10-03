@@ -1,6 +1,5 @@
 var config = require('./../../config.js')
 var id
-var dataType
 function timeCalc(time) {
   var now = new Date()
   var timeDiff = parseInt((now - time) / 1000)     //单位为秒
@@ -63,14 +62,12 @@ Page({
    */
   onLoad: function (options) {
      id=options.id
-     dataType=options.type
     var that = this
     wx.request({
       url: config.service.detail,
       method: 'get',
       data: {
         object_id: id,
-        object_type: dataType
       },
       success: function (res) {
         console.log(res);

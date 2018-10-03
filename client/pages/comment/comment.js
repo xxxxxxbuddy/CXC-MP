@@ -46,7 +46,7 @@ Page({
     wx.request({
       url: config.service.answer_detail,
       data:{
-        answer_id: 1
+        answer_id: answer_id
       },
       success: function(res){
         console.log(res.data)
