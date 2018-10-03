@@ -44,11 +44,11 @@ page{
     opacity: 0.54;
 }
 .publish{
-    margin-top: 45rpx;
+    margin-top: 51rpx;
     margin-left: 10rpx;
     display: flex;
-    width: 70rpx;
-    height: 70rpx;
+    width: 59rpx;
+    height: 56rpx;
 }
 .tags{
     padding-bottom: 2rpx;
@@ -112,21 +112,22 @@ page{
     transition: 0.3s top;
 }
 #publishBox image{
-    margin-top: 80rpx;
-    margin-bottom: 20rpx;
-    width: 200rpx;
-    height: 170rpx;
+    margin-top: 54rpx;
+    margin-bottom: 17rpx;
+    width: 185rpx;
+    height: 167rpx;
 }
 #publishBox .close{
     margin-top: 0;
     position: absolute;
     top: 0;
     right: 0;
-    width: 80rpx;
-    height: 80rpx;
+    width: 73rpx;
+    height: 75rpx;
 }
 .pubType{
-  margin-left:20rpx;
+  margin-left:12rpx;
+  margin-bottom:27rpx;
 
 }
 
