@@ -26,16 +26,16 @@ Page({
   loginBtnClick: function (e) {
     var that = this
     wx.request({
-      url: config.service.news,
-      data:{
-        user_type:0,
-        user_id:'15827576787'
+      url: config.service.community_PQ,
+      data:{ 
+        community_id: 8
       },
       success:function(res){
         console.log(res.data)
       }
     })
-  },
+    },
+    
     /*
     // 选择图片
     wx.chooseImage({

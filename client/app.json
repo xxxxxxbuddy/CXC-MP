@@ -1,11 +1,11 @@
 {
   "pages": [
-    "pages/main/main",
+    "pages/regc/regc",
     "pages/member/member",
+    "pages/main/main",
     "pages/community/community",
     "pages/index/index",
     "pages/home/home",
-    "pages/regc/regc",
     "pages/project_detail/project_detail",
     "pages/createCommunity/createCommunity",
     "pages/comment/comment",
