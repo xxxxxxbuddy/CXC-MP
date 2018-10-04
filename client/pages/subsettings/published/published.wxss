@@ -97,3 +97,25 @@ page{
   padding:0 30rpx;
   display:block;  
 } 
+
+#answer{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.answer{
+  background-color: #fff;
+  height: 154rpx;
+  transition: transform 0.2s;
+  border: rgba(217, 217, 217, 1) solid 2rpx;
+}
+.answerInfo{
+	font-size: 26rpx;
+	line-height: 39rpx;
+  padding:0 30rpx;
+  display:block;  
+}
+.myAnswer{
+  transition: transform 0.2s;
+}

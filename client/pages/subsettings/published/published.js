@@ -20,7 +20,8 @@ Page({
     z2: '1',
     z3: '1',
     questionArray: '',
-    projectArray: ''
+    projectArray: '',
+    answerList: ''
   },
 
   /**
@@ -39,7 +40,8 @@ Page({
         console.log(res)
         that.setData({
           projectArray: res.data.project,
-          questionArray: res.data.question
+          questionArray: res.data.question,
+          answerList: res.data.answer
         })
       }
     })
@@ -161,10 +163,19 @@ Page({
       delta: 1
     })
   },
-  jumpToDetail: function(e){
+  jumpToQuestion: function(e){
     console.log(e)
     wx.navigateTo({
-      url: './../../question_detail/question_detail?id=' + e.currentTarget.id + '&type=' + e.currentTarget.dataset.type,
+      url: './../../question_detail/question_detail?id=' + e.currentTarget.id,
+    })
+  },
+  jumpToProject: function (e) {
+    wx.navigateTo({
+      url: './../../project_detail/project_detail?id=' + e.currentTarget.id,
+    })
+  }, jumpToComment: function (e) {
+    wx.navigateTo({
+      url: './../../comment/comment?id=' + e.currentTarget.id,
     })
   }
 })
