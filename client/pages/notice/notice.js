@@ -63,6 +63,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this
     wx.request({
       url: config.service.news,
       data:{
@@ -73,11 +74,17 @@ Page({
         console.log(res)
         var praise = res.data.praise.praise_answer.concat(res.data.praise.praise_comment)
         var invite = res.data.invite.invite_question.concat(res.data.invite.invite_project).concat(res.data.invite.invite_community).concat(res.data.invite.apply_community)
-        var reply = res.data.reply.reply_question.concat(res.data.reply.reply_project).concat(res.data.reply.comment)
+        var reply = res.data.comment.reply_question.concat(res.data.comment.reply_project).concat(res.data.comment.comment)
         /**按时间排序**/
-        praise = quickSort(praise,'praise_time')
-        invite = quickSort(invite,'time')
-        reply = quickSort(reply,'answer_time')
+        if(praise){
+          praise = quickSort(praise, 'praise_time')
+        }
+        if (invite) {
+          invite = quickSort(invite, 'time')
+        }
+        if (reply) {
+          reply = quickSort(reply, 'answer_time')
+        }
         for (var item of praise) {
           item.praise_time = new Date(item.praise_time.replace(/T/, " ").replace(/Z/, "").replace(/-/g, "/"))
           item.praise_time = timeCalc(item.praise_time)
@@ -86,7 +93,7 @@ Page({
           item.time = new Date(item.time.replace(/T/, " ").replace(/Z/, "").replace(/-/g, "/"))
           item.time = timeCalc(item.time)
         }
-        for (var item of praise) {
+        for (var item of reply) {
           item.answer_time = new Date(item.answer_time.replace(/T/, " ").replace(/Z/, "").replace(/-/g, "/"))
           item.answer_time = timeCalc(item.answer_time)
         }
