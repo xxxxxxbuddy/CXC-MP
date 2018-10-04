@@ -26,9 +26,10 @@ Page({
   loginBtnClick: function (e) {
     var that = this
     wx.request({
-      url: config.service.community_PQ,
+      url: config.service.news,
       data:{ 
-        community_id: 8
+        user_type:0,
+        user_id:'18211949726'
       },
       success:function(res){
         console.log(res.data)
