@@ -1,4 +1,4 @@
-const app=getApp()
+const app=getApp();
 Page({
 
   /**
@@ -11,7 +11,7 @@ Page({
     followingUrl: app.globalData.focus_url,
     communityUrl: app.globalData.community_url,
     messageUrl: app.globalData.information_url,
-    userName: app.globalData.userInfo.user_name
+    userName: app.globalData.userInfo.user_name,
   },
 
   /**

@@ -20,7 +20,7 @@ Page({
     location_icon: app.globalData.address_url,
     userInfo: {},
     jobList: ['职业','学生','自由职业者','其他'],
-    companyList: ['公司类别','1','2'],
+    companyList: ['公司类别','互联网公司','制造业公司','餐饮公司','咨询公司'],
     index1: 0,
     index2: 0,
     state: false,
@@ -249,45 +249,74 @@ Page({
     }
   },
   submitIndividualInfo: function(e){
-    var that = this
+    var that = this;
+    var image='';
     if(this.data.state)
-      console.log(e.detail.value)
-    wx.request({
-      url: config.service.regs_individual,
-      method: 'get',
-      data: {
-        individual_name: e.detail.value.individualName,
-        individual_job: e.detail.value.individualJob,
-        individual_corporation: e.detail.value.individualCompany,
-        individual_id: e.detail.value.individualPhone
-      },
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function(res){
-        console.log(res.data)
-      } 
-    })
+    {
+      console.log(e.detail.value);
+      wx.getUserInfo({
+        success: res => {
+          image=res.userInfo.avatar_img;
+        }
+      }),
+      wx.login({
+        success: function (res) {
+          console.log(res.code);
+          wx.request({
+            url: config.service.regs_individual,
+            method: 'get',
+            data: {
+              code: res.code,
+              individual_name: e.detail.value.individualName,
+              individual_job: e.detail.value.individualJob,
+              individual_corporation: e.detail.value.individualCompany,
+              individual_id: e.detail.value.individualPhone,
+              image:image
+            },
+            header: {
+              'content-type': 'application/json'
+            },
+            success: function (res) {
+              console.log(res.data)
+            }
+          })
+        }
+      })
+    }
   },
   submitEnterpriseInfo: function(e){
     var that = this
     if(this.data.state)
+    {
       console.log(e.detail.value)
-    wx.request({
-      url: config.service.regs_company,
-      method: 'get',
-      data: {
-        company_name: e.detail.value.enterpriseName,
-        company_type: e.detail.value.enterpriseType,
-        company_id: e.detail.value.enterprisePhone,
-        company_address: e.detail.value.enterpriseAddress
-      },
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function(res){
-        console.log(res.data)
-      } 
-    })
+      wx.getUserInfo({
+        success: res => {
+          image = res.userInfo.avatar_img;
+        }
+      }),
+        wx.login({
+          success: function (res) {
+            console.log(res.code);
+            wx.request({
+              url: config.service.regs_company,
+              method: 'get',
+              data: {
+                code: res.code,
+                company_name: e.detail.value.enterpriseName,
+                company_type: e.detail.value.enterpriseType,
+                company_id: e.detail.value.enterprisePhone,
+                company_address: e.detail.value.enterpriseAddress,
+                image: image
+              },
+              header: {
+                'content-type': 'application/json'
+              },
+              success: function (res) {
+                console.log(res.data)
+              }
+            })
+          }
+        })
+    }
   }
 })
