@@ -20,20 +20,39 @@ Page({
     z2: '1',
     z3: '1',
     questionArray: '',
-    projectArray: ''
+    projectArray: '',
+    answeredArray: '',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this
+    var that = this;
+    wx.request({
+      url: config.service.pubed,
+      data: {
+        user_type: app.globalData.userInfo.user_type,
+        user_id: app.globalData.userInfo.user_id
+      },
+      success: function (res) {
+        console.log(res.data)
+        that.setData({
+          projectArray: res.data.project,
+          questionArray: res.data.question,
+          answeredArray: res.data.answer,
+        })
+        console.log(res.data)
+      }
+    })
+  },
+    /*
     wx.request({
       url: config.service.pubed,
       method: 'get',
       data: {
         user_type: 0,
-        user_id: 18211949725
+        user_id: '18211949725',
       },
       success: function (res) {
         console.log(res)
@@ -41,10 +60,11 @@ Page({
           projectArray: res.data.project,
           questionArray: res.data.question
         })
+        console.log(res.data)
       }
     })
   },
-
+  */
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

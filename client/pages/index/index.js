@@ -5,7 +5,8 @@ var config = require('./../../config.js')
 //var CONF = require('./../../../server/config.js')
 Page({
   data: {
-    background_url: './../images/background.jpg',
+    background_url: app.globalData.background_url,
+    //'./../images/background.jpg',
     logo_url: './..images/logo.jpg',
     avatar_img: app.globalData.me1_url,
     enterprise_url: app.globalData.company_url,
@@ -107,15 +108,15 @@ Page({
           method: 'get',
           data: { 
             code: res.code,
-            user_type:1
+            user_type:0
             },
           success: function (res) {
             console.log(res.data)
             if(res.data.result){
               app.globalData.userInfo.user_type = res.data.result.user_type;
               app.globalData.userInfo.user_id = res.data.result.user_id;
-              app.globalData.user_name=res.data.result.user_name;
-              app.globalData.user_image=res.data.result.user_image;
+              app.globalData.userInfo.user_name=res.data.result.user_name;
+              app.globalData.userInfo.user_image=res.data.result.user_image;
               wx.setStorage({
                 key: 'user',
                 data: {
@@ -125,8 +126,9 @@ Page({
                   user_image : res.data.result.user_image,
                 },
               })
-              wx.navigateTo({
-                url: './../main/main'
+              console.log(app.globalData.userInfo)
+              wx.redirectTo({
+                url: './../main/main',
               })
             }
           }
@@ -148,17 +150,27 @@ Page({
             method: 'get',
             data: {
               code: res.code,
-              user_type: 0
+              user_type: 1
             },
             success: function (res) {
               console.log(res.data)
               if (res.data.result) {
                 app.globalData.userInfo.user_type = res.data.result.user_type;
                 app.globalData.userInfo.user_id = res.data.result.user_id;
-                app.globalData.user_name = res.data.result.user_name;
-                app.globalData.user_image = res.data.result.user_image;
-                wx.navigateTo({
-                  url: './../main/main'
+                app.globalData.userInfo.user_name = res.data.result.user_name;
+                app.globalData.userInfo.user_image = res.data.result.user_image;
+                wx.setStorage({
+                  key: 'user',
+                  data: {
+                    user_type: res.data.result.user_type,
+                    user_id: res.data.result.user_id,
+                    user_name: res.data.result.user_name,
+                    user_image: res.data.result.user_image,
+                  },
+                })
+                console.log(app.globalData.userInfo)
+                wx.redirectTo({
+                  url: './../main/main',
                 })
               }
             }

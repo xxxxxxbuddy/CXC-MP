@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    avatarUrl: app.globalData.default_url,
+    avatarUrl: app.globalData.userInfo.user_image,
     publishedUrl: app.globalData.pubed_url,
     followerUrl: app.globalData.befocused_url,
     followingUrl: app.globalData.focus_url,
@@ -92,6 +92,11 @@ Page({
   jumpToCommunity: function(){
     wx.navigateTo({
       url: './../subsettings/community/community',
+    })
+  },
+  jumpToMessage:function () {
+    wx.navigateTo({
+      url: './../notice/notice',
     })
   }
 })
