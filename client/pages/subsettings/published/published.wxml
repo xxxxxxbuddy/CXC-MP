@@ -27,12 +27,14 @@
   <view id='answer' style='z-index:{{z3}}'>
     <view wx:for='{{answerList}}' wx:key='{{item.question_id}}{{item.project_id}}' class='myAnswer' style='transform:translateX({{transform3}})'>
       <view wx:if='{{item.object_type == 0}}' bindtap='jumpToProject' id='{{item.object_id}}' class='answer'>
-        <text class='projectTitle'>{{item.project_title}}</text>
+        <text class='projectTitle'>{{item.object_title}}</text>
         <text class='answerInfo'>{{item.answer_info}}</text>
+        <text class='time'>{{item.answer_time}}</text>
       </view>
       <view wx:if='{{item.object_type == 1}}' bindtap='jumpToQuestion' id='{{item.object_id}}' class='answer'>
-        <text class='questionTitle'>{{item.question_title}}</text>
+        <text class='questionTitle'>{{item.object_title}}</text>
         <text class='answerInfo'>{{item.answer_info}}</text>
+        <text class='time'>{{item.answer_time}}</text>
       </view>      
   </view>
   </view>
