@@ -232,11 +232,13 @@ var  invite = {
     for (var j = 0; j < user.length; j++) {
       if (user[j].user_type == 0) {
         var information = await DB.select('individual_name', 'image').from('individual').where('individual_id', user[j].user_id);
+        user[j].answer_time=user[j].comment_time;
         user[j].user_name = information[0].individual_name;
         user[j].user_image = information[0].image;
       }
       else {
         var information = await DB.select('company_name', 'image').from('company').where('company_id', user[j].user_id);
+        user[j].answer_time = user[j].comment_time;
         user[j].user_name = information[0].company_name;
         user[j].user_image = information[0].image;
       }
