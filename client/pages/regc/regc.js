@@ -25,8 +25,9 @@ Page({
   //获取用户输入的密码
   loginBtnClick: function (e) {
     var that = this
+    /*
     wx.request({
-      url: config.service.news,
+      url: config.service.pubed,
       data:{ 
         user_type:0,
         user_id:'18211949726'
@@ -76,7 +77,7 @@ Page({
   },
     //index.js
     //获取应用实例
-    /*
+    */
     var that=this
     wx.getUserInfo({
       success: function (res) {
@@ -84,11 +85,11 @@ Page({
         var src=res.userInfo.avatarUrl;
         console.log(src);
         that.setData({
-          src:src
+          imgUrl:src
     })
   }
   })
-  */
+  },
 
         /*
     wx.login({

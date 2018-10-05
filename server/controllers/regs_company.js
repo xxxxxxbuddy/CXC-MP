@@ -18,7 +18,7 @@ module.exports = async (ctx, next) => {
   //检测名字是否重复
   var check_name = DB.select('company_name').from('company').where('company_name',data.company_name);
   var check_id = DB.select('company_').from('company')
-  if(check_id.length==0&&check_name==0){
+  if(check_id.length==0&&check_name.length==0){
     let appId = 'wx2541631ee62bb5d9';
     let secret = '3fd33c1b131c7576bbeab34b5e899e0c';
     let url = `https://api.weixin.qq.com/sns/jscode2session?appid=${appId}&secret=${secret}&js_code=${data.code}&grant_type=authorization_code`;

@@ -1,14 +1,14 @@
 {
   "pages": [
-        "pages/index/index",
-  "pages/main/main",
+    "pages/main/main",
+    "pages/invite/invite",
+    "pages/index/index",
+    "pages/regc/regc",
 
     "pages/community/community",
     "pages/notice/notice",
     "pages/comment/comment",
     "pages/member/member",
- 
-    "pages/regc/regc",
     "pages/home/home",
     "pages/project_detail/project_detail",
     "pages/createCommunity/createCommunity",
@@ -23,8 +23,7 @@
     "pages/question_detail/question_detail",
     "pages/logs/logs",
     "pages/power/power",
-    "pages/addCgi/addCgi",
-    "pages/invite/invite"
+    "pages/addCgi/addCgi"
   ],
   "window": {
     "backgroundTextStyle": "light",
