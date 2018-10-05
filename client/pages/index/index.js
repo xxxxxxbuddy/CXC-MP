@@ -362,21 +362,21 @@ Page({
                     url: './../main/main',
                   })
                 }
-                // if (res.data.code == 1) {
-                //   wx.showToast({
-                //     title: '注册成功',
-                //     icon: 'none'
-                //   })
-                //   wx.redirectTo({
-                //     url: './../main/main',
-                //   })
-                // } else {
+                if (res.data.code == 1) {
+                  wx.showToast({
+                    title: '注册成功',
+                    icon: 'none'
+                  })
+                  wx.redirectTo({
+                    url: './../main/main',
+                  })
+                } else {
 
-                //   wx.showToast({
-                //     title: res.data.result,
-                //     icon: 'none'
-                //   })
-                // }
+                  wx.showToast({
+                    title: res.data.result,
+                    icon: 'none'
+                  })
+                }
               },
               fail: function () {
                 wx.showToast({
