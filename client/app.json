@@ -1,11 +1,9 @@
 {
   "pages": [
-    "pages/community/community",
-    "pages/invite/invite",
     "pages/index/index",
+    "pages/community/community",
     "pages/regc/regc",
     "pages/main/main",
-
     "pages/notice/notice",
     "pages/comment/comment",
     "pages/member/member",
@@ -23,7 +21,8 @@
     "pages/question_detail/question_detail",
     "pages/logs/logs",
     "pages/power/power",
-    "pages/addCgi/addCgi"
+    "pages/addCgi/addCgi",
+    "pages/invite/invite"
   ],
   "window": {
     "backgroundTextStyle": "light",
