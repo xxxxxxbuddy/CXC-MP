@@ -82,17 +82,17 @@ Page({
     })
     this.data.enterpriseType = e.detail.value
   },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
-    wx.navigateTo({
-      url: './../main/main',
-    })
-  },
+  // getUserInfo: function(e) {
+  //   console.log(e)
+  //   app.globalData.userInfo = e.detail.userInfo
+  //   this.setData({
+  //     userInfo: e.detail.userInfo,
+  //     hasUserInfo: true
+  //   })
+  //   wx.navigateTo({
+  //     url: './../main/main',
+  //   })
+  // },
   translateRight: function(){
     this.setData({
       translateLeft: '',
@@ -124,10 +124,14 @@ Page({
                   user_name : res.data.result.user_name,
                   user_image : res.data.result.user_image,
                 },
+                
               })
-              wx.navigateTo({
-                url: './../main/main'
-              })
+              if(app.globalData.user_id){
+                wx.navigateTo({
+                  url: './../main/main'
+                })
+              }
+
             }
           }
         })
@@ -237,6 +241,7 @@ Page({
     }
   },
   submitIndividualInfo: function(e){
+    console.log(e.detail.value)
     var that = this
     if(this.data.state)
       console.log(e.detail.value)
@@ -253,6 +258,10 @@ Page({
         'content-type': 'application/json'
       },
       success: function(res){
+        wx.showToast({
+          title: res.data,
+          icon: 'none'
+        })
         console.log(res.data)
       } 
     })
