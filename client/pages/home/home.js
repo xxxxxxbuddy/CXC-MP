@@ -171,7 +171,32 @@ Page({
       unfollowing: "inline-block"
     })
     wx.request({
-      url: '',
+      url: config.service.defocus,
+      data:{
+        focus_type: 'user',
+        object_type: userType,
+        object_id: userId,
+        user_type: app.globalData.userInfo.user_type,
+        user_id: app.globalData.userInfo.user_id
+      },
+      success: function(res){
+        if(res.data.result){
+          wx.showToast({
+            title: '取消成功',
+            icon: 'none'
+          })
+        }else{
+          wx.showToast({
+            title: '取消失败',
+            icon: 'none'
+          })
+        }
+      },fail: function(){
+        wx.showToast({
+          title: '网络错误',
+          icon: 'none'
+        })
+      }
     })
   }
   

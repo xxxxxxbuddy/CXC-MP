@@ -1,9 +1,10 @@
 {
   "pages": [
+      "pages/home/home",
         "pages/subsettings/community/community",
         "pages/index/index",
         "pages/main/main",
-  "pages/home/home",
+
 
     "pages/regc/regc",
     "pages/community/community",
