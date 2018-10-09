@@ -36,14 +36,14 @@ Page({
     wx.request({
       url: config.service.focus,
       data:{ 
-        focus_type:'user',//user查看是否关注用户，other查看是否关注问题/项目
+        focus_type:'user',//user关注用户，other关注问题/项目
         object_type: 0,
         object_id: '18211949729',
         user_type: 1, 
         user_id: '18367722588', 
       },
       success:function(res){
-        console.log(res.data) //result的值非零即为关注，为0即为未关注
+        console.log(res.data) //result的值为长度为0数组，则成功
       }
     })
     },
