@@ -1,8 +1,8 @@
 {
   "pages": [
-    "pages/community/community",
-    "pages/index/index",
     "pages/regc/regc",
+    "pages/index/index",
+    "pages/community/community",
     "pages/main/main",
     "pages/notice/notice",
     "pages/comment/comment",
