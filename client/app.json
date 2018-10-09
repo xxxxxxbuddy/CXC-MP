@@ -1,5 +1,6 @@
 {
   "pages": [
+  "pages/home/home",
     "pages/community/community",
     "pages/index/index",
     "pages/regc/regc",
@@ -7,7 +8,7 @@
     "pages/notice/notice",
     "pages/comment/comment",
     "pages/member/member",
-    "pages/home/home",
+    
     "pages/project_detail/project_detail",
     "pages/createCommunity/createCommunity",
     "pages/settings/settings",
