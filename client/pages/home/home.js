@@ -25,9 +25,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let user = JSON.parse(options.user);
     var that = this
-    var userType = options.userType
-    var userId = options.userId
+    var userType = user.user_type;
+    var userId = user.user_id
+    console.log(user)
     wx.request({
       url: config.service.home,
       data: {

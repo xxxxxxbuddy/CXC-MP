@@ -356,13 +356,26 @@ Page({
     })
   },
   jumpToHome: function(e){
+    var that=this;
+    var user={
+      userType: that.data.userType,
+      userId:that.data.userId
+    };
+    user = JSON.stringify(user);
+    console.log("zedasn" + user)
     wx.navigateTo({
-      url: './../home/home?userType=' + this.data.userType + '&userId=' + this.data.userId,
+      url: './../home/home?user=' +user,
     })
   },
-  jumpToOthers: function(e){
+  jumpToOtherHome: function(e){
+    var user = {
+      userType: e.target.dataset.type,
+      userId: e.target.currentTarget.id
+    };
+    console.log(user)
+    user = JSON.stringify(user);
     wx.navigateTo({
-      url: './../home/home?userType=' + e.target.dataset.type + '&userId=' + e.target.currentTarget.id,
+      url: './../home/home?user=' + user,
     })
   }
 })

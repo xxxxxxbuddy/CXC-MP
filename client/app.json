@@ -1,12 +1,12 @@
 {
   "pages": [
+    "pages/main/main",
+    "pages/pub_project/pub_project",
+    "pages/home/home",
     "pages/index/index",
     "pages/subsettings/following/following",
-
-    "pages/home/home",
+     "pages/regc/regc",
     "pages/subsettings/community/community",
-    "pages/main/main",
-    "pages/regc/regc",
     "pages/community/community",
     "pages/notice/notice",
     "pages/comment/comment",
@@ -18,7 +18,6 @@
     "pages/subsettings/published/published",
     "pages/subsettings/followers/followers",
 
-    "pages/pub_project/pub_project",
     "pages/pub_question/pub_question",
     "pages/question_detail/question_detail",
     "pages/logs/logs",
