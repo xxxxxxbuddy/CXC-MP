@@ -73,7 +73,7 @@ Page({
         user_id: app.globalData.userInfo.user_id,
       },
       success: function (res) {
-        console.log(res);
+        console.log(res.data);
         let result = res.data.result
         let answer = res.data.answer
         if (!result) {
@@ -96,10 +96,10 @@ Page({
           }, success: function (res) {
             if (res.data.result) {
               that.setData({
-                questionTitle: result.question_title,
+                projectTitle: result.project_title,
                 userName: result.user_name,
-                pubTime: timeCalc(new Date(result.question_time.replace(/T/, " ").replace(/Z/, "").replace(/-/g, "/"))),
-                questionInfo: result.question_info,
+                pubTime: timeCalc(new Date(result.project_time.replace(/T/, " ").replace(/Z/, "").replace(/-/g, "/"))),
+                projectInfo: result.project_require,
                 answerNum: result.answernum,
                 answerList: answer,
                 object_id: id,
@@ -108,13 +108,15 @@ Page({
               })
             } else {
               that.setData({
-                questionTitle: result.question_title,
+                projectTitle: result.project_title,
                 userName: result.user_name,
-                pubTime: timeCalc(new Date(result.question_time.replace(/T/, " ").replace(/Z/, "").replace(/-/g, "/"))),
-                questionInfo: result.question_info,
+                pubTime: timeCalc(new Date(result.project_time.replace(/T/, " ").replace(/Z/, "").replace(/-/g, "/"))),
+                projectInfo: result.project_require,
                 answerNum: result.answernum,
                 answerList: answer,
-                object_id: id
+                object_id: id,
+                following: 'none',
+                unfollowing: ''
               })
             }
           }
