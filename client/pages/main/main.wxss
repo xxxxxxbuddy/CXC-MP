@@ -26,6 +26,7 @@ page{
 	line-height: 50rpx;
     box-shadow: 0rpx 5rpx 5rpx 0rpx rgba(0, 0, 0, 0.5);
     background-color: #fff;
+    transition: width 0.2s;
 }
 
 .myInfo{
@@ -42,6 +43,7 @@ page{
     width: 60rpx;
     height: 60rpx;
     opacity: 0.54;
+    transition: left 0.2s;
 }
 .publish{
     margin-top: 51rpx;
@@ -50,6 +52,14 @@ page{
     width: 59rpx;
     height: 56rpx;
 }
+
+.searchResult{
+  height: 1334rpx;
+  z-index: 2;
+  background-color: #fff;
+
+}
+
 .tags{
     padding-bottom: 2rpx;
 }
@@ -165,4 +175,95 @@ project text{
     opacity: 0.3;
     transition: 0.3s opacity;
     overflow: hidden;
+}
+
+/* 搜索结果 */
+.classify{
+  border-bottom: 2rpx solid #E9E9E9;
+}
+.classify image{
+  height: 40rpx;
+  width: 38rpx;
+}
+.typeName{
+  float: left;
+  margin:20rpx;
+  clear:both;
+}
+.more{
+  float: right;
+  margin:20rpx;
+}
+.publishedQuestion{
+  background-color: #fff;
+  height: 154rpx;
+  transition: transform 0.2s;
+  border: rgba(217, 217, 217, 1) solid 2rpx;
+}
+.questionTitle{
+  padding:14rpx 30rpx;
+  padding-top: 26rpx;
+  display:block;  
+  font-size: 30rpx;
+  line-height: 45rpx;
+}
+.questionSocialInfo{
+  color: rgba(128, 128, 128, 1);
+	font-size: 26rpx;
+	line-height: 39rpx;
+  padding:0 30rpx;
+  display:block;  
+}
+
+.publishedProject{
+  background-color: #fff;
+  height: 154rpx;
+  transition: transform 0.2s;
+  border: rgba(217, 217, 217, 1) solid 2rpx;
+}
+.projectTitle{
+  padding:14rpx 30rpx;
+  padding-top: 26rpx;
+  display:block;  
+  font-size: 30rpx;
+  line-height: 45rpx;
+}
+.projectSocialInfo{
+  color: rgba(128, 128, 128, 1);
+	font-size: 26rpx;
+	line-height: 39rpx;
+  padding:0 30rpx;
+  display:block;  
+}
+
+.myIdol{
+  background-color: #fff;
+  height: 154rpx;
+
+  border: rgba(217, 217, 217, 1) solid 2rpx;
+}
+.avatar{
+  border-radius: 50%;
+  width: 104rpx;
+  height: 104rpx;
+  margin:32rpx 34rpx;
+  vertical-align:top;
+}
+.username{
+  float: left;
+  line-height:54rpx;
+  font-size:36rpx;
+
+}
+.tip{
+  float: left;
+  clear: left;
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: rgba(153, 153, 153, 1);
+}
+.ilb{
+  display: inline-block;
+  height:170rpx;
+  margin-top:32rpx;
 }

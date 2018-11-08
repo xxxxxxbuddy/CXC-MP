@@ -84,7 +84,14 @@ Page({
     "questionArray": '',
     "projectArray": '',
     "communityList": '',
-    "allArray": ''
+    "allArray": '',
+    "searching": '',
+    "searchWidth": "480rpx",
+    "iconLeft": "110rpx",
+    "bgColor": 'rgba(0, 187, 211, 1)',
+    "questionList": {},
+    "projectList": {},
+    "userList": {}
     //"hideCommunity": "block"
   },
 
@@ -264,6 +271,42 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  onSearch: function(){
+    this.setData({
+      searching: 'none',
+      searchWidth: '86%',
+      iconLeft: '30rpx',
+      bgColor: '#fff'
+    })
+  },
+  quitSearch: function(){
+    this.setData({
+      searching: '',
+      searchWidth: '480rpx',
+      iconLeft: '110rpx',
+      bgColor: 'rgba(0, 187, 211, 1)'
+    })
+  },
+  search: function(e){
+    var that = this
+    console.log(e)
+    wx.request({
+      url: config.service.search,
+      data: e.detail.value,
+      success: function(res){
+        that.setData({
+          questionList: res.data.questionList,
+          projectList: res.data.projectList,
+          userList: res.data.userList
+        })
+      },fail: function(){
+        wx.showToast({
+          title: '网络错误',
+          icon: 'none'
+        })
+      }
+    })
   },
 
   //跳转发布问题页面
