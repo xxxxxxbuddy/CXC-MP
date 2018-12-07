@@ -218,6 +218,7 @@ Page({
     this.data.enterpriseAddress = e.detail.value
   },
   submitIndividualInfo: function(e){
+    console.log(e)
     var that = this;
     var image='';
     var that = this
