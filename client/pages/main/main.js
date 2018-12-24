@@ -132,6 +132,7 @@ Page({
       }
       
     })
+    console.log(app.globalData.userInfo)
     wx.request({
       url: config.service.home_page,
       method: 'get',
@@ -143,9 +144,10 @@ Page({
         'content-type': 'application/json'
       },
       success: function (res) {
-        console.log(res.data)
+        //
         /*加载问题*/
-        if (res.data) {
+        if (res.data.result != null ) {
+          console.log(res.data)
           for (var item of res.data.result1) {
             item.project_time = new Date(item.project_time.replace(/T/, " ").replace(/Z/, "").replace(/-/g, "/"))
             item.project_time = timeCalc(item.project_time)
@@ -337,7 +339,7 @@ Page({
       success: function (res) {
         //console.log(res.data)
         /*加载问题*/
-        if (res.data) {
+        if (res.data.result !=null ) {
           for (var item of res.data.result1) {
             item.project_time = new Date(item.project_time.replace(/T/, " ").replace(/Z/, "").replace(/-/g, "/"))
             item.project_time = timeCalc(item.project_time)

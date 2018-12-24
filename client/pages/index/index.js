@@ -116,8 +116,8 @@ Page({
             user_type:0
             },
           success: function (res) {
-            console.log(res.data)
-            if(res.data.result.user_id){
+            console.log(res)
+            if(res.data.result != null){
               app.globalData.userInfo.user_type = res.data.result.user_type;
               app.globalData.userInfo.user_id = res.data.result.user_id;
               app.globalData.userInfo.user_name = res.data.result.user_name;
@@ -289,7 +289,7 @@ Page({
                 })
               }else{
                 wx.showToast({
-                  title: res.data.result,
+                  title: res.data.result==null ? "注册失败" : res.data.result,
                   icon: 'none'
                 })
               }

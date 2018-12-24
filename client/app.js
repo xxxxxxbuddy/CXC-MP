@@ -51,7 +51,6 @@ App({
       wx.getStorage({
         key: 'user',
         success: function (res) {
-          console.log('yaoshuchu')
           console.log(res.data);
           var user=res.data;
           that.globalData.userInfo.user_type = user.user_type;

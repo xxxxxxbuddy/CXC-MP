@@ -14,7 +14,7 @@ const DB = require('knex')({
 })
 module.exports =async (ctx,next) => {
   let appId = 'wx2541631ee62bb5d9';
-  let secret = '4ce20a0f19a14ac857f6bb6e5c133652';
+  let secret = 'fffbf8b938b0c635cd701361840d9abe';
   let data = ctx.query;
   let url= `https://api.weixin.qq.com/sns/jscode2session?appid=${appId}&secret=${secret}&js_code=${data.code}&grant_type=authorization_code`;
   let information =await new Promise((resolve, reject) => {
