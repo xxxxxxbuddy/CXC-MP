@@ -85,6 +85,7 @@ Page({
     this.data.enterpriseType = e.detail.value
   },
   getUserInfo: function(e) {
+    console.log(e)
     var detail = JSON.parse(e.detail.rawData)
     var gender
     if (detail.gender == 0){

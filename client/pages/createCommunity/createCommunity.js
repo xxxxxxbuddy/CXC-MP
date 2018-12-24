@@ -282,7 +282,8 @@ Page({
             //   }
             // })
             wx.request({
-              url: 'https://sl5hr478.qcloud.la/token',
+              url: 'https://435471972.eusp.cn/token',
+              //url: 'https://sl5hr478.qcloud.la/token',
               method: 'POST',
               data: {},
               header:{

@@ -39,13 +39,14 @@ Page({
         wx.request({
           url: config.service.focus_state,
           data:{
-            focus_type: 'other',
+            focus_type: 'user',
             object_type: userType,
             object_id: userId,
             user_type: app.globalData.userInfo.user_type,
             user_id: app.globalData.userInfo.user_id
           },success: function(e){
-            if (e.data.result) {
+            console.log(e)
+            if (e.data.result == 0) {
               console.log(e)
               console.log(res)
               that.setData({
