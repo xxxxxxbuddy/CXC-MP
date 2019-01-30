@@ -6,7 +6,7 @@ function quickSort(arr){
   //如果数组<=1,则直接返回
   if(arr.length<=1){return arr;}
   var pivotIndex=Math.floor(arr.length/2);
-  //找基准，并把基准从原数组删除
+  //找基准，并把基准从原数组删除 
   var pivot=arr.splice(pivotIndex,1)[0];
   //定义左右数组
   var left=[];
@@ -169,7 +169,7 @@ Page({
           })
         } else {
           wx.showToast({
-            title: '获取动态失败',
+            title: '无新动态',
             icon: 'none'
           })
         }
@@ -234,23 +234,30 @@ Page({
       },
       success: function(res){
         if (res.data) {
-          for (var item of res.data.result1) {
-            item.project_time = new Date(item.project_time.replace(/T/, " ").replace(/Z/, "").replace(/-/g, "/"))
-            item.project_time = timeCalc(item.project_time)
-            item.project_finish = new Date(item.project_finish.replace(/T/, " ").replace(/Z/, "").replace(/-/g, "/"))
-            item.project_finish = item.project_finish.getFullYear() + "-" + item.project_finish.getMonth() + "-" + item.project_finish.getDate();
+          if(res.data.result1.length>0 || res.data.result2.length>0){
+              for (var item of res.data.result1) {
+                  item.project_time = new Date(item.project_time.replace(/T/, " ").replace(/Z/, "").replace(/-/g, "/"))
+                  item.project_time = timeCalc(item.project_time)
+                  item.project_finish = new Date(item.project_finish.replace(/T/, " ").replace(/Z/, "").replace(/-/g, "/"))
+                  item.project_finish = item.project_finish.getFullYear() + "-" + item.project_finish.getMonth() + "-" + item.project_finish.getDate();
+              }
+              for (var item of res.data.result2) {
+                  item.question_time = new Date(item.question_time.replace(/T/, " ").replace(/Z/, "").replace(/-/g, "/"))
+                  item.question_time = timeCalc(item.question_time)
+              }
+              var result = res.data.result1.concat(res.data.result2)
+              /**按热度排序**/
+              result = quickSort(result)
+              /*加载问题*/
+              that.setData({
+                  allArray: result
+              })
+          }else{
+              wx.showToast({
+                  title: '无新动态',
+                  icon: 'none'
+              })
           }
-          for (var item of res.data.result2) {
-            item.question_time = new Date(item.question_time.replace(/T/, " ").replace(/Z/, "").replace(/-/g, "/"))
-            item.question_time = timeCalc(item.question_time)
-          }
-          var result = res.data.result1.concat(res.data.result2)
-          /**按热度排序**/
-          result = quickSort(result)
-        /*加载问题*/
-        that.setData({
-          allArray: result
-        })
         } else {
           wx.showToast({
             title: '获取动态失败',

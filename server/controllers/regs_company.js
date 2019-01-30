@@ -22,7 +22,7 @@ module.exports = async (ctx, next) => {
   var result='';
   if(check_id.length==0&&check_name.length==0){
     let appId = 'wx2541631ee62bb5d9';
-    let secret = '3fd33c1b131c7576bbeab34b5e899e0c';
+      let secret = '09d9c768533c08516a46bf339b36adfc';
     let url = `https://api.weixin.qq.com/sns/jscode2session?appid=${appId}&secret=${secret}&js_code=${data.code}&grant_type=authorization_code`;
     let openid = await new Promise((resolve, reject) => {
       request(url, (e, r, d) => {

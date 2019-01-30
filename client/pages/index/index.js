@@ -117,7 +117,7 @@ Page({
             },
           success: function (res) {
             console.log(res)
-            if(res.data.result != null){
+            if(res.data.result != ""){
               app.globalData.userInfo.user_type = res.data.result.user_type;
               app.globalData.userInfo.user_id = res.data.result.user_id;
               app.globalData.userInfo.user_name = res.data.result.user_name;
