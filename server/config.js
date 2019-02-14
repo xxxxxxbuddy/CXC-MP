@@ -21,8 +21,8 @@ const CONF = {
         port: 3306,
         user: 'root',
         db: 'cAuth',
-        pass: 'wx2541631ee62bb5d9', //开发环境
-        //pass: 'UvT08wlg',         //生产环境
+        //pass: 'wx2541631ee62bb5d9', //开发环境
+        pass: 'UvT08wlg',         //生产环境
         char: 'utf8mb4'
     },
 

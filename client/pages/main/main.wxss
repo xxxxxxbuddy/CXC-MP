@@ -60,6 +60,13 @@ page{
 
 }
 
+.seReTime{
+    color:rgba(166, 166, 166, 1);
+    float: right;
+    margin-right:50rpx;
+    font-size:34rpx;
+}
+
 .tags{
     padding-bottom: 2rpx;
 }
@@ -178,10 +185,11 @@ project text{
 }
 
 /* 搜索结果 */
-.classify{
+.type{
   border-bottom: 2rpx solid #E9E9E9;
+  height: 80rpx;
 }
-.classify image{
+.type image{
   height: 40rpx;
   width: 38rpx;
 }
@@ -196,9 +204,9 @@ project text{
 }
 .publishedQuestion{
   background-color: #fff;
-  height: 154rpx;
+  height: 184rpx;
   transition: transform 0.2s;
-  border: rgba(217, 217, 217, 1) solid 2rpx;
+  border: rgba(217, 217, 217, 0.5) solid 2rpx;
 }
 .questionTitle{
   padding:14rpx 30rpx;
@@ -212,14 +220,14 @@ project text{
 	font-size: 26rpx;
 	line-height: 39rpx;
   padding:0 30rpx;
-  display:block;  
+  display:inline-block;  
 }
 
 .publishedProject{
   background-color: #fff;
-  height: 154rpx;
+  height: 184rpx;
   transition: transform 0.2s;
-  border: rgba(217, 217, 217, 1) solid 2rpx;
+  border: rgba(217, 217, 217, 0.5) solid 2rpx;
 }
 .projectTitle{
   padding:14rpx 30rpx;
@@ -233,9 +241,11 @@ project text{
 	font-size: 26rpx;
 	line-height: 39rpx;
   padding:0 30rpx;
-  display:block;  
+  display:inline-block;  
 }
-
+.highLight{
+    color:red;
+}
 .myIdol{
   background-color: #fff;
   height: 154rpx;

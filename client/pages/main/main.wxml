@@ -4,34 +4,36 @@
         <view class="searchBox">
             <image class="myInfo" src="{{myInfo_url}}" bindtap='jumpToSettings' style='display: {{searching}}'></image>
             <image class="searchIcon" src="{{searchIcon_url}}" style='left:{{iconLeft}} '></image>
-            <input type="text" class="search"  placeholder="在这里搜索动态/项目/圈子" bindfocus='onSearch' style='width: {{searchWidth}}' bindblur='quitSearch' bindinput='search'/>
+            <input type="text" class="search"  placeholder="在这里搜索动态/项目/圈子" bindfocus='onSearch' style='width: {{searchWidth}}' bindblur='quitSearch' bindconfirm='search' confirm-type='搜索'/>
             <image class="publish" src="{{publish_url}}" bindtap='openPubBox' style='display: {{searching}}'></image>
         </view>
         <view class='searchResult' wx:if='{{searching}}'>
           <view class='question'>
-            <view class='classify'>
+            <view class='type'>
               <text class='typeName'>问题</text>
               <image src='{{more_url}}'></image>
               <text class='more'>更多</text>
             </view>
-            <view wx:for='{{questionList}}' wx:key='{{item.question_id}}' class='publishedQuestion' style='transform:translateX({{transform1}})'bindtap='jumpToDetail' id='{{item.question_id}}'>
-              <text class='questionTitle'>{{item.question_title}}</text>
+            <view wx:for='{{questionList}}' wx:key='{{item.question_id}}' class='publishedQuestion' bindtap='jumpToDetail' id='{{item.question_id}}'>
+              <rich-text nodes='{{item.question_title}}' class='questionTitle'></rich-text>
               <text class='questionSocialInfo'>{{item.answernum}}个回答· {{item.focus_num}}人关注</text>
+              <text class='seReTime'>{{item.question_time}}</text>
             </view>
           </view>
           <view class='project'>
-            <view class='classify'>
+            <view class='type'>
               <text class='typeName'>项目</text>
               <image src='{{more_url}}'></image>
               <text class='more'>更多</text>
             </view>
             <view wx:for='{{projectList}}' wx:key='{{item.project_id}}' class='publishedProject' style='transform:translateX({{transform2}})' bindtap='jumpToDetail'  id='{{item.project_id}}'>
-              <text class='projectTitle'>{{item.project_title}}</text>
+              <rich-text class='projectTitle' nodes='{{item.project_title}}'></rich-text>
               <text class='projectSocialInfo'>{{item.answernum}}个回答· {{item.focus_num}}人关注</text>
+              <text class='seReTime'>{{item.project_time}}</text>
             </view>
           </view>
           <view class='user'>
-            <view class='classify'>
+            <view class='type'>
               <text class='typeName'>用户</text>
               <image src='{{more_url}}'></image>              
               <text class='more'>更多</text>
@@ -40,14 +42,14 @@
               <view wx:if='{{item.individual_id}}'  class='myIdol' bindtap='jumpToIndividualHome' id='{{item.individual_id}}'>
                 <image class='avatar' src='{{item.image}}'/>
                 <view class='ilb'>  
-                  <text class='userName'>{{item.individual_name}}</text>
+                  <rich-text class='userName' nodes='{{item.individual_name}}'></rich-text>
                   <text class='tip'>问答{{item.answer_num}}·项目{{item.project_num}}·圈子{{item.community_num}}·粉丝{{item.fans_num}}</text>
                 </view>
               </view>
               <view wx:if='{{item.company_id}}'  class='myIdol' bindtap='jumpToCompanyHome' id='{{item.company_id}}'> 
                 <image class='avatar' src='{{item.image}}'/>
                 <view >  
-                  <text class='userName'>{{item.company_name}}</text>
+                  <rich-text class='userName' nodes='{{item.company_name}}'></rich-text>
                   <text class='tip'>问答{{item.answer_num}}·项目{{item.project_num}}·圈子{{item.community_num}}·粉丝{{item.fans_num}}</text>
                 </view>
               </view>

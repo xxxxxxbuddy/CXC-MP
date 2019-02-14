@@ -27,7 +27,7 @@ function quickSort(arr){
 
 function timeCalc(time) {
   var now = new Date()
-  var timeDiff = parseInt((now - time) / 1000) - 28800    //单位为秒
+    var timeDiff = parseInt((now - time) / 1000) - 28800    //单位为秒
   if (timeDiff > 604800) {
     if (time.getFullYear() != now.getFullYear()) {
       return time.getFullYear() + time.getMonth() + time.getDate()
@@ -52,6 +52,21 @@ function timeCalc(time) {
   
 }
 
+  //高亮搜索结果中的搜索内容
+function highLight(list, content) {
+    var reg = new RegExp(content, "igm");
+    for (var item of list) {
+        if (item.question_id) {
+            item.question_title = item.question_title.replace(reg, "<span style='color: red;'>$&</span>");
+            item.question_time = timeCalc(new Date(item.question_time.replace(/T/, " ").replace(/Z/, "").replace(/-/g, "/")));
+        } else if (item.project_id) {
+            item.project_title = item.project_title.replace(reg, "<span style='color: red;'>$&</span>");
+            item.project_time = timeCalc(new Date(item.project_time.replace(/T/, " ").replace(/Z/, "").replace(/-/g, "/")));
+        } else {
+            item.username = item.username.replace(reg, "<span style='color: red;'>$&</span>");
+        }
+    }
+}
 
 Page({
   
@@ -91,7 +106,8 @@ Page({
     "bgColor": 'rgba(0, 187, 211, 1)',
     "questionList": {},
     "projectList": {},
-    "userList": {}
+    "userList": {},
+    "content": ''
     //"hideCommunity": "block"
   },
 
@@ -173,7 +189,6 @@ Page({
             icon: 'none'
           })
         }
-        console.log(app.globalData.userInfo)
 
       },
       fail: function () {
@@ -281,41 +296,83 @@ Page({
   onShareAppMessage: function () {
   
   },
+
+  /**
+   * 搜索
+   */
+
+
   onSearch: function(){
+      var testList = [{
+          question_id: 1,
+          user_type: 0,
+          user_id: "15827576787",
+          question_title: "银行业不良率上涨中，小微企业不良的影响有多大？银行有什么方法降低小微企业不良？",
+          question_info: "银行业不良率再次上涨，这其中，1. 小微企业不良的影响有多大？2. 银行单纯依靠清收是否无法...",
+          question_time: "2019-01-30T03:14:57.000Z",
+          answernum: 0,
+          focus_num: 0
+      },
+          {
+              question_id: 2,
+              user_type: 0,
+              user_id: "15827576787",
+              question_title: "银行业不良率上涨中，小微企业不良的影响有多大？银行有什么方法降低小微企业不良？",
+              question_info: "银行业不良率再次上涨，这其中，1. 小微企业不良的影响有多大？2. 银行单纯依靠清收是否无法...",
+              question_time: "2019-01-30T03:14:57.000Z",
+              answernum: 0,
+              focus_num: 0
+          }];
+      highLight(testList, "银行");
     this.setData({
       searching: 'none',
       searchWidth: '86%',
       iconLeft: '30rpx',
-      bgColor: '#fff'
+      bgColor: '#fff',
+        questionList: testList
     })
   },
   quitSearch: function(){
-    this.setData({
-      searching: '',
-      searchWidth: '480rpx',
-      iconLeft: '110rpx',
-      bgColor: 'rgba(0, 187, 211, 1)'
-    })
+    // this.setData({
+    //   searching: '',
+    //   searchWidth: '480rpx',
+    //   iconLeft: '110rpx',
+    //   bgColor: 'rgba(0, 187, 211, 1)',
+        
+    // })
   },
   search: function(e){
     var that = this
     console.log(e)
-    wx.request({
-      url: config.service.search,
-      data: e.detail.value,
-      success: function(res){
-        that.setData({
-          questionList: res.data.questionList,
-          projectList: res.data.projectList,
-          userList: res.data.userList
-        })
-      },fail: function(){
-        wx.showToast({
-          title: '网络错误',
-          icon: 'none'
-        })
-      }
+    this.setData({
+        content: e.detail.value
     })
+    // wx.request({
+    //   url: config.service.search,
+    //   data: e.detail.value,
+    //   success: function(res){
+    //       if(res.code == 0){            //code为0 表示无相关搜索结果 
+    //         wx.showToast({
+    //             title: '无相关搜索结果',
+    //             icon: 'none'
+    //         })
+    //       }else{
+    //           that.setData({
+    //               content: e.detail.value,
+    //               questionList: res.data.questionList,
+    //               projectList: res.data.projectList,
+    //               userList: res.data.userList
+    //           })
+    //       }
+    //       }
+    //     ,fail: function(){
+    //     wx.showToast({
+    //       title: '网络错误',
+    //       icon: 'none'
+    //     })
+    //   }
+    // })
+
   },
 
   //跳转发布问题页面
