@@ -2,7 +2,6 @@
   "pages": [
     "pages/index/index",
     "pages/statement/statement",
-
     "pages/main/main",
     "pages/community/community",
     "pages/createCommunity/createCommunity",
@@ -13,7 +12,7 @@
     "pages/subsettings/community/community",
     "pages/notice/notice",
     "pages/comment/comment",
-    "pages/member/member",  
+    "pages/member/member",
     "pages/project_detail/project_detail",
     "pages/settings/settings",
     "pages/subsettings/individual_info/individual_info",
@@ -31,5 +30,6 @@
     "navigationBarBackgroundColor": "#000",
     "navigationBarTitleText": "产学创交流平台",
     "navigationBarTextStyle": "white"
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

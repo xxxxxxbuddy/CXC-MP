@@ -6,10 +6,10 @@ const CONF = {
     appId: 'wx2541631ee62bb5d9',
 
     // 微信小程序 App Secret
-    appSecret: '',  //09d9c768533c08516a46bf339b36adfc  => getOpenid.js
+    appSecret: '09d9c768533c08516a46bf339b36adfc',  //09d9c768533c08516a46bf339b36adfc  => getOpenid.js
 
     // 是否使用腾讯云代理登录小程序
-    useQcloudLogin: false,
+    useQcloudLogin: true,
 
     /**
      * MySQL 配置，用来存储 session 和用户信息
@@ -21,8 +21,8 @@ const CONF = {
         port: 3306,
         user: 'root',
         db: 'cAuth',
-        //pass: 'wx2541631ee62bb5d9', //开发环境
-        pass: 'UvT08wlg',         //生产环境
+        pass: 'wx2541631ee62bb5d9', //开发环境
+        //pass: 'UvT08wlg',         //生产环境
         char: 'utf8mb4'
     },
 

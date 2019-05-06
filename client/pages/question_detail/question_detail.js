@@ -97,7 +97,7 @@ Page({
             user_id: app.globalData.userInfo.user_id
           },success: function(res){
             if(res.data.result){
-              console.log(res)
+              //console.log(res)
               that.setData({
                 questionTitle: result.question_title,
                 userType: res.data.result.user_type,

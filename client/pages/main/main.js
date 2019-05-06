@@ -132,10 +132,21 @@ Page({
         need: 'name'
       },
       success: function(res){
+        console.log("加载圈子信息：\n")
         console.log(res.data)
-        that.setData({
-          communityList: res.data.result
-        })
+        if(!JSON.stringify(res.data.data) == "{}") {
+          this.setData({
+            communityList: res.data.data
+          })
+        }else {
+          wx.showToast({
+            title: '圈子信息加载失败',
+            icon: 'none'
+          })
+          that.setData({
+            communityList: "[{community_id: '加载失败'}]"
+          })
+        }
       },
       fail: function(){
         wx.showToast({
@@ -148,7 +159,7 @@ Page({
       }
       
     })
-    console.log(app.globalData.userInfo)
+    //console.log(app.globalData.userInfo)
     wx.request({
       url: config.service.home_page,
       method: 'get',
@@ -333,45 +344,49 @@ Page({
     })
   },
   quitSearch: function(){
-    // this.setData({
-    //   searching: '',
-    //   searchWidth: '480rpx',
-    //   iconLeft: '110rpx',
-    //   bgColor: 'rgba(0, 187, 211, 1)',
+    this.setData({
+      searching: '',
+      searchWidth: '480rpx',
+      iconLeft: '110rpx',
+      bgColor: 'rgba(0, 187, 211, 1)',
         
-    // })
+    })
   },
   search: function(e){
     var that = this
     console.log(e)
-    this.setData({
-        content: e.detail.value
-    })
-    // wx.request({
-    //   url: config.service.search,
-    //   data: e.detail.value,
-    //   success: function(res){
-    //       if(res.code == 0){            //code为0 表示无相关搜索结果 
-    //         wx.showToast({
-    //             title: '无相关搜索结果',
-    //             icon: 'none'
-    //         })
-    //       }else{
-    //           that.setData({
-    //               content: e.detail.value,
-    //               questionList: res.data.questionList,
-    //               projectList: res.data.projectList,
-    //               userList: res.data.userList
-    //           })
-    //       }
-    //       }
-    //     ,fail: function(){
-    //     wx.showToast({
-    //       title: '网络错误',
-    //       icon: 'none'
-    //     })
-    //   }
+    // this.setData({
+    //     content: e.detail.value
     // })
+    wx.request({
+      url: config.service.search,
+        data: {
+            content: e.detail.value
+            },
+      success: function(res){
+          console.log(res)
+          if(res.code == 0){            //code为0 表示无相关搜索结果 
+            wx.showToast({
+                title: '无相关搜索结果',
+                icon: 'none'
+            })
+          }else{
+              that.setData({
+                  content: e.detail.value,
+                  questionList: res.data.question,
+                  projectList: res.data.project,
+                  userList: res.data.user
+              })
+              console.log(that.data.questionList);
+          }
+          }
+        ,fail: function(){
+        wx.showToast({
+          title: '网络错误',
+          icon: 'none'
+        })
+      }
+    })
 
   },
 
@@ -403,7 +418,7 @@ Page({
       success: function (res) {
         //console.log(res.data)
         /*加载问题*/
-        if (res.data.result !=null ) {
+        if (JSON.stringify(res.data.data) != "{}" ) {
           for (var item of res.data.result1) {
             item.project_time = new Date(item.project_time.replace(/T/, " ").replace(/Z/, "").replace(/-/g, "/"))
             item.project_time = timeCalc(item.project_time)
@@ -424,8 +439,11 @@ Page({
             allArray: result
           })
         } else {
+            that.setData({
+                allArray: []
+            })
           wx.showToast({
-            title: '获取动态失败',
+            title: '无新动态',
             icon: 'none'
           })
         }
@@ -447,7 +465,8 @@ Page({
         user_id: app.globalData.userInfo.user_id
       },
       success: function(res){
-        if (res.data) {
+        console.log(res.data.data)
+        if (JSON.stringify(res.data.data) != "{}") {
           for (var item of res.data.project) {
             item.project_time = new Date(item.project_time.replace(/T/, " ").replace(/Z/, "").replace(/-/g, "/"))
             item.project_time = timeCalc(item.project_time)
@@ -568,7 +587,7 @@ Page({
         user_id: app.globalData.userInfo.user_id
       },
       success: function (res) {
-        //console.log(res.data)
+        console.log(res.data)
         /*加载问题*/
         if (res.data) {
           for (var item of res.data.result1) {
@@ -591,8 +610,11 @@ Page({
             allArray: result
           })
         } else {
+         that.setData({
+             allArray: []
+         })
           wx.showToast({
-            title: '获取动态失败',
+            title: '无新动态',
             icon: 'none'
           })
         }

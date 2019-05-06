@@ -48,20 +48,25 @@ const app=getApp();
 App({
     onLaunch: function () {
       var that=this;
-      wx.getStorage({
-        key: 'user',
-        success: function (res) {
-          console.log(res.data);
-          var user=res.data;
-          that.globalData.userInfo.user_type = user.user_type;
-          that.globalData.userInfo.user_id = user.user_id;
-          that.globalData.userInfo.user_name = user.user_name;
-          that.globalData.userInfo.user_image = user.user_image;
-          wx.redirectTo({
-            url: '/pages/main/main',
-          })
+        try{
+            let user = wx.getStorageSync('user')
+            if(!user.user_type){
+                wx.redirectTo({
+                    url: '/pages/index/index',
+                })
+            }else{
+                that.globalData.userInfo.user_type = user.user_type;
+                that.globalData.userInfo.user_id = user.user_id;
+                that.globalData.userInfo.user_name = user.user_name;
+                that.globalData.userInfo.user_image = user.user_image;
+                wx.redirectTo({
+                    url: '/pages/main/main',
+                })
+            }
+        }catch(e){
+            console.log("Get user info failed:" + e.message)
+
         }
-      })
         qcloud.setLoginUrl(config.service.loginUrl)
         //登录
     wx.login({

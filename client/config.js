@@ -137,7 +137,9 @@ var config = {
       //判断是否关注
       focus_state: `${host}/weapp/focus_state`,
       //取消关注
-      defocus: `${host}/weapp/defocus`
+      defocus: `${host}/weapp/defocus`,
+      //搜索
+      search: `${host}/weapp/search`
     }
 };
 

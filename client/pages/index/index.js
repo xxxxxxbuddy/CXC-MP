@@ -7,7 +7,7 @@ Page({
   data: {
     background_url: app.globalData.background_url,
     //'./../images/background.jpg',
-    logo_url: './..images/logo.jpg',
+    //logo_url: './..images/logo.jpg',
     avatar_img: app.globalData.me1_url,
     enterprise_url: app.globalData.company_url,
     individual_back: app.globalData.individual_back_url,
@@ -95,7 +95,6 @@ Page({
     } else{
       gender = '女'
     } 
-    console.log(e)
     app.globalData.userInfo.user_sex = gender
     app.globalData.userInfo.user_image = detail.avatarUrl
   },
@@ -107,7 +106,7 @@ Page({
     })
     wx.login({
       success: function (res) {
-        console.log(res.code)
+        //console.log(res.code)
         wx.request({
           url: config.service.getopenid,
           method: 'get',
