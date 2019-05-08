@@ -67,7 +67,7 @@ Page({
       }
     }catch(e) {
       wx.redirectTo({
-        url: '../index/index',
+        url: 'pages/index/index',
       })
     }
     var that = this;

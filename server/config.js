@@ -6,7 +6,7 @@ const CONF = {
     appId: 'wx2541631ee62bb5d9',
 
     // 微信小程序 App Secret
-    appSecret: '09d9c768533c08516a46bf339b36adfc',  //09d9c768533c08516a46bf339b36adfc  => getOpenid.js
+    appSecret: '635294160b71b034f86eaaad14dedc9e',  //09d9c768533c08516a46bf339b36adfc  => getOpenid.js
 
     // 是否使用腾讯云代理登录小程序
     useQcloudLogin: true,
@@ -17,7 +17,7 @@ const CONF = {
      * 开发环境下，MySQL 的初始密码为您的微信小程序 appid
      */
     mysql: {
-        host: 'localhost',
+      host: 'localhost', //134.175.84.135
         port: 3306,
         user: 'root',
         db: 'cAuth',

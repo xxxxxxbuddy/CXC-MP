@@ -7,7 +7,7 @@
 <view>
     <textarea placeholder='内容' class='content' placeholder-class='placeholder'bindinput='question_info_input' ></textarea>
 </view>
-<view class='uploadPic' bindtap='uploadPic'>
+<view class='uploadPic' bindtap='uploadPic' style="background-image: url('{{imgUrl}}')">
 
 </view>
 <view class='publish' bindtap='pub'>发布</view>
