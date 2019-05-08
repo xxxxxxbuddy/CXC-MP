@@ -55,7 +55,7 @@
       </view>
       <view class='projectDetail'>
         <text>项目介绍：</text>
-        <text class='projectRequire'>{{projectRequire}}</text>
+        <text class='projectRequire'>{{projectInfo}}</text>
        </view>
       <view class="socialInfo">
         <ul>

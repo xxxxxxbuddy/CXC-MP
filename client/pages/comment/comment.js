@@ -1,31 +1,6 @@
 var config=require("./../../config.js")
 const app = getApp();
-function timeCalc(time) {
-  var now = new Date()
-  var timeDiff = parseInt((now - time) / 1000)     //单位为秒
-  if (timeDiff > 604800) {
-    if (time.getFullYear() != now.getFullYear()) {
-      return time.getFullYear() + time.getMonth() + time.getDate()
-    } else {
-      return time.getMonth() + 1 + '-' + time.getDate()
-    }
-  } else if (timeDiff >= 518400) {
-    return '六天前'
-  } else if (timeDiff >= 432000) {
-    return '五天前'
-  } else if (timeDiff >= 345600) {
-    return '四天前'
-  } else if (timeDiff >= 259200) {
-    return '三天前'
-  } else if (timeDiff >= 172800) {
-    return '二天前'
-  } else if (timeDiff >= 86400) {
-    return '一天前'
-  } else if (timeDiff >= 3600) {
-    return parseInt(timeDiff / 60 / 60) + '小时前'
-  } else return parseInt(timeDiff / 60) + '分钟前'
-
-}
+const {timeCalc} = require('../../utils/util.js')
 
 // pages/comment/comment.js
 Page({

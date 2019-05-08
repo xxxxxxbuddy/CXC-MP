@@ -1,32 +1,7 @@
 var config = require('./../../config.js')
 const app=getApp();
 var id
-function timeCalc(time) {
-  var now = new Date()
-  var timeDiff = parseInt((now - time) / 1000)     //单位为秒
-  if (timeDiff > 604800) {
-    if (time.getFullYear() != now.getFullYear()) {
-      return time.getFullYear() + time.getMonth() + time.getDate()
-    } else {
-      return time.getMonth() + 1 + '-' + time.getDate()
-    }
-  } else if (timeDiff >= 518400) {
-    return '六天前'
-  } else if (timeDiff >= 432000) {
-    return '五天前'
-  } else if (timeDiff >= 345600) {
-    return '四天前'
-  } else if (timeDiff >= 259200) {
-    return '三天前'
-  } else if (timeDiff >= 172800) {
-    return '二天前'
-  } else if (timeDiff >= 86400) {
-    return '一天前'
-  } else if (timeDiff >= 3600) {
-    return parseInt(timeDiff / 60 / 60) + '小时前'
-  } else return parseInt(timeDiff / 60) + '分钟前'
-
-}
+const {timeCalc} = require('../../utils/util.js')
 
 
 
@@ -96,8 +71,7 @@ Page({
             user_type: app.globalData.userInfo.user_type,
             user_id: app.globalData.userInfo.user_id
           },success: function(res){
-            if(res.data.result){
-              //console.log(res)
+            try{
               that.setData({
                 questionTitle: result.question_title,
                 userType: res.data.result.user_type,
@@ -108,19 +82,11 @@ Page({
                 answerNum: result.answernum,
                 answerList: answer,
                 object_id: id,
-                following: '',
-                unfollowing: 'none'
+                following: !!res.data.result ? '' : 'none',
+                unfollowing: !!res.data.result ? 'none' : ''
               })
-            }else{
-              that.setData({
-                questionTitle: result.question_title,
-                userName: result.user_name,
-                pubTime: timeCalc(new Date(result.question_time.replace(/T/, " ").replace(/Z/, "").replace(/-/g, "/"))),
-                questionInfo: result.question_info,
-                answerNum: result.answernum,
-                answerList: answer,
-                object_id: id
-              })
+            }catch(err) {
+              console.error(err);
             }
           }
         })

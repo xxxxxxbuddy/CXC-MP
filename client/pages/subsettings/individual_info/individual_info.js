@@ -6,9 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    avatarUrl: app.globalData.userInfo.user_image,
     back_url: app.globalData.back_url,
-    userName: app.globalData.userInfo.user_name,
     sex: '男',
     company: '',
     jobRange: [],
@@ -38,10 +36,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.setData({
-      userName: app.globalData.userInfo.user_name,
-      avatarUrl: app.globalData.userInfo.user_image
-    })
     var that = this
     wx.request({
       url: config.service.my_message,
@@ -52,7 +46,7 @@ Page({
       },
       success: function(res){
         var info = res.data.result
-        console.log(res.data)
+        console.log(res)
         if(info.individual_name){
           that.setData({
             individual: true,
@@ -61,6 +55,7 @@ Page({
             job: info.individual_job,
             company: info.individual_corporation,
             introduce: info.individual_introduce,
+            userInfo: app.globalData.userInfo,
             jobRange: app.globalData.jobList,
           })
         }else{
@@ -71,7 +66,8 @@ Page({
             typeRange: app.globalData.typeList,
             type: info.company_type,
             company: info.company_address,
-            userName: app.globalData.userInfo.user_name
+            userName: app.globalData.userInfo.user_name,
+            userInfo: app.globalData.userInfo,
           })
         }
 
@@ -130,14 +126,14 @@ Page({
       type: e.detail.value
     })
   },
-  // corporationInput: function(e){
-  //   this.setData({
-  //     corporation: e.detail.value
-  //   })
-  // },
+  corporationInput: function(e){
+    this.setData({
+      company: e.detail.value
+    })
+  },
   checkInfo: function(){
     var that = this
-    if(!that.data.corporation){
+    if(!that.data.company){
       wx.showToast({
         title: '请输入所属单位',
         icon: 'none'
@@ -148,7 +144,14 @@ Page({
       })
     }
   },
+  introduceInput: function(e) {
+    console.log(e);
+    this.setData({
+      introduce: e.detail.value
+    })
+  },
   submitInfo: function(e){
+    var that = this;
     if(!this.data.flag){
       wx.showToast({
         title: '请输入全部信息',
@@ -163,10 +166,10 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'
       },
       data: {
-        user_type: 0,
-        user_id: 18211949726,
-        individual_job: e.detail.value.job,
-        individual_corporation: e.detail.value.corporation,
+        user_type: app.globalData.userInfo.user_type,
+        user_id: app.globalData.userInfo.user_id,
+        individual_job: that.data.job,
+        individual_corporation: that.data.company,
         individual_introduce: e.detail.value.introduce
       },
       success: function(){

@@ -13,6 +13,7 @@ const DB = require('knex')({
 })
 
 module.exports = async (ctx, next) => {
+  var code = 1;
   var data = ctx.query;
   var community_id = [];
   var result=[];

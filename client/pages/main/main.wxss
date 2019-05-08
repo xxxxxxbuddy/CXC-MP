@@ -24,7 +24,7 @@ page{
     border-radius: 5rpx;
 	font-size: 32rpx;
 	line-height: 50rpx;
-    box-shadow: 0rpx 5rpx 5rpx 0rpx rgba(0, 0, 0, 0.5);
+    box-shadow: 0rpx 5rpx 5rpx 0rpx rgba(0, 0, 0, 0.3);
     background-color: #fff;
     transition: width 0.2s;
 }
@@ -89,7 +89,7 @@ page{
     padding-left: 20rpx;
     padding-top: 10rpx;
     padding-bottom: 10rpx;
-    box-shadow:  0rpx 5rpx 5rpx 0rpx rgba(37, 19, 19, 0.3);
+    box-shadow:  0rpx 2rpx 5rpx 0rpx rgba(37, 19, 19, 0.2);
     transition: max-height 0.2s;
     overflow: hidden;
 }
@@ -156,6 +156,15 @@ page{
     margin-top: 320rpx;
     vertical-align: middle;
 }
+.main .no-more{
+  position: absolute;
+  width: 100%;
+  top: 10rpx;
+  text-align: center;
+  color:grey;
+  font-size:30rpx;
+  z-index:-1;
+}
 .title{
     margin-left: 18rpx;
 }
@@ -197,6 +206,7 @@ project text{
   float: left;
   margin:20rpx;
   clear:both;
+  color:grey;
 }
 .more{
   float: right;
@@ -249,8 +259,12 @@ project text{
 .myIdol{
   background-color: #fff;
   height: 154rpx;
-
-  border: rgba(217, 217, 217, 1) solid 2rpx;
+  border-bottom:rgba(217, 217, 217, 1) solid 1px;
+  text-align:left;
+  display:flex;
+  justify-content:flex-start;
+  width:98%;
+  padding:4rpx;
 }
 .avatar{
   border-radius: 50%;

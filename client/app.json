@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/main/main",    
     "pages/index/index",
     "pages/statement/statement",
-    "pages/main/main",
     "pages/community/community",
     "pages/createCommunity/createCommunity",
     "pages/pub_project/pub_project",

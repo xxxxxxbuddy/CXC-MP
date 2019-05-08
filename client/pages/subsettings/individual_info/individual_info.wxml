@@ -9,9 +9,9 @@
 </view>
 
 <view class='myInfo' bindtap='individualInfo' >
-  <image class='avatar' src='{{avatarUrl}}'/>
+  <image class='avatar' src='{{userInfo.avatarUrl}}'/>
   <view class='ilb'>  
-    <text class='userName'>{{userName}}</text>
+    <text class='userName'>{{userInfo.nickName}}</text>
   </view>
 </view>
 <view>
@@ -34,11 +34,11 @@
     </view>
     <view class='rl' wx:if='{{corporation}}'>
      <text>通信地址</text>
-      <input confirm-type='next' name='corporation' placeholder='{{company}}' placeholder-class='corporationHolder' bindinput='corporationInput'></input>   
+      <input confirm-type='next' name='corporation' placeholder='{{company}}' placeholder-class='corporationHolder' bindblur='corporationInput'></input>   
     </view>
     <view>
       <text>简介</text>
-      <textarea maxlength='240' placeholder='{{introduce}}' name='introduce'></textarea>
+      <textarea maxlength='240' placeholder='{{introduce}}' bindinput='introduceInput' name='introduce'></textarea>
     </view>
     <button type='primary' form-type='submit' bindtap='checkInfo'>保存</button>
   </form>

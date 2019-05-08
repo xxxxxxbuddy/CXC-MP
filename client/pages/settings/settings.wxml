@@ -1,7 +1,7 @@
 <view class='myInfo' bindtap='individualInfo' >
-  <image class='avatar' src='{{avatarUrl}}'/>
+  <image class='avatar' src='{{userInfo.avatarUrl}}'/>
   <view class='ilb'>  
-    <text class='userName'>{{userName}}</text>
+    <text class='userName'>{{userInfo.nickName}}</text>
     <text class='tip'>查看或编辑个人主页</text>
   </view>
 </view>

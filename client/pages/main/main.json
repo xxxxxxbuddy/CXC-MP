@@ -1,8 +1,8 @@
 {
     
     "usingComponents": {
-        "question": "./../../components/question",
-        "project": "./../../components/project"
+        "question": "./../../components/question/question",
+        "project": "./../../components/project/project"
       },
     "enablePullDownRefresh": true
 

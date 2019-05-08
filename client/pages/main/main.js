@@ -1,71 +1,14 @@
 // pages/main/main.js
 var config = require('./../../config.js')
 var resource
+const {timeCalc, quickSort} = require('../../utils/util.js')
 const app = getApp()
-function quickSort(arr){
-  //如果数组<=1,则直接返回
-  if(arr.length<=1){return arr;}
-  var pivotIndex=Math.floor(arr.length/2);
-  //找基准，并把基准从原数组删除 
-  var pivot=arr.splice(pivotIndex,1)[0];
-  //定义左右数组
-  var left=[];
-  var right=[];
 
-  //比基准小的放在right，比基准大的放在left
-  for(var i=0;i<arr.length;i++){
-      if(arr[i].hot<=pivot.hot){
-          right.push(arr[i]);
-      }
-      else{
-          left.push(arr[i]);
-      }
-  }
-  //递归
-  return quickSort(left).concat([pivot],quickSort(right));
-}
-
-function timeCalc(time) {
-  var now = new Date()
-    var timeDiff = parseInt((now - time) / 1000) - 28800    //单位为秒
-  if (timeDiff > 604800) {
-    if (time.getFullYear() != now.getFullYear()) {
-      return time.getFullYear() + time.getMonth() + time.getDate()
-    } else {
-      return time.getMonth()+1 + '-' + time.getDate()
-    }
-  } else if (timeDiff >= 518400) {
-    return '六天前'
-  } else if (timeDiff >= 432000) {
-    return '五天前'
-  } else if (timeDiff >= 345600) {
-    return '四天前'
-  } else if (timeDiff >= 259200) {
-    return '三天前'
-  } else if (timeDiff >= 172800) {
-    return '二天前'
-  } else if (timeDiff >= 86400) {
-    return '一天前'
-  } else if (timeDiff >= 3600) {
-    return parseInt(timeDiff / 60 / 60) + '小时前'
-  } else return parseInt(timeDiff / 60) + '分钟前'
-  
-}
 
   //高亮搜索结果中的搜索内容
-function highLight(list, content) {
+function highLight(content, result) {
     var reg = new RegExp(content, "igm");
-    for (var item of list) {
-        if (item.question_id) {
-            item.question_title = item.question_title.replace(reg, "<span style='color: red;'>$&</span>");
-            item.question_time = timeCalc(new Date(item.question_time.replace(/T/, " ").replace(/Z/, "").replace(/-/g, "/")));
-        } else if (item.project_id) {
-            item.project_title = item.project_title.replace(reg, "<span style='color: red;'>$&</span>");
-            item.project_time = timeCalc(new Date(item.project_time.replace(/T/, " ").replace(/Z/, "").replace(/-/g, "/")));
-        } else {
-            item.username = item.username.replace(reg, "<span style='color: red;'>$&</span>");
-        }
-    }
+    return result.replace(reg, "<span style='color: red;'>$&</span>");
 }
 
 Page({
@@ -115,13 +58,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    /*
-    wx.getUserInfo({
-      success: function(res){
-        console.log(res)
+    
+    try {
+      if(!wx.getStorageSync('user')) {
+        wx.redirectTo({
+          url: '../index/index',
+        })
       }
-    })
-    */
+    }catch(e) {
+      wx.redirectTo({
+        url: '../index/index',
+      })
+    }
     var that = this;
     wx.request({
       method: 'get',
@@ -133,20 +81,10 @@ Page({
       },
       success: function(res){
         console.log("加载圈子信息：\n")
-        console.log(res.data)
-        if(!JSON.stringify(res.data.data) == "{}") {
-          this.setData({
-            communityList: res.data.data
-          })
-        }else {
-          wx.showToast({
-            title: '圈子信息加载失败',
-            icon: 'none'
-          })
-          that.setData({
-            communityList: "[{community_id: '加载失败'}]"
-          })
-        }
+        console.log(res.data);
+        that.setData({
+          communityList: res.data
+        })
       },
       fail: function(){
         wx.showToast({
@@ -173,7 +111,7 @@ Page({
       success: function (res) {
         //
         /*加载问题*/
-        if (res.data.result != null ) {
+        if (res.data.code == 1 ) {
           console.log(res.data)
           for (var item of res.data.result1) {
             item.project_time = new Date(item.project_time.replace(/T/, " ").replace(/Z/, "").replace(/-/g, "/"))
@@ -246,52 +184,11 @@ Page({
    */
   onPullDownRefresh: function () {
     wx.stopPullDownRefresh()
-    var that = this 
-    wx.request({
-      url: config.service.home_page,
-      method: 'get',
-      data: {
-        user_type: app.globalData.userInfo.user_type,
-        user_id: app.globalData.userInfo.user_id,
-        need: 'name'
-      },
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function(res){
-        if (res.data) {
-          if(res.data.result1.length>0 || res.data.result2.length>0){
-              for (var item of res.data.result1) {
-                  item.project_time = new Date(item.project_time.replace(/T/, " ").replace(/Z/, "").replace(/-/g, "/"))
-                  item.project_time = timeCalc(item.project_time)
-                  item.project_finish = new Date(item.project_finish.replace(/T/, " ").replace(/Z/, "").replace(/-/g, "/"))
-                  item.project_finish = item.project_finish.getFullYear() + "-" + item.project_finish.getMonth() + "-" + item.project_finish.getDate();
-              }
-              for (var item of res.data.result2) {
-                  item.question_time = new Date(item.question_time.replace(/T/, " ").replace(/Z/, "").replace(/-/g, "/"))
-                  item.question_time = timeCalc(item.question_time)
-              }
-              var result = res.data.result1.concat(res.data.result2)
-              /**按热度排序**/
-              result = quickSort(result)
-              /*加载问题*/
-              that.setData({
-                  allArray: result
-              })
-          }else{
-              wx.showToast({
-                  title: '无新动态',
-                  icon: 'none'
-              })
-          }
-        } else {
-          wx.showToast({
-            title: '获取动态失败',
-            icon: 'none'
-          })
-      }   
+    if(this.data.isActive1) {
+      this.chooseTag1()
+    }else {
+      this.chooseTag2();
     }
-  })
 },
 
   /**
@@ -314,33 +211,11 @@ Page({
 
 
   onSearch: function(){
-      var testList = [{
-          question_id: 1,
-          user_type: 0,
-          user_id: "15827576787",
-          question_title: "银行业不良率上涨中，小微企业不良的影响有多大？银行有什么方法降低小微企业不良？",
-          question_info: "银行业不良率再次上涨，这其中，1. 小微企业不良的影响有多大？2. 银行单纯依靠清收是否无法...",
-          question_time: "2019-01-30T03:14:57.000Z",
-          answernum: 0,
-          focus_num: 0
-      },
-          {
-              question_id: 2,
-              user_type: 0,
-              user_id: "15827576787",
-              question_title: "银行业不良率上涨中，小微企业不良的影响有多大？银行有什么方法降低小微企业不良？",
-              question_info: "银行业不良率再次上涨，这其中，1. 小微企业不良的影响有多大？2. 银行单纯依靠清收是否无法...",
-              question_time: "2019-01-30T03:14:57.000Z",
-              answernum: 0,
-              focus_num: 0
-          }];
-      highLight(testList, "银行");
     this.setData({
       searching: 'none',
       searchWidth: '86%',
       iconLeft: '30rpx',
-      bgColor: '#fff',
-        questionList: testList
+      bgColor: '#fff'
     })
   },
   quitSearch: function(){
@@ -353,6 +228,9 @@ Page({
     })
   },
   search: function(e){
+    this.setData({
+      content: e.detail.value
+    })
     var that = this
     console.log(e)
     // this.setData({
@@ -362,15 +240,34 @@ Page({
       url: config.service.search,
         data: {
             content: e.detail.value
-            },
+        },
       success: function(res){
           console.log(res)
-          if(res.code == 0){            //code为0 表示无相关搜索结果 
+          if(res.data.code == 0){            //code为0 表示无相关搜索结果 
             wx.showToast({
                 title: '无相关搜索结果',
                 icon: 'none'
             })
           }else{
+            if(res.data.question.length > 0) {
+              res.data.question.forEach(item => {
+                item.question_title = highLight(that.data.content, item.question_title);
+                item.question_time = new Date(item.question_time.replace(/T/, " ").replace(/Z/, "").replace(/-/g, "/"));
+                item.question_time = timeCalc(item.question_time);
+              });
+            }
+            if(res.data.project.length > 0) {
+              res.data.project.forEach(item => {
+                item.project_title = highLight(that.data.content, item.project_title);
+                item.project_time = new Date(item.project_time.replace(/T/, " ").replace(/Z/, "").replace(/-/g, "/"));
+                item.project_time = timeCalc(item.project_time);
+              });
+            }
+            if(res.data.user.length > 0) {
+              res.data.user.forEach(item => {
+                item.user_name = highLight(that.data.content, item.user_name);
+              })
+            }
               that.setData({
                   content: e.detail.value,
                   questionList: res.data.question,
@@ -418,7 +315,7 @@ Page({
       success: function (res) {
         //console.log(res.data)
         /*加载问题*/
-        if (JSON.stringify(res.data.data) != "{}" ) {
+        if (res.data.code == 1) {
           for (var item of res.data.result1) {
             item.project_time = new Date(item.project_time.replace(/T/, " ").replace(/Z/, "").replace(/-/g, "/"))
             item.project_time = timeCalc(item.project_time)
@@ -466,7 +363,7 @@ Page({
       },
       success: function(res){
         console.log(res.data.data)
-        if (JSON.stringify(res.data.data) != "{}") {
+        if (res.data.code == 1) {
           for (var item of res.data.project) {
             item.project_time = new Date(item.project_time.replace(/T/, " ").replace(/Z/, "").replace(/-/g, "/"))
             item.project_time = timeCalc(item.project_time)
@@ -621,8 +518,14 @@ Page({
       }
     })
   },
+  jumpToHome(e) {
+    console.log(e)
+    wx.navigateTo({
+      url: '../home/home?userType=' + e.currentTarget.dataset.type + '&userId=' + e.currentTarget.dataset.id
+    })
+  },
   jumpToDetail: function(e){
-    let id = e.target.id //获得question_id或project_id
+    let id = e.target.dataset.id //获得question_id或project_id
     let dataType = e.target.dataset.type
     if(dataType == 1){
       wx.navigateTo({
