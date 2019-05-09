@@ -287,6 +287,13 @@ Page({
                   title: '注册成功',
                   icon: 'none'
                 })
+                console.log(app.globalData.userInfo)
+                wx.setStorageSync('user', {
+                  user_type: 0,
+                  user_id: e.detail.value.individualPhone,
+                  user_name: e.detail.value.individualName,
+                  user_image: app.globalData.userInfo.user_image
+                })
                 wx.redirectTo({
                   url: './../main/main',
                 })
@@ -357,7 +364,7 @@ Page({
                 company_type: e.detail.value.companyType,
                 company_id: e.detail.value.companyPhone,
                 company_address: e.detail.value.companyAddress,
-                image: app.globalData.userInfo.image
+                image: app.globalData.userInfo.user_image
               },
               header: {
                 'content-type': 'application/json'
@@ -373,6 +380,12 @@ Page({
                   wx.showToast({
                     title: '注册成功',
                     icon: 'none'
+                  })
+                  wx.setStorageSync('user', {
+                    user_type: 1,
+                    user_id: e.detail.value.companyPhone,
+                    user_name: e.detail.value.companyName,
+                    image: app.globalData.userInfo.image
                   })
                   wx.redirectTo({
                     url: './../main/main',

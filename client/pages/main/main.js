@@ -67,7 +67,7 @@ Page({
       }
     }catch(e) {
       wx.redirectTo({
-        url: 'pages/index/index',
+        url: '../index/index',
       })
     }
     var that = this;
@@ -83,7 +83,7 @@ Page({
         console.log("加载圈子信息：\n")
         console.log(res.data);
         that.setData({
-          communityList: res.data
+          communityList: res.data.result
         })
       },
       fail: function(){
