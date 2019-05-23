@@ -155,7 +155,9 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.setData({
+      navHeight: app.globalData.navHeight
+    })
   },
 
   /**
@@ -404,7 +406,7 @@ Page({
   },
   openPubBox: function(){
     this.setData({
-      pubBoxPosition: "0",
+      pubBoxPosition: "0" ,
       maskOpacity: "0.3",
       mask_z_index: "2"
     })

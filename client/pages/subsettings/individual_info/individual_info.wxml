@@ -1,12 +1,4 @@
-<view class='header' >
-  <view class='button' bindtap='back' >
-    <image src='{{back_url}}'></image>
-    <text>动态</text>
-  </view>
-  <text class='title' >
-    个人资料
-  </text>
-</view>
+<navbar page-name="个人资料"></navbar>
 
 <view class='myInfo' bindtap='individualInfo' >
   <image class='avatar' src='{{userInfo.avatarUrl}}'/>

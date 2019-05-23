@@ -1,12 +1,4 @@
-<view class='header' >
-  <view class='button' bindtap='back' >
-    <image src='{{back_url}}'></image>
-    <text>问题详情</text>
-  </view>
-  <text class='title' >
-      评论{{}}
-  </text>
-</view>
+<navbar page-name="评论"></navbar>
 
 <view class="comments">
     <view wx:for="{{commentList}}" wx:key="{{item.comment_id}}">

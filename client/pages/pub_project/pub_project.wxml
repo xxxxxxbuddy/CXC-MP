@@ -1,3 +1,4 @@
+<navbar page-name="发布项目"></navbar>
 <view style="display:flex; flex-direction:row; margin-top:20px;margin-left:10px;height:30px">
     <text class='title'>项目类型:</text>
    <picker bindchange="bindtypeChange" value="{{index}}" range="{{select_type}}">
@@ -27,7 +28,7 @@
 <view class='uploadPic' style="background-image: url('{{imgUrl}}')" bindtap='upload'></view>
 <view class='publish' bindtap='pub'>发布</view>
 <view class="type">
-   <text class='type1' bindtap='set_power'>设置权限</text>
+   <text class='type1' bindtap='set_power' style="top: {{navH + 24}}px">设置权限</text>
 </view>
 
 

@@ -31,7 +31,11 @@ page{
   display: inline-block;
 }
 .ansButton{
-  margin-left: 125rpx;
+  width:200rpx;
+  position:absolute;
+  right:40rpx;
+  bottom:0;
+  line-height:65rpx;
 }
 
 .questionBox{
@@ -99,6 +103,7 @@ page{
     margin-left: 20rpx; 
     margin-bottom: 20rpx;
     font-size: 21rpx;
+    position: relative;
 }
 .socialInfo ul li{
     color: rgba(170, 170, 170, 1);

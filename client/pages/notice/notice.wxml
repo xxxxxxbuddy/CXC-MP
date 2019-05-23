@@ -1,12 +1,4 @@
-<view class='header' >
-  <view class='button' bindtap='back' >
-    <image src='{{back_url}}'></image>
-    <text>个人中心</text>
-  </view>
-  <text class='title' >
-    通知
-  </text>
-</view>
+<navbar page-name="通知"></navbar>
 
 <view class='tabs'>
   <ul>

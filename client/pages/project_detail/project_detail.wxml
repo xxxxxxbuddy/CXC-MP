@@ -1,5 +1,6 @@
 <view class='mask' bindtap='closeComment' style="opacity:{{maskOpacity}};z-index:{{mask_z_index}}" ></view>
-<view class='header' >
+<navbar page-name="项目详情"></navbar>
+<!-- <view class='header' >
   <view class='button' bindtap='back' >
     <image src='{{back_url}}'></image>
     <text>动态</text>
@@ -7,8 +8,8 @@
   <text class='title' >
       项目详情
   </text>
-  <text class='ansButton' bindtap='ansProject'>我要回答</text>
-</view>
+  
+</view> -->
 
 <view class="project"> 
   <view class='projectBox'>
@@ -64,6 +65,7 @@
                 回答:<text name="answerNumber">{{answerNum}}</text>
             </li>
          </ul>
+         <button class='ansButton' bindtap='ansProject'>我要回答</button>
        </view>
 
     </view>

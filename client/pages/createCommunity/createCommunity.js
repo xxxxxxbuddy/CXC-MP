@@ -1,5 +1,6 @@
 // pages/createCommunity/createCommunity.js
 var config = require('./../../config.js')
+var util = require('../../utils/util.js')
 const app=getApp();
 Page({
 
@@ -261,79 +262,45 @@ Page({
       })
     }
   },
-  uploadPic: function(){
-    var that = this
-    var token
+  uploadPic: function (e) {
+    var that = this;
     wx.chooseImage({
-      success: function(res) {
-        var tempFilePaths = res.tempFilePaths
-        wx.saveFile({
-          tempFilePath: tempFilePaths[0],
-          success: function(res){
-            var savedFilePath = res.savedFilePath
-            // wx.request({
-            //   url: config.service.uploadUrl,
-            //   data: savedFilePath,
-            //   success: function(res){
-            //     console.log(res.data)
-            //     that.setData({
-            //       communityImage: res.data
-            //     })
-            //   }
-            // })
-            wx.request({
-              url: 'https://435471972.eusp.cn/token',
-              //url: 'https://sl5hr478.qcloud.la/token',
-              method: 'POST',
-              data: {},
-              header:{
-                'content-type': 'application/x-www-form-urlencoded'
-              },
-              success: function (res) {
-
-                token = res.data; //默认返回一个token，赋值给已经有的token属性。这里只是示例，具体根据需求可自行设定。
-                wx.uploadFile({
-                  url: config.service.uploadUrl,
-                  filePath: savedFilePath,
-                  name: 'file',  //圈子头像对应的键为'community*Image' (*为community_id)
-                  formData: {
-                    'token': token,
-                    'key': 'community' + that.data.communityId + 'Image'
-                  },
-                  success: function (r) {
-                    var data = r.data;//七牛会返回一个包含hash值和key的JSON字符串
-                    console.log(r)
-                    if (typeof data === 'string'){
-                      data = JSON.parse(data.trim());//解压缩
-                      that.setData({
-                        communityImage: data.imgUrl
-                      }) 
-                    } 
-                    console.log(data)
-                      
-                  },
-                  fail: function () {
-                    wx.showToast({
-                      title: '上传失败',
-                      icon: 'none'
-                    })
-                  }
+      count: 1,
+      sizeType: ['compressed'],
+      sourceType: ['album', 'camera'],
+      success: function (res) {
+        util.showBusy('正在上传')
+        var filePath = res.tempFilePaths[0]
+        wx.cloud.init({                             //初始化云存储
+          env: 'cxc-2c8dc0'                         //对应的唯一的环境ID
+        });
+        wx.cloud.uploadFile({
+          cloudPath: 'pic1.jpg',
+          //在云存储中文件名（这个名称需要不同，否则会覆盖，我觉得应该用userid+时间）
+          filePath: filePath, // 文件路径         //需要上传的文件的所在的位置
+          success: res => {
+            //获取fileID并得到路径
+            util.showSuccess('上传图片成功')
+            console.log('上传图片成功' + res.fileID)              //fileID为唯一标识
+            wx.cloud.getTempFileURL({
+              fileList: [res.fileID],
+              success: res => {
+                console.log(res.fileList[0].tempFileURL)
+                that.setData({
+                  communityImage: res.fileList[0].tempFileURL              //该地址也可在浏览器中查看
                 })
-
-              },
-
-              fail: function (res) {
-
-                console.log(res)
-
               }
-
             })
-
+          },
+          fail: err => {
+            util.showModel('上传图片失败')
+            console.log('上传图片失败')
           }
         })
       },
+      fail: function (e) {
+        console.error(e)
+      }
     })
-
   }
 })

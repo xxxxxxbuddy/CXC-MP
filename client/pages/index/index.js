@@ -7,7 +7,7 @@ Page({
   data: {
     background_url: app.globalData.background_url,
     //'./../images/background.jpg',
-    //logo_url: './..images/logo.jpg',
+    logo_url: './../../images/logo.png',
     avatar_img: app.globalData.me1_url,
     enterprise_url: app.globalData.company_url,
     individual_back: app.globalData.individual_back_url,

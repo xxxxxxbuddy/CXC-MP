@@ -11,7 +11,7 @@ page {
   position:absolute;
   right: 20px;
   font-size: 15px;
-  top: 12px;
+  z-index: 10;
   color: rgb(0,186,173)
 }
 
@@ -44,4 +44,5 @@ page {
   line-height: 92rpx;
   font-size: 40rpx;
   border-radius: 10rpx;
+  margin-bottom: 10vh;
 }

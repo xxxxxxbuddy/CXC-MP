@@ -44,6 +44,7 @@ page {
   line-height: 92rpx;
   font-size: 40rpx;
   border-radius: 10rpx;
+  margin-bottom: 10vh;
 }
 
 .uploadPic{

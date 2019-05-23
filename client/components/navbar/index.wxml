@@ -1,0 +1,15 @@
+<view class="navbar" style='height:{{navH}}px'>
+  <view class="navbar-action-wrap  {{showHome ? 'navbar-action-group' : ''}} row item-center" wx:if="{{showNav}}">
+    <block wx:if="{{showHome}}">
+    <icon name="back" color="#333" size="15px" custom-class="navbar-action_item first" bind:click="navBack"></icon>
+    <icon name="ybbindex"  color="#333" size="16px" custom-class="navbar-action_item" bind:click="toIndex" ></icon>
+    </block>
+    <block wx:else>
+<icon name="back"  color="#fff" size="18px" custom-class="navbar-action_item first" bind:click="navBack"></icon>
+    </block>
+    
+  </view>
+  <view class='navbar-title'>
+    {{pageName}}
+  </view>
+</view>

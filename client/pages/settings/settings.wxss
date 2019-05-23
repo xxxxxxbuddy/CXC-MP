@@ -57,6 +57,9 @@ page{
 }
 .statement{
   text-align:center;
-  margin-top: 416rpx;
+  position: absolute;
+  bottom: 10rpx;
+  left: 50%;
+  transform: translateX(-50%);
   color:blue;
 }

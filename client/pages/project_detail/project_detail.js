@@ -13,6 +13,7 @@ Page({
     avatar_icon: app.globalData.default_url,
     comment_icon: app.globalData.comment_url,
     like_icon: app.globalData.praise_url,
+    navH: app.globalData.navHeight,
     maskOpacity: "0",
     mask_z_index: -1,
     userName: '',

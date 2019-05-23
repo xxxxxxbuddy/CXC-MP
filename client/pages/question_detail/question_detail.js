@@ -19,6 +19,7 @@ Page({
     avatar_icon: app.globalData.default_url,
     comment_icon: app.globalData.comment_url,
     like_icon:app.globalData.praise_url,
+    navH: app.globalData.navHeight,
     maskOpacity: "0",
     mask_z_index: -1,
     userName: '',
@@ -255,6 +256,57 @@ Page({
           commentAwsPos: "-100%",
           maskOpacity: "0",
           mask_z_index: -1
+        })
+        wx.request({
+          url: config.service.detail,
+          method: 'get',
+          data: {
+            object_id: id,
+            object_type: 1
+          },
+          success: function (res) {
+            console.log(res);
+            let result = res.data.result
+            let answer = res.data.answer
+            if (!result) {
+              wx.navigateBack({
+                delta: 1
+              })
+              wx.showToast({
+                title: '加载失败',
+                icon: 'none'
+              })
+            }
+            wx.request({
+              url: config.service.focus_state,
+              data: {
+                focus_type: 'other',
+                object_type: 1,
+                object_id: that.object_id,
+                user_type: app.globalData.userInfo.user_type,
+                user_id: app.globalData.userInfo.user_id
+              }, success: function (res) {
+                try {
+                  that.setData({
+                    answerNum: result.answernum,
+                    answerList: answer,
+                    object_id: id
+                  })
+                } catch (err) {
+                  console.error(err);
+                }
+              }
+            })
+          },
+          fail: function () {
+            wx.navigateBack({
+              delta: 1
+            })
+            wx.showToast({
+              title: '加载失败',
+              icon: 'none'
+            })
+          }
         })
       },
       fail: function(){

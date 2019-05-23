@@ -1,6 +1,6 @@
 <view>
     <view class="mask" bindtap='closePubBox' style="opacity:{{maskOpacity}};z-index:{{mask_z_index}}" ></view>
-    <view class="header" style='background-color: {{bgColor}}'>
+    <view class="header" style='background-color: {{bgColor}};padding-top: {{navHeight}}px'>
         <view class="searchBox">
             <image class="myInfo" src="{{myInfo_url}}" bindtap='jumpToSettings' style='display: {{searching}}'></image>
             <image class="searchIcon" src="{{searchIcon_url}}" style='left:{{iconLeft}} '></image>
@@ -66,8 +66,8 @@
            </ul>
             </view>
     </view>
-    <view id="publishBox" style="top:{{pubBoxPosition}}">
-        <image class="close" bindtap='closePubBox' src="{{close}}"></image>
+    <view id="publishBox" style="top: {{pubBoxPosition}}; padding-top: {{navHeight}}px">
+        <image class="close" style="top: {{navHeight}}px" bindtap='closePubBox' src="{{close}}"></image>
         <view bindtap='pub_question'>
           <image class="publishUpdates" src="{{pubquestion_url}}" />
           <view class='pubType'>发布问题</view>
@@ -78,7 +78,7 @@
         </view>
     </view>
     <view class="main" style="opacity:{{opacity}}">
-        <view class="no-more">无新动态~</view>
+        <view class="no-more" style="top: {{navHeight + 5}}px">无新动态~</view>
         <view wx:for="{{allArray}}" bindtap='jumpToDetail' wx:key="{{question_id}}{{project_id}}">
             <view   wx:if="{{item.question_id}}"  wx:key="{{question_id}}}">
             <question  data-id="{{item.question_id}}" data-type="1" >

@@ -1,3 +1,4 @@
+<navbar page-name="个人中心"></navbar>
 <view class='myInfo' bindtap='individualInfo' >
   <image class='avatar' src='{{userInfo.avatarUrl}}'/>
   <view class='ilb'>  

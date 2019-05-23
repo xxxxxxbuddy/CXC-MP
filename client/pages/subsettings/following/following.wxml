@@ -1,12 +1,4 @@
-<view class='header' >
-  <view class='button' bindtap='back' >
-    <image src='{{back_url}}'></image>
-    <text wx:if='{{entrance}}'>个人中心</text>
-  </view>
-  <text class='title' >
-    关注
-  </text>
-</view>
+<navbar page-name="个人中心"></navbar>
 
 <view class='tabs'>
   <ul>

@@ -1,12 +1,4 @@
-<view class='header' >
-  <view class='button' bindtap='back' >
-    <image src='{{back_url}}'></image>
-    <text wx:if='{{entrance}}'>个人中心</text>
-  </view>
-  <text class='title' >
-    {{title}}
-  </text>
-</view>
+<navbar page-name="关注我的人"></navbar>
 
 <view class='followers'>
   <view class='follower' wx:for='{{followerList}}' wx:key='{{item.fans_id}}'>

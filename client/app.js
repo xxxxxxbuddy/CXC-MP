@@ -49,6 +49,14 @@ App({
   onLaunch: function () {
     var that = this;
 
+    wx.getSystemInfo({
+      success: res => {
+        this.globalData.navHeight = res.statusBarHeight + 46;
+      }, fail(err) {
+        console.log(err);
+      }
+    })
+
     // 登录
     wx.login({
       success: res => {

@@ -22,7 +22,8 @@ Page({
     power:{
       object_power: 1,
       detail_power: []
-    }
+    },
+    navH: app.globalData.navHeight
   },
   //获取项目类型
   bindtypeChange: function (e) {
